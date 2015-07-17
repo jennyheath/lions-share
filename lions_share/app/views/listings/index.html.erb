@@ -1,0 +1,5 @@
+<% @listings.each do |listing| %>
+  <h1><%= listing.type_of %></h1>
+  <h2>$<%= listing.price %></h2>
+  <p><%= listing.description %></p>
+<% end %>
