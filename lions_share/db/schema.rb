@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150717022814) do
+ActiveRecord::Schema.define(version: 20150719180414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,9 +22,27 @@ ActiveRecord::Schema.define(version: 20150717022814) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "brokers", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "photo_url"
+    t.string   "title"
+    t.string   "email"
+    t.string   "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "listing_amenities", force: :cascade do |t|
     t.integer  "amenity_id"
     t.integer  "listing_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "listing_brokers", force: :cascade do |t|
+    t.integer  "listing_id"
+    t.integer  "broker_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -40,6 +58,16 @@ ActiveRecord::Schema.define(version: 20150717022814) do
     t.text     "description"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone"
+    t.text     "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "photos", force: :cascade do |t|
