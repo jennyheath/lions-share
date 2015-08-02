@@ -1,0 +1,8 @@
+.nav-wrapper {
+  float: right;
+  text-align: right;
+}
+
+.nav-wrapper a {
+  padding: 1em;
+}
