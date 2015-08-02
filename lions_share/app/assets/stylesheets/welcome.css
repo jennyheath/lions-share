@@ -1,8 +1,17 @@
+.navbar {
+  border-bottom: solid gray .1em;
+}
+
 .nav-wrapper {
-  float: right;
   text-align: right;
 }
 
-.nav-wrapper a {
-  padding: 1em;
+.intro-wrapper {
+  text-align: center;
+  width: 40em;
+}
+
+.home-btn {
+  width: 5 em;
+  height: 2 em;
 }

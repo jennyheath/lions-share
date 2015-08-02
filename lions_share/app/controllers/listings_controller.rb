@@ -34,6 +34,14 @@ class ListingsController < ApplicationController
 
   end
 
+  def rentals_index
+    @rentals = Listing.where(type_of: "Rental")
+  end
+
+  def sales_index
+    @sales = Listing.where(type_of: "Sale")
+  end
+
   private
 
   def listing_params

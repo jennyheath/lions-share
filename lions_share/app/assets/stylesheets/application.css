@@ -11,14 +11,11 @@
  * file per style scope.
  *
  *= require normalize
+ *= require bootstrap.min
  *= require_tree .
  *= require_self
  */
 
- // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
-.debug{
+.debug {
   border:1px solid red;
 }
