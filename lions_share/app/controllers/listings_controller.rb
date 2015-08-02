@@ -1,5 +1,10 @@
 class ListingsController < ApplicationController
 
+  has_scope :by_neighborhood
+  has_scope :by_bed
+  has_scope :by_price
+  has_scope :by_amenities
+
   def index
     @listings = Listing.all
   end
@@ -34,12 +39,20 @@ class ListingsController < ApplicationController
 
   end
 
-  def rentals_index
+  def rentals
     @rentals = Listing.where(type_of: "Rental")
   end
 
-  def sales_index
+  def sales
     @sales = Listing.where(type_of: "Sale")
+  end
+
+  def rentals_filter
+    apply_scopes(Listing.rentals).all
+  end
+
+  def sales_filter
+    apply_scopes(Listing.sales).all
   end
 
   private

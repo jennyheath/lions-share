@@ -4052,7 +4052,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav .open > a:hover,
 .nav .open > a:focus {
   background-color: #eee;
-  border-color: #337ab7;
+  /*border-color: #337ab7;*/
 }
 .nav .nav-divider {
   height: 1px;
@@ -4312,7 +4312,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-fixed-top {
   top: 0;
-  border-width: 0 0 1px;
+  /*border-width: 0 0 1px;*/
 }
 .navbar-fixed-bottom {
   bottom: 0;
@@ -5008,7 +5008,8 @@ a.badge:focus {
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #eee;
+  background-color: transparent;
+  text-align: center;
 }
 .jumbotron h1,
 .jumbotron .h1 {
@@ -5038,6 +5039,8 @@ a.badge:focus {
   .container-fluid .jumbotron {
     padding-right: 60px;
     padding-left: 60px;
+    margin-top: 3.6em;
+    height: 64.063em;
   }
   .jumbotron h1,
   .jumbotron .h1 {
