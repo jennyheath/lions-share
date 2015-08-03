@@ -33,11 +33,22 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'aws-sdk', '~> 2'
+
+# For security
 gem 'devise'
+
+# For seed file
 gem 'faker'
+
+# For filters
 gem 'has_scope'
+
+# For accessing APIs
 gem 'httparty'
+
+# For map
 gem 'gmaps4rails'
+gem 'geocoder'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,14 +1,14 @@
 class FiltersController < ApplicationController
 
   has_scope :by_neighborhood
-  has_scope :by_bed
+  has_scope :by_bed_count
   has_scope :by_price
   # has_scope :by_amenity
 
   def rentals
-    matches = apply_scopes(Listing).rentals
+    rentals = apply_scopes(Listing).all
 
-    render json: matches
+    render json: rentals
   end
 
   def sales

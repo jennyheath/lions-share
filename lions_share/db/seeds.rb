@@ -1,5 +1,12 @@
 listing_types = ["Rental", "Sale", "Sale by Owner"]
 
+addresses = [
+  '303 Beverley Rd #9G, Brooklyn, NY 11218',
+  '2339 Bragg St, Brooklyn, NY 11229',
+  '696 E 43rd St, Brooklyn, NY 11203',
+  'E 71st St, Brooklyn, NY 11234'
+]
+
 50.times do
   Listing.create(
     type_of: listing_types.sample,
@@ -8,7 +15,8 @@ listing_types = ["Rental", "Sale", "Sale by Owner"]
     bath_count: rand(0.5..3).round(2),
     neighborhood: Faker::Address.city,
     featured: [false, true].sample,
-    description: Faker::Lorem.paragraph
+    description: Faker::Lorem.paragraph,
+    address: addresses.sample
   )
 end
 

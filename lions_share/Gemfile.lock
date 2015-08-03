@@ -74,6 +74,7 @@ GEM
     execjs (2.5.2)
     faker (1.4.3)
       i18n (~> 0.5)
+    geocoder (1.2.9)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     gmaps4rails (2.1.2)
@@ -208,6 +209,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   faker
+  geocoder
   gmaps4rails
   has_scope
   httparty

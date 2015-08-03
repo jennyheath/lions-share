@@ -1,4 +1,4 @@
-class ListingsController < ApplicationController
+class Admin::ListingsController < ApplicationController
 
   def index
     @listings = Listing.all
