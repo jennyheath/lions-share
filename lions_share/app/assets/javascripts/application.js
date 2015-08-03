@@ -15,5 +15,7 @@
 //= require jquery_ujs
 //= require handlebars
 //= require bootstrap.min
+//= require underscore
+//= require gmaps/google
 //= require turbolinks
 //= require_tree .

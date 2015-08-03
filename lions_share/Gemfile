@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use postgresql as the database for Active Record
@@ -37,6 +36,8 @@ gem 'aws-sdk', '~> 2'
 gem 'devise'
 gem 'faker'
 gem 'has_scope'
+gem 'httparty'
+gem 'gmaps4rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -50,5 +51,8 @@ group :development, :test do
 
   gem 'pry-rails'
   gem 'rspec-rails'
+
+  # For secure API keys
+  gem 'dotenv-rails'
 end
 

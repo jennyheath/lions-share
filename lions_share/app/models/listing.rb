@@ -12,11 +12,11 @@ class Listing < ActiveRecord::Base
   has_many :listing_amenities
   has_many :amenities, through: :listing_amenities
 
-  def rentals
+  def self.rentals
     Listing.where(type_of: "Rental")
   end
 
-  def sales
+  def self.sales
     Listing.where(type_of: "Sale")
   end
 
