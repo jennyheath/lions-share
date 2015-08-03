@@ -1,25 +1,29 @@
 <div class="container-fluid filter-page-container">
-  <div class="row filter-wrapper">
-    <div class="filter-menu col-xs-9 col-sm-9 col-md-9 col-lg-9">
-      <div class="form-container">
-        <form class = "filters">
-          <div class="dropdowns-wrapper">
-            <div class="single-drpdwn-wrapper">
-              <select name="by_neighborhood" class="filterby">
-                <% ([''] + Listing.uniq.pluck(:neighborhood)).each do |neighborhood| %>
-                <option value="<%= neighborhood %>"></option>
-                <% end %>
-              </select>
-            </div>
-          </div>
-          <br>
-        </form>
-      </div>
+  <div class="row">
+    <div class="filter-wrapper col-xs-9 col-sm-9 col-md-9 col-lg-9">
+      <form class = "filters">
+        <div class="neighborhood-filter">
+          <select name="by_neighborhood" multiple="multiple" class="form-control">
+            <% Listing.rentals.uniq.pluck(:neighborhood).each do |neighborhood| %>
+              <option value="<%= neighborhood %>"><%= neighborhood %></option>
+            <% end %>
+          </select>
+        </div>
+        <div class="bed-filter">
+          <select name="by_bed_count" class="form-control">
+
+          </select>
+        </div>
+        <div class="price-filter">
+        </div>
+        <div class="amenity-filter">
+        </div>
+      </form>
     </div>
     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Clear All</div>
   </div>
   <div class="row map-wrapper">
-    <div id="map"></div>
+    <div id="map-canvas"></div>
   </div>
   <div class="row sort-wrapper">
 

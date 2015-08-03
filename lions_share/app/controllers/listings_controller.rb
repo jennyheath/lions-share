@@ -1,4 +1,4 @@
-class Admin::ListingsController < ApplicationController
+class ListingsController < ApplicationController
 
   def index
     @listings = Listing.all
@@ -31,6 +31,14 @@ class Admin::ListingsController < ApplicationController
   end
 
   def delete
+
+  end
+
+  def rentals
+
+  end
+
+  def sales
 
   end
 
