@@ -4,7 +4,13 @@ addresses = [
   '303 Beverley Rd #9G, Brooklyn, NY 11218',
   '2339 Bragg St, Brooklyn, NY 11229',
   '696 E 43rd St, Brooklyn, NY 11203',
-  'E 71st St, Brooklyn, NY 11234'
+  'E 71st St, Brooklyn, NY 11234',
+  '590 Myrtle Ave Brooklyn, NY 11205',
+  '1048 Bedford Ave Brooklyn, NY 11205',
+  '247 Dekalb Ave Brooklyn, NY 11205',
+  '87 Lafayette Ave Brooklyn, NY 11217',
+  '80 Hanson Pl Brooklyn, NY 11217',
+  '131 Cumberland Walk Brooklyn, NY 11205'
 ]
 
 neighborhoods = ['Bushwick', 'Williamsburg', 'Crown Heights', 'Bed-Stuy', 'Greenpoint', 'Park Slope', 'Ridgewood', 'Clinton Hill']
@@ -31,7 +37,7 @@ photos = [
     neighborhood: neighborhoods.sample,
     featured: [false, true].sample,
     description: Faker::Lorem.paragraph,
-    address: addresses.sample,
+    address: addresses.pop,
     exclusive: [false, true].sample,
     no_fee: [false, true].sample
   )
