@@ -1,34 +1,34 @@
-<div class="container filter-page-container">
-  <div class="row filter-wrapper">
-    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-      <div class="all-filters row">
-        <form class="filters">
-          <div class="neighborhood-filter col-xs-5 col-sm-5 col-md-5 col-lg-5">
-            <select class="form-control" name="by_neighborhood">
+<div class="debug container-fluid filter-page-container">
+  <div class="debug row filter-wrapper">
+    <div class="debug col-xs-9 col-sm-9 col-md-9 col-lg-9">
+      <div class="debug all-filters row">
+        <form class="debug filters">
+          <div class="debug neighborhood-filter col-xs-5 col-sm-5 col-md-5 col-lg-5">
+            <select multiple="multiple" class="debug form-control" name="by_neighborhood">
               <option>Select Neighborhoods</option>
               <% Listing.rentals.uniq.pluck(:neighborhood).each do |neighborhood| %>
                 <option value="<%= neighborhood %>"><%=neighborhood %></option>
               <% end %>
             </select>
           </div>
-          <div class="bed-filter col-xs-2 col-sm-2 col-md-2 col-lg-2">
-            <select class="form-control" name="by_neighborhood">
+          <div class="debug bed-filter col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <select class="debug form-control" name="by_neighborhood">
               <option>Beds</option>
               <% Listing.rentals.uniq.pluck(:bed_count).each do |bed_count| %>
                 <option value="<%=bed_count%>"><%=bed_count%></option>
               <% end %>
             </select>
           </div>
-          <div class="price-filter col-xs-2 col-sm-2 col-md-2 col-lg-2">
-            <select class="form-control" name="by_price">
+          <div class="debug price-filter col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <select class="debug form-control" name="by_price">
               <option>Price</option>
               <% Listing.rentals.uniq.pluck(:price).each do |price| %>
                 <option value="<%=price%>"><%=price%></option>
               <% end %>
             </select>
           </div>
-          <div class="amenity-filter col-xs-3 col-sm-3 col-md-3 col-lg-3">
-            <select class="form-control" name="by_amenity">
+          <div class="debug amenity-filter col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <select class="debug form-control" name="by_amenity">
               <option>Amenities</option>
               <% Amenity.all.uniq.pluck(:name).each do |name| %>
                 <option value="<%=name%>"><%=name%></option>
@@ -38,16 +38,20 @@
         </form>
       </div>
     </div>
-    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Clear All</div>
+    <div class="debug col-xs-3 col-sm-3 col-md-3 col-lg-3">Clear All</div>
   </div>
-  <div class="row map-wrapper">
-    <div id="map-canvas"></div>
-  </div>
-  <div class="row sort-wrapper">
+  <div class="debug row content-wrapper">
+    <div class="debug col-xs-12 col-sm-7 col-md-7 col-lg-7 sort-matches-container">
+      <div class="debug row sort-wrapper">
 
-  </div>
-  <div class="row matches-wrapper">
+      </div>
+      <div class="debug row matches-wrapper">
 
+      </div>
+    </div>
+    <div class="debug col-sm-5 col-md-5 col-lg-5 map-wrapper">
+      <div id="map-canvas"></div>
+    </div>
   </div>
 </div>
 
