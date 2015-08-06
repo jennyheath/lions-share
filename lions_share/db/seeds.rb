@@ -35,9 +35,9 @@ end
 10.times do
   Listing.create(
     type_of: listing_types.sample,
-    price: rand(1000..4000).to_f,
-    bed_count: rand(0.5..8).round(2),
-    bath_count: rand(0.5..3).round(2),
+    price: [1500,2000,2500,3000,3500].sample,
+    bed_count: [1,2,3].sample,
+    bath_count: [1,1.5,2].sample,
     neighborhood: neighborhoods.sample,
     featured: [false, true].sample,
     description: Faker::Lorem.paragraph,

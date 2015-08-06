@@ -49,9 +49,9 @@ ActiveRecord::Schema.define(version: 20150803152433) do
 
   create_table "listings", force: :cascade do |t|
     t.string   "type_of"
-    t.decimal  "price"
-    t.decimal  "bed_count"
-    t.decimal  "bath_count"
+    t.integer  "price"
+    t.integer  "bed_count"
+    t.integer  "bath_count"
     t.string   "neighborhood"
     t.boolean  "featured"
     t.string   "address"

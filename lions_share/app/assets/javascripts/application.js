@@ -15,7 +15,7 @@
 //= require handlebars
 //= require bootstrap.min
 //= require underscore-min
-//= require gmaps/google
+//= require gmaps
 //= require bootstrap-multiselect
 //= require turbolinks
 //= require_tree .

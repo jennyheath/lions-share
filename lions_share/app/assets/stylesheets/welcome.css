@@ -1,8 +1,43 @@
 .home-wrapper {
-  background-image: url("https://s3-us-west-1.amazonaws.com/thelionsshare/brooklyn_bridge.jpg");
-  background-size: 100% 100%;
-  max-width: 100%;
+  background-color: blue;
+}
+
+.home-wrapper img {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+
+  /* Set up proportionate scaling */
+  width: 100%;
   height: auto;
+
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  /*opacity: 0.5;*/
+}
+
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+  .home-wrapper img {
+    left: 50%;
+    margin-left: -512px;   /* 50% */
+  }
+}
+
+.tint {
+  background-color: blue;
+}
+
+.container-fluid .jumbotron {
+  margin-top: 10%;
+}
+
+.jumbotron {
+  position: absolute;
+  margin-top: 50%;
+  margin-left: 18%;
 }
 
 .jumbotron h1 {
