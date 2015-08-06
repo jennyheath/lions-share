@@ -11,9 +11,11 @@
 // about supported directives.
 //
 //= require jquery
-//= require bootstrap-sprockets
 //= require jquery_ujs
 //= require handlebars
 //= require bootstrap.min
+//= require underscore-min
+//= require gmaps/google
+//= require bootstrap-multiselect
 //= require turbolinks
 //= require_tree .

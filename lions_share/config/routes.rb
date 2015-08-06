@@ -16,8 +16,9 @@ Rails.application.routes.draw do
   resources :brokers, only: [:index]
 
   get '/rentals' => 'listings#rentals'
-  get '/sales' => 'listings#sales
-'
+  get '/sales' => 'listings#sales'
+  get '/filters' => 'filters#rentals'
+  get '/filters' => 'filters#sales'
 
   # Example resource route with options:
   #   resources :products do

@@ -1,8 +1,8 @@
 .home-wrapper {
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/9/92/Brooklyn_Bridge%2C_NYC.jpg");
+  background-image: url("http://hdfreewall.com/images/2015/brooklyn-bridge/brooklyn-bridge-03.jpg");
   background-size: 100% 100%;
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  height: auto;
 }
 
 .jumbotron h1 {
@@ -13,16 +13,18 @@
 .btn-home {
   border: solid white .2em;
   border-radius: 0;
-  width: 8em;
+  width: 10em;
+  margin: 0 .5em;
 }
 
 .btn-home:hover {
-  border: solid yellow .2em;
-  background-color: yellow;
+  border: solid #c1a02f .2em;
+  background-color: #c1a02f;
 }
 
 a.btn-home {
   color: white;
+  text-decoration: none;
 }
 
 a.btn-home:hover {

@@ -12,6 +12,7 @@
  *
  *= require normalize
  *= require bootstrap.min
+ *= require bootstrap-multiselect
  *= require_tree .
  *= require_self
  */
