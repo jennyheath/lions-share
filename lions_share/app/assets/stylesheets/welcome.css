@@ -16,7 +16,7 @@
   top: 0;
   left: 0;
 
-  opacity: 0.5;
+  /*opacity: 0.5;*/
 }
 
 @media screen and (max-width: 1024px) { /* Specific to this particular image */
@@ -26,9 +26,18 @@
   }
 }
 
+.tint {
+  background-color: blue;
+}
+
+.container-fluid .jumbotron {
+  margin-top: 10%;
+}
+
 .jumbotron {
   position: absolute;
-
+  margin-top: 50%;
+  margin-left: 18%;
 }
 
 .jumbotron h1 {
