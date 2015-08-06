@@ -3,5 +3,15 @@
 }
 
 .filter-wrapper {
-  background-color: gray;
+  background-color: #cdcdcd;
+}
+
+.clear-all-container {
+  text-align: right;
+}
+
+#map-canvas {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }

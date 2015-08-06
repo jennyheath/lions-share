@@ -17,8 +17,8 @@ Rails.application.routes.draw do
 
   get '/rentals' => 'listings#rentals'
   get '/sales' => 'listings#sales'
-  get '/filters' => 'filters#rentals'
-  get '/filters' => 'filters#sales'
+  get '/filters' => 'filters#filter_matches'
+  # get '/filters' => 'filters#sales'
 
   # Example resource route with options:
   #   resources :products do

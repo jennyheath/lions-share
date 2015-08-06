@@ -1,5 +1,5 @@
 .home-wrapper {
-  background-image: url("http://hdfreewall.com/images/2015/brooklyn-bridge/brooklyn-bridge-03.jpg");
+  background-image: url("https://s3-us-west-1.amazonaws.com/thelionsshare/brooklyn_bridge.jpg");
   background-size: 100% 100%;
   max-width: 100%;
   height: auto;
@@ -7,7 +7,11 @@
 
 .jumbotron h1 {
   color: white;
+  font-family: 'Lora', serif;;
+}
 
+.jumbotron p {
+  margin-top: 5%
 }
 
 .btn-home {
@@ -15,6 +19,7 @@
   border-radius: 0;
   width: 10em;
   margin: 0 .5em;
+  font-family:
 }
 
 .btn-home:hover {

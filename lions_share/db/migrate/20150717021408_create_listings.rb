@@ -11,6 +11,7 @@ class CreateListings < ActiveRecord::Migration
       t.text :description
       t.boolean :exclusive
       t.boolean :no_fee
+      t.string :main_photo_url
 
       t.timestamps null: false
     end

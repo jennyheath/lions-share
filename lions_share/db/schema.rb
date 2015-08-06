@@ -58,8 +58,9 @@ ActiveRecord::Schema.define(version: 20150803152433) do
     t.text     "description"
     t.boolean  "exclusive"
     t.boolean  "no_fee"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "main_photo_url"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.float    "latitude"
     t.float    "longitude"
   end

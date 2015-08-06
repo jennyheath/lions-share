@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
 
   def index
-    @listings = Listing.all
+    render 'rentals'
   end
 
   def new
@@ -35,11 +35,11 @@ class ListingsController < ApplicationController
   end
 
   def rentals
-
+    @rentals = Listing.rentals
   end
 
   def sales
-
+    @sales = Listing.sales
   end
 
   private

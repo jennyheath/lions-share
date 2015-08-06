@@ -28,6 +28,10 @@ photos = [
   'https://s3.amazonaws.com/nooklyn-pro/listings/1961/large/unnamed.jpg?1412165576'
 ]
 
+photos.each do |photo_url|
+  Photo.create(url: photo_url)
+end
+
 10.times do
   Listing.create(
     type_of: listing_types.sample,
@@ -39,7 +43,8 @@ photos = [
     description: Faker::Lorem.paragraph,
     address: addresses.pop,
     exclusive: [false, true].sample,
-    no_fee: [false, true].sample
+    no_fee: [false, true].sample,
+    main_photo_url: photos.pop
   )
 end
 
@@ -83,5 +88,5 @@ Listing.all.each do |listing|
     listing.amenities << Amenity.all.sample
   end
   listing.brokers << Broker.all.sample
-  listing.photos.create(url: photos.sample)
+  # listing.photos.create(url: photos.sample)
 end
