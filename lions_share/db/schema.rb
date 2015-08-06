@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(version: 20150803152433) do
     t.boolean  "featured"
     t.string   "address"
     t.text     "description"
+    t.boolean  "exclusive"
+    t.boolean  "no_fee"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.float    "latitude"

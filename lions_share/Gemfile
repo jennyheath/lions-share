@@ -53,6 +53,9 @@ gem 'geocoder'
 # For multiselect dropdown menus
 gem 'bootstrap-multiselect-rails'
 
+# For heroku deployment
+gem 'rails_12factor'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

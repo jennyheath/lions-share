@@ -9,6 +9,8 @@ class CreateListings < ActiveRecord::Migration
       t.boolean :featured
       t.string :address
       t.text :description
+      t.boolean :exclusive
+      t.boolean :no_fee
 
       t.timestamps null: false
     end
