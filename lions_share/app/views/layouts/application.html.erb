@@ -4,10 +4,22 @@
   <title>The Lion's Share</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQpm3u1bLPi5cCqVlee09xex2IvvGA8o8">
+  </script>
+  <script type="text/javascript">
+    function initialize() {
+      var mapOptions = {
+        center: { lat: -34.397, lng: 150.644},
+        zoom: 8
+      };
+      var map = new google.maps.Map(document.getElementById('map-canvas'),
+          mapOptions);
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
 </head>
 <body>
   <header class="app-header">
@@ -16,7 +28,6 @@
 
 <%= yield %>
 
-  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 
 </body>
 </html>

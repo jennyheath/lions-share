@@ -18,11 +18,20 @@ $(document).on('page:change', function() {
       $(".matches-wrapper").append(templatingFunction(context));
     };
 
-    new GMaps({
-      div: '#map-canvas',
-      lat: 40.6928,
-      lng: 73.9903
-    });
+    // var map = new GMaps({
+    //     div: '#map-canvas',
+    //     lat: 40.6928,
+    //     lng: 73.9903,
+    //     width: '500px',
+    //     height: '500px',
+    //     zoom: 12,
+    //     zoomControl: true,
+    //     zoomControlOpt: {
+    //         style: 'SMALL',
+    //         position: 'TOP_LEFT'
+    //     },
+    //     panControl: false
+    // });
 
   })
 });

@@ -43,13 +43,20 @@
   <div class="row content-wrapper">
     <div class="col-sm-7 col-md-7 col-lg-7 sort-matches-container">
       <div class="row sort-wrapper">
-
+        <ul class="sort-by col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <li>Sort By</li>
+          <li class="sort-by-border">Price</li>
+          <li class="sort-by-border">Newest</li>
+        </ul>
+        <div class="results-found col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <%= Listing.rentals.count %> results found
+        </div>
       </div>
       <div class="row matches-wrapper">
       </div>
     </div>
-    <div class="col-sm-5 col-md-5 col-lg-5 map-wrapper">
-      <div id="map-canvas"></div>
+    <div class="debug col-sm-5 col-md-5 col-lg-5 map-wrapper">
+      <div id="debug map-canvas"></div>
     </div>
   </div>
 </div>
