@@ -1,0 +1,72 @@
+.home-wrapper {
+  background-color: blue;
+}
+
+.home-wrapper img {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  /*opacity: 0.5;*/
+}
+
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+  .home-wrapper img {
+    left: 50%;
+    margin-left: -512px;   /* 50% */
+  }
+}
+
+.tint {
+  background-color: blue;
+}
+
+.container-fluid .jumbotron {
+  margin-top: 10%;
+}
+
+.jumbotron {
+  position: absolute;
+  margin-top: 50%;
+  margin-left: 18%;
+}
+
+.jumbotron h1 {
+  color: white;
+  font-family: 'Lora', serif;;
+}
+
+.jumbotron p {
+  margin-top: 5%
+}
+
+.btn-home {
+  border: solid white .2em;
+  border-radius: 0;
+  width: 10em;
+  margin: 0 .5em;
+  font-family:
+}
+
+.btn-home:hover {
+  border: solid #c1a02f .2em;
+  background-color: #c1a02f;
+}
+
+a.btn-home {
+  color: white;
+  text-decoration: none;
+}
+
+a.btn-home:hover {
+  color: white;
+}

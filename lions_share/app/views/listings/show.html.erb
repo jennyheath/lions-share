@@ -1,0 +1,6 @@
+<h1>$<%= @listing.price %></h1>
+<h2>Bed: <%= @listing.bed_count %></h2>
+<h2>Bath: <%= @listing.bath_count %></h2>
+<img src="<%= @listing.photos.first.url %>">
+<p><%= @listing.description %></p>
+<p><img src="<%= @listing.brokers.first.photo_url %>"><%= @listing.brokers.first.first_name %> <%= @listing.brokers.first.last_name %></p>
