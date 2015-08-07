@@ -6,7 +6,7 @@
           <div class="neighborhood-filter col-xs-5 col-sm-5 col-md-5 col-lg-5">
             <select class="form-control filterby" name="by_neighborhood">
               <option>Select Neighborhoods</option>
-              <% Listing.rentals.uniq.pluck(:neighborhood).each do |neighborhood| %>
+              <% Listing.all.uniq.pluck(:neighborhood).each do |neighborhood| %>
                 <option value="<%= neighborhood %>"><%=neighborhood %></option>
               <% end %>
             </select>
@@ -14,7 +14,7 @@
           <div class="bed-filter col-xs-2 col-sm-2 col-md-2 col-lg-2">
             <select class="form-control filterby" name="by_neighborhood">
               <option>Beds</option>
-              <% Listing.rentals.uniq.pluck(:bed_count).each do |bed_count| %>
+              <% Listing.all.uniq.pluck(:bed_count).each do |bed_count| %>
                 <option value="<%=bed_count%>"><%=bed_count%></option>
               <% end %>
             </select>
@@ -22,7 +22,7 @@
           <div class="price-filter col-xs-2 col-sm-2 col-md-2 col-lg-2">
             <select class="form-control filterby" name="by_price">
               <option>Price</option>
-              <% Listing.rentals.uniq.pluck(:price).each do |price| %>
+              <% Listing.all.uniq.pluck(:price).each do |price| %>
                 <option value="<%=price%>"><%=price%></option>
               <% end %>
             </select>
@@ -49,7 +49,7 @@
           <li class="sort-by-border">Newest</li>
         </ul>
         <div class="results-found col-xs-6 col-sm-6 col-md-6 col-lg-6">
-          <%= Listing.rentals.count %> results found
+          <%= Listing.all.count %> results found
         </div>
       </div>
       <div class="row matches-wrapper">
