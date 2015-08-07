@@ -66,7 +66,22 @@
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
     <div class="individual-listing-container" data-listing-id ="{{id}}">
       <div class="photo-wrapper">
-        <a href="/listings/{{id}}"><img class="main-img" src="{{main_photo_url}}"></a>
+        {{#if_all exclusive no_fee}}
+        <div class="photo-tags">
+          <p class="exclusive-tag">Exclusive</p>
+          <p class="no-fee-tag">No Fee</p>
+        </div>
+        {{else}}
+          {{#if exclusive}}
+            <div class="exclusive-tag">Exclusive</div>
+          {{/if}}
+          {{#if no_fee}}
+            <div class="no-fee-tag">No Fee</div>
+          {{/if}}
+        {{/if_all}}
+        <a href="/listings/{{id}}">
+        <img class="main-img" src="{{main_photo_url}}">
+        </a>
       </div>
       <div class="info-wrapper row">
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 price-wrapper">

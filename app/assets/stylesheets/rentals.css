@@ -44,12 +44,42 @@
 
 .individual-listing-container {
   float: center;
-  width: 23em;
+  width: 100%;
   padding: 1.5em;
 }
 
+.photo-wrapper {
+  position: relative;
+}
+
+.photo-tags {
+  position: absolute;
+  margin: 1%;
+}
+
+/*need to fix padding when there are both tags*/
+p.exclusive-tag, p.no-fee-tag {
+  position: relative;
+}
+
+.exclusive-tag, .no-fee-tag {
+  position: absolute;
+  padding: 1% 2%;
+  margin: 2%;
+  color: #ffffff;
+  display: inline-block;
+}
+
+.exclusive-tag {
+  background-color: #c12f9d;
+}
+
+.no-fee-tag {
+  background-color: #121546;
+}
+
 .main-img {
-  width: 23em;
+  width: 100%;
   height: auto;
 }
 
@@ -57,13 +87,15 @@
   padding: 1em;
   background-color: #f2f2f2;
   margin-left: .01em;
-  width: 23em;
+  width: 100%;
 }
 
-.price-wrapper {
-  /*width: 50%;*/
+.price-wrapper h2 {
+  font-size: 200%;
+  font-family: 'Lora', serif;
 }
 
 .bed-bath-wrapper {
   text-align: right;
+  font-size: 100%;
 }
