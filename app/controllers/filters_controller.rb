@@ -7,7 +7,7 @@ class FiltersController < ApplicationController
   # has_scope :by_amenity
 
   def filter_matches
-    rentals = apply_scopes(Listing).rentals
+    rentals = apply_scopes(Listing).all
 
     render json: rentals
   end
