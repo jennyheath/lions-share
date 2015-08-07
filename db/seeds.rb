@@ -34,7 +34,7 @@ end
 
 10.times do
   Listing.create(
-    type_of: listing_types.sample,
+    type_of: "Rental",
     price: [1500,2000,2500,3000,3500].sample,
     bed_count: [1,2,3].sample,
     bath_count: [1,1.5,2].sample,
