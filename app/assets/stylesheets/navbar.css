@@ -2,6 +2,7 @@
   color: #ffffff;
   border-bottom: solid #f2f2f2 .2em;
   border-top: none;
+  height: 5em;
 }
 
 .navbar-default {
@@ -10,15 +11,17 @@
   border-top: none;
 }
 
+/*need to do a media query to keep this in the navbar at smaller screen sizes*/
 .navbar-brand img {
   width: 52%;
   height: auto;
 }
 
+/*need to do media query to keep these in the navbar at smaller screen sizes*/
 .nav-link-border {
   display: inline-block;
   padding: auto 1em;
-  height: 5%;
+  height: 5em;
 }
 
 .nav-link-border:hover {
@@ -27,9 +30,6 @@
 
 .nav-link-border a {
   color: #121546;
-  padding-top: 1em;
-  padding-left: .5em;
-  padding-right: .5em;
 }
 
 .nav-link-border a:hover {
