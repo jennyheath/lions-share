@@ -1,11 +1,13 @@
 .navbar-fixed-top {
   color: #ffffff;
   border-bottom: solid #f2f2f2 .2em;
+  border-top: none;
 }
 
 .navbar-default {
   background-color: #ffffff;
   margin-bottom: 0;
+  border-top: none;
 }
 
 .navbar-brand img {
@@ -16,7 +18,8 @@
 .nav-link-border {
   display: inline-block;
   padding: auto 1em;
-  height: 5em;
+  height: 5%;
+  /*height: 5em;*/
 }
 
 .nav-link-border:hover {
@@ -25,7 +28,7 @@
 
 .nav-link-border a {
   color: #121546;
-  margin-top: 50%;
+  padding-top: 1em;
   padding-left: .5em;
   padding-right: .5em;
 }

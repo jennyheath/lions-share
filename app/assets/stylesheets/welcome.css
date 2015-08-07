@@ -16,7 +16,8 @@
   top: 0;
   left: 0;
 
-  /*opacity: 0.5;*/
+  opacity: 0.6;
+
 }
 
 @media screen and (max-width: 1024px) { /* Specific to this particular image */
@@ -26,8 +27,16 @@
   }
 }
 
-.tint {
-  background-color: blue;
+.overlay {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:rgba(0, 0, 0, 0.85);
+    /*background: url(data:;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAABl0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuNUmK/OAAAAATSURBVBhXY2RgYNgHxGAAYuwDAA78AjwwRoQYAAAAAElFTkSuQmCC) repeat scroll transparent\9; /* ie fallback png background image */*/
+    z-index:9999;
+    color:black;
 }
 
 .container-fluid .jumbotron {
@@ -36,13 +45,15 @@
 
 .jumbotron {
   position: absolute;
-  margin-top: 50%;
-  margin-left: 18%;
+  width: 50%;
+  margin: 0 auto;
+  background: transparent;
 }
 
 .jumbotron h1 {
   color: white;
-  font-family: 'Lora', serif;;
+  font-family: 'Lora', serif;
+  font-size: 44px;
 }
 
 .jumbotron p {
@@ -54,7 +65,7 @@
   border-radius: 0;
   width: 10em;
   margin: 0 .5em;
-  font-family:
+  font-size: 14px;
 }
 
 .btn-home:hover {
