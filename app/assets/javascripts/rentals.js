@@ -6,7 +6,6 @@ $(document).on('page:change', function() {
     dataType: 'JSON'
   })
   .done(function(data) {
-    // debugger
     var source = $("#listing_preview_template").html();
     var templatingFunction = Handlebars.compile(source);
     var context = {};

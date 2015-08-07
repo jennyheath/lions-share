@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   resources :listings, only: [:show]
   resources :brokers, only: [:index]
 
-  get '/rentals' => 'listings#rentals'
-  get '/sales' => 'listings#sales'
+  get '/rentals' => 'listings#index'
+  get '/sales' => 'listings#index'
   get '/filters' => 'filters#filter_matches'
   # get '/filters' => 'filters#sales'
 

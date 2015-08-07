@@ -18,13 +18,13 @@ class Listing < ActiveRecord::Base
   has_many :listing_amenities
   has_many :amenities, through: :listing_amenities
 
-  def self.rentals
-    Listing.where(type_of: "Rental")
-  end
+  # def self.rentals
+  #   Listing.where(type_of: "Rental")
+  # end
 
-  def self.sales
-    Listing.where(type_of: "Sale")
-  end
+  # def self.sales
+  #   Listing.where(type_of: "Sale")
+  # end
 
   # def set_main_photo
   #   self.main_photo_url = self.photos.first.url
