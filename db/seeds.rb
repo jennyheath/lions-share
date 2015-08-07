@@ -16,16 +16,16 @@ addresses = [
 neighborhoods = ['Bushwick', 'Williamsburg', 'Crown Heights', 'Bed-Stuy', 'Greenpoint', 'Park Slope', 'Ridgewood', 'Clinton Hill']
 
 photos = [
-  'https://s3.amazonaws.com/nooklyn-pro/listings/3694/large/158094711.jpg?1438366942',
-  'https://s3.amazonaws.com/nooklyn-pro/listings/3383/large/GatesBlock.jpg?1434001160',
-  'https://s3.amazonaws.com/nooklyn-pro/listings/3666/large/IMG_0281.jpg?1438118099',
-  'https://s3.amazonaws.com/nooklyn-pro/listings/3425/large/233_Weirfield_Street__3F.jpg?1436302021',
-  'https://s3.amazonaws.com/nooklyn-pro/listings/2404/large/_MG_5560.JPG?1414339941',
-  'https://s3.amazonaws.com/nooklyn-pro/listings/2508/large/OI000005.jpg?1436102386',
-  'https://s3.amazonaws.com/nooklyn-pro/listings/3511/large/207_Ralph_Avenue-1.jpg?1436979906',
-  'https://s3.amazonaws.com/nooklyn-pro/listings/3531/large/P7242571-001.JPG?1437847818',
-  'https://s3.amazonaws.com/nooklyn-pro/listings/3653/large/IMG_2892.jpg?1437860365',
-  'https://s3.amazonaws.com/nooklyn-pro/listings/1961/large/unnamed.jpg?1412165576'
+  'https://s3-us-west-1.amazonaws.com/thelionsshare/158094711.jpg',
+  'https://s3-us-west-1.amazonaws.com/thelionsshare/207_Ralph_Avenue-1.jpg',
+  'https://s3-us-west-1.amazonaws.com/thelionsshare/233_Weirfield_Street__3F.jpg',
+  'https://s3-us-west-1.amazonaws.com/thelionsshare/GatesBlock.jpg',
+  'https://s3-us-west-1.amazonaws.com/thelionsshare/IMG_0281.jpg',
+  'https://s3-us-west-1.amazonaws.com/thelionsshare/IMG_2892.jpg',
+  'https://s3-us-west-1.amazonaws.com/thelionsshare/OI000005.jpg',
+  'https://s3-us-west-1.amazonaws.com/thelionsshare/P7242571-001.jpeg',
+  'https://s3-us-west-1.amazonaws.com/thelionsshare/_MG_5560.jpeg',
+  'https://s3-us-west-1.amazonaws.com/thelionsshare/unnamed.jpg'
 ]
 
 photos.each do |photo_url|
