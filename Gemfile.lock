@@ -79,7 +79,6 @@ GEM
     geocoder (1.2.9)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
-    gmaps4rails (2.1.2)
     has_scope (0.6.0)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -219,7 +218,6 @@ DEPENDENCIES
   dotenv-rails
   faker
   geocoder
-  gmaps4rails
   has_scope
   httparty
   jbuilder (~> 2.0)

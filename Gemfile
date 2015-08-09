@@ -48,7 +48,6 @@ gem 'has_scope'
 gem 'httparty'
 
 # For map
-gem 'gmaps4rails'
 gem 'geocoder'
 
 # For multiselect dropdown menus
