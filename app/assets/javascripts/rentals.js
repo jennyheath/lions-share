@@ -1,34 +1,11 @@
 $(document).on('page:change', function() {
 
-
   $.ajax({
     url: '/filters?by_type_of=Rental',
     type: 'GET',
     dataType: 'JSON'
   })
   .done(function(data) {
-
-    function initialize() {
-      var options = {
-        center: new google.maps.LatLng(40.650002, -73.949997),
-        zoom: 12,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
-
-      var map = new google.maps.Map(document.getElementById("map-canvas"), options);
-
-      var marker, i;
-
-      for (var i = 0; i < data.length; i++) {
-        marker = new google.maps.Marker({
-          position: new google.maps.LatLng(data[i].latitude, data[i].longitude),
-          map: map
-        });
-        marker.setMap(map);
-      }
-    }
-
-    google.maps.event.addDomListener(window, 'load', initialize);
 
     var source = $("#listing_preview_template").html();
     var templatingFunction = Handlebars.compile(source);
@@ -42,7 +19,37 @@ $(document).on('page:change', function() {
       $(".matches-wrapper").append(templatingFunction(context));
     };
 
-  });
+  })
+
+  var $listingIds = []
+  var $listingArr = $('.matches-wrapper').children().children()
+
+  for (var i = 0; i < $listingArr.length; i++) {
+    $listingId = $listingArr[i].attr("data-listing-id");
+    $listingIds.push($listingId);
+  }
+
+  function initialize() {
+    var options = {
+      center: new google.maps.LatLng(40.650002, -73.949997),
+      zoom: 12,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    var map = new google.maps.Map(document.getElementById("map-canvas"), options);
+
+    var marker, i;
+
+    for (var i = 0; i < $listingIds.length; i++) {
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng($listingIds[i].latitude, $listingIds[i].longitude),
+        map: map
+      });
+      marker.setMap(map);
+    }
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
 
 });
 
