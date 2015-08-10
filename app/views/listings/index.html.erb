@@ -3,5 +3,4 @@
   <h2>$<%= listing.price %></h2>
   <p><%= listing.description %></p>
   <a href="<%= listing_path(listing.id) %>"><img src="<%= listing.photos.first.url %>"/></a>
-  <!-- <%= link_to listing.photos.first.url, listing_path(listing.id) %> -->
 <% end %>
