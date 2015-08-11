@@ -38,15 +38,15 @@ $(document).on('page:change', function() {
 
     var map = new google.maps.Map(document.getElementById("map-canvas"), options);
 
-    var marker, i;
+  //   var marker, i;
 
-    for (var i = 0; i < $listingIds.length; i++) {
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng($listingIds[i].latitude, $listingIds[i].longitude),
-        map: map
-      });
-      marker.setMap(map);
-    }
+  //   for (var i = 0; i < $listingIds.length; i++) {
+  //     marker = new google.maps.Marker({
+  //       position: new google.maps.LatLng($listingIds[i].latitude, $listingIds[i].longitude),
+  //       map: map
+  //     });
+  //     marker.setMap(map);
+  //   }
   }
 
   google.maps.event.addDomListener(window, 'load', initialize);
