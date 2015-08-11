@@ -1,7 +1,7 @@
 $(document).on('page:change', function() {
 
   $.ajax({
-    url: '/filters?by_type_of=Rental',
+    url: '/filter_rentals?by_type_of=Rental',
     type: 'GET',
     dataType: 'JSON'
   })

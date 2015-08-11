@@ -34,13 +34,13 @@ class ListingsController < ApplicationController
 
   end
 
-  # def rentals
-  #   @rentals = Listing.rentals
-  # end
+  def rentals
+    render 'rentals'
+  end
 
-  # def sales
-  #   @sales = Listing.sales
-  # end
+  def sales
+    render 'sales'
+  end
 
   private
 
