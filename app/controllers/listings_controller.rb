@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
 
   def index
-    render 'rentals'
+    # render 'rentals'
   end
 
   def new
