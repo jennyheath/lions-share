@@ -15,8 +15,14 @@ Rails.application.routes.draw do
   resources :listings, only: [:show]
   resources :brokers, only: [:index]
 
+  # Using this route for testing of filterrific gem -- I was manually typing it into the browser url
+  get '/listings' => 'listings#index'
+
+  # I think you should keep these routes --they are a little bit more explicit
   get '/rentals' => 'listings#rentals'
   get '/sales' => 'listings#sales'
+
+  # Not gonna need these routes -- they were for the filters controller when I was still using the has_scope gem
   get '/filter_rentals' => 'filters#filter_rentals'
   get '/filter_sales' => 'filters#filter_sales'
 
@@ -54,6 +60,8 @@ Rails.application.routes.draw do
   #   resources :photos, concerns: :toggleable
 
   # Example resource route within a namespace:
+
+  # This is where I've set up the routes for the /admin/... pages
   namespace :admin do
     # Directs /admin/listings/* to Admin::ListingsController
     # (app/controllers/admin/listings_controller.rb)

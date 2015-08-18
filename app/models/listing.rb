@@ -1,14 +1,41 @@
 class Listing < ActiveRecord::Base
 
-  scope :by_type_of, -> type_of { where(:type_of => type_of) }
-  scope :by_neighborhood, -> neighborhood { where(:neighborhood => neighborhood) }
-  scope :by_bed_count, -> bed { where(:bed_count => bed) }
-  scope :by_price, -> price { where(:price => price) }
+  # This is not working yet -- refer to the articles I attached about the gem
+  # Also need to create the scope :with_amenities for the amenities. This is going to be more complicated because Amenity is its own model -- you may want to just create your own search filter for that (e.g. search for all the listings that have each amenity in the array)
+
+  # Also, as you can see from the migration for creation of this model, I decided not to have separate Sale and Rental models because there were so many fields that would be repeated -- it added unnecessary clunkiness to the data model
+
+  filterrific(
+    default_filter_params: {
+      sorted_by: 'created_at_desc'
+      # with_type: 'Rental'
+    },
+    available_filters: [
+      :sorted_by,
+      :search_query,
+      :with_neighborhood,
+      :with_bed,
+      :with_price,
+      :with_amenities
+    ]
+  )
+
+  scope :with_type, lambda { where(:type_of => type_of) }
+
+  scope :with_neighborhood, lambda { |neighborhoods|
+    where(neighborhood: [*neighborhoods])
+  }
+
+  scope :with_bed, lambda { |beds|
+    where(bed_count: [*beds])
+  }
+
+  scope :with_price, lambda { |prices|
+    where(price: [*prices])
+  }
 
   geocoded_by :address   # can also be an IP address
   after_validation :geocode          # auto-fetch coordinates
-
-  # after_validation :set_main_photo
 
   has_many :photos
 
@@ -18,6 +45,8 @@ class Listing < ActiveRecord::Base
   has_many :listing_amenities
   has_many :amenities, through: :listing_amenities
 
+  # These are just simple methods I wrote to easily refer to all the rentals (Listing.rentals) and all the sales (Listing.sales)
+
   def self.rentals
     Listing.where(type_of: "Rental")
   end
@@ -25,9 +54,5 @@ class Listing < ActiveRecord::Base
   def self.sales
     Listing.where(type_of: "Sale")
   end
-
-  # def set_main_photo
-  #   self.main_photo_url = self.photos.first.url
-  # end
 
 end

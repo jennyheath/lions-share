@@ -42,7 +42,7 @@ gem 'devise'
 gem 'faker'
 
 # For filters
-gem 'has_scope'
+gem 'filterrific'
 
 # For accessing APIs
 gem 'httparty'

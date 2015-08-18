@@ -1,6 +1,15 @@
-<% @listings.each do |listing| %>
-  <h1><%= listing.type_of %></h1>
-  <h2>$<%= listing.price %></h2>
-  <p><%= listing.description %></p>
-  <a href="<%= listing_path(listing.id) %>"><img src="<%= listing.photos.first.url %>"/></a>
+<!-- Here I was testing out code for selecting multiple choices using filterrific gem. Very under-developed -->
+
+<%= form_for @filterrific do |f| %>
+<div>
+  <h3>Select Neighborhood:</h3>
+  <div class="row">
+    <% @filterrific.select_options[:with_neighborhood].each do |c| %>
+      <div class="col-md-4">
+        <%= check_box_tag("filterrific[with_neighborhood][]",c) %>
+        <%=h c %>
+      </div>
+    <% end %>
+  </div>
+</div>
 <% end %>
