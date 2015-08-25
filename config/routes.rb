@@ -9,8 +9,7 @@ Rails.application.routes.draw do
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  # resources :listings, only: [:show]
+  resources :listings, defaults: { format: :json }
   # resources :brokers, only: [:index]
 
   # Using this route for testing of filterrific gem -- I was manually typing it into the browser url

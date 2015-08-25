@@ -6,33 +6,21 @@
           <div class="neighborhood-filter filter-dropdown col-xs-5 col-sm-5 col-md-5 col-lg-5">
             <select class="form-control filterby" name="by_neighborhood">
               <option>Select Neighborhoods</option>
-              <% Listing.all.uniq.pluck(:neighborhood).each do |neighborhood| %>
-                <option value="<%= neighborhood %>"><%=neighborhood %></option>
-              <% end %>
             </select>
           </div>
           <div class="bed-filter filter-dropdown col-xs-2 col-sm-2 col-md-2 col-lg-2">
             <select class="form-control filterby" name="by_neighborhood">
               <option>Beds</option>
-              <% Listing.all.uniq.pluck(:bed_count).each do |bed_count| %>
-                <option value="<%=bed_count%>"><%=bed_count%></option>
-              <% end %>
             </select>
           </div>
           <div class="price-filter filter-dropdown col-xs-2 col-sm-2 col-md-2 col-lg-2">
             <select class="form-control filterby" name="by_price">
               <option>Price</option>
-              <% Listing.all.uniq.pluck(:price).each do |price| %>
-                <option value="<%=price%>"><%=price%></option>
-              <% end %>
             </select>
           </div>
           <div class="amenity-filter filter-dropdown col-xs-3 col-sm-3 col-md-3 col-lg-3">
             <select class="form-control filterby" name="by_amenity">
               <option>Amenities</option>
-              <% Amenity.all.uniq.pluck(:name).each do |name| %>
-                <option value="<%=name%>"><%=name%></option>
-              <% end %>
             </select>
           </div>
         </form>
@@ -51,10 +39,13 @@
           </div>
         </ul>
         <div class="results-found col-xs-6 col-sm-6 col-md-6 col-lg-6">
-          <%= Listing.sales.count %> results found
+          results found
         </div>
       </div>
       <div class="row matches-wrapper">
+        <% listings.each(function (listing) { %>
+          <div class="listing-index-item"><%= listing %></div>
+        <% }); %>
       </div>
     </div>
     <div class="col-sm-5 col-md-5 col-lg-5 map-wrapper">
@@ -62,39 +53,3 @@
     </div>
   </div>
 </div>
-
-<script id="listing_preview_template" type="x-handlebars-template">
-  {{#each match}}
-  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-    <div class="individual-listing-container" data-listing-id ="{{id}}">
-      <div class="photo-wrapper">
-        {{#if_all exclusive no_fee}}
-        <div class="photo-tags">
-          <p class="exclusive-tag">Exclusive</p>
-          <p class="no-fee-tag">No Fee</p>
-        </div>
-        {{else}}
-          {{#if exclusive}}
-            <div class="exclusive-tag">Exclusive</div>
-          {{/if}}
-          {{#if no_fee}}
-            <div class="no-fee-tag">No Fee</div>
-          {{/if}}
-        {{/if_all}}
-        <a href="/listings/{{id}}">
-        <img class="main-img" src="{{main_photo_url}}">
-        </a>
-      </div>
-      <div class="info-wrapper row">
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 price-wrapper">
-          <h2>${{price}}</h2>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 bed-bath-wrapper">
-          <p>{{bed_count}} Bed {{bath_count}} Bath </p>
-          <p>{{neighborhood}}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  {{/each}}
-</script>
