@@ -5,16 +5,30 @@
   height: 5em;
 }
 
+.nav-container {
+  padding: 0px;
+  margin-right: 30px;
+}
+
 .navbar-default {
   background-color: #ffffff;
   margin-bottom: 0;
-  border-top: none;
+  border: none;
 }
 
 /*need to do a media query to keep this in the navbar at smaller screen sizes*/
 .navbar-brand img {
   width: 52%;
   height: auto;
+}
+
+.navbar-nav > li > a {
+  padding-top: 25px;
+}
+
+.nav-link {
+  font-family: "AtlasGrotesk-Regular" !important;
+  color: #121546 !important;
 }
 
 /*need to do media query to keep these in the navbar at smaller screen sizes*/
@@ -35,4 +49,3 @@
 .nav-link-border a:hover {
   text-decoration: none;
 }
-

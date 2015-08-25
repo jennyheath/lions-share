@@ -19,7 +19,7 @@ class ListingsController < ApplicationController
   end
 
   def new
-
+    # ???
   end
 
   def show
