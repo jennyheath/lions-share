@@ -12,9 +12,16 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require handlebars
+//= require jquery.serializeJSON
+//= require underscore
+//= require backbone
 //= require bootstrap.min
 //= require underscore-min
 //= require bootstrap-multiselect
-//= require turbolinks
+//= require lions_share
+//= require_tree ../templates
+//= require_tree ./models
+//= require_tree ./collections
+//= require_tree ./views
+//= require_tree ./routers
 //= require_tree .

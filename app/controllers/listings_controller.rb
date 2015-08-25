@@ -2,20 +2,20 @@ class ListingsController < ApplicationController
 
   def index
     # This is just test code -- I was testing out the filterrific gem
-
-    @filterrific = Filterrific.new(Listing, params[:filterrific])
-    @filterrific.select_options = {
-      sorted_by: Listing.options_for_sorted_by,
-      with_neighborhood: Listing.options_for_select,
-      with_bed: Listing.options_for_select,
-      with_price: Listing.options_for_select,
-      with_amenities: Listing.options_for_select
-    }
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    @listings = Listing.all
+    # @filterrific = Filterrific.new(Listing, params[:filterrific])
+    # @filterrific.select_options = {
+    #   sorted_by: Listing.options_for_sorted_by,
+    #   with_neighborhood: Listing.options_for_select,
+    #   with_bed: Listing.options_for_select,
+    #   with_price: Listing.options_for_select,
+    #   with_amenities: Listing.options_for_select
+    # }
+    #
+    # respond_to do |format|
+    #   format.html
+    #   format.js
+    # end
   end
 
   def new

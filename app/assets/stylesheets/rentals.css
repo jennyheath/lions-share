@@ -3,7 +3,7 @@
 }
 
 .index-sorting {
-  font-family: "AtlasGrotesk-Regular" !important;
+  font-family: "AtlasGrotesk-Regular";
   height: 70px;
   border: none;
 }
@@ -11,6 +11,7 @@
 .filter-dropdown {
   padding: 0px;
   margin-right: 12px;
+  color: #b1b1b1;
 }
 
 .filter-page-container {
@@ -26,6 +27,7 @@
   border: none;
   height: 45px;
   border-radius: 0px !important;
+  color: #b1b1b1 !important;
 }
 
 .clear-all-container {
@@ -50,23 +52,40 @@
 
 .sort-wrapper {
   padding: 1em;
+  padding-top: 20px;
 }
 
 .sort-by {
+  width: 75%;
+}
+
+.sort-by-buttons {
+  border: .2em solid #f2f2f2;
+  text-align: center;
+  width: 244px;
+  float: left;
+  color: #b1b1b1;
 }
 
 .sort-by li {
   display: inline-block;
   padding: .5em;
+  float: left;
 }
 
 .sort-by-border {
-  border: .2em solid #f2f2f2;
+  /*border: .2em solid #f2f2f2;*/
+  width: 120px;
+}
+
+.sort-label {
+  padding-right: 25px !important;
 }
 
 .results-found {
   text-align: right;
   padding: .5em;
+  width: 25%;
 }
 
 .matches-wrapper {
