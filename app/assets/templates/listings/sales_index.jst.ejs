@@ -39,12 +39,13 @@
           </div>
         </ul>
         <div class="results-found col-xs-6 col-sm-6 col-md-6 col-lg-6">
-          results found
+          <%= listings.count %> results found
         </div>
       </div>
       <div class="row matches-wrapper">
-        <% listings.each(function (listing) { %>
-          <div class="listing-index-item"><%= listing %></div>
+        <% var list = listings.first().attributes.listings %>
+        <% list.forEach(function (listing) { %>
+          <div class="listing-index-item"><%= listing.address %></div>
         <% }); %>
       </div>
     </div>
