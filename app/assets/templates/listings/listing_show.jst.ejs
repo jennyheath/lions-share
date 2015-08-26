@@ -1,0 +1,28 @@
+<div class="listing-show-container row">
+  <div class="listing-img-container group col-md-6 col-xs-6">
+    <img class="listing-main-img" src="<%= listing.escape('main_photo_url') %>">
+  </div>
+  <div class="listing-show-info group col-md-6 col-xs-6">
+    <h1>$<%= listing.escape('price') %></h1>
+    <h2><%= listing.escape('bed_count') %> Bed</h2>
+    <h2><%= listing.escape('bath_count') %> Bath</h2>
+    <h2><%= listing.escape('neighborhood') %></h2>
+    <p><%= listing.escape('description') %></p>
+    <ul>
+      <% listing.get('amenities').forEach(function (amenity) { %>
+        <li><%=  amenity.name %></li>
+      <%  }) %>
+    </ul>
+    <div class="broker-box">
+      <% var first_broker = listing.get('brokers')[0] %>
+      <img class="broker-box-img" src="<%= first_broker.photo_url %>">
+      <div class="broker-info">
+        Listed by <br>
+        <div class="broker-name">
+          <%= first_broker.first_name %> <%= first_broker.last_name %>
+        </div>
+      </div>
+      <button class="contact-button">Contact</button>
+    </div>
+  </div>
+</div>

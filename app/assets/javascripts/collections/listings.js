@@ -5,7 +5,7 @@ LionsShare.Collections.Listings = Backbone.Collection.extend({
 
   getOrFetch: function (id) {
     var listing = this.get(id),
-      listings = this;
+        listings = this;
 
     if (!listing) {
       listing = new LionsShare.Models.Listing({ id: id });
@@ -17,7 +17,8 @@ LionsShare.Collections.Listings = Backbone.Collection.extend({
     } else {
       listing.fetch();
     }
-      return listing;
+    
+    return listing;
   }
 });
 

@@ -16,6 +16,7 @@
   background-color: #ffffff;
   margin-bottom: 0;
   border: none;
+  border-bottom: 2px solid #eee;
 }
 
 /*need to do a media query to keep this in the navbar at smaller screen sizes*/
