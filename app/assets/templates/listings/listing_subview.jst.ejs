@@ -1,5 +1,6 @@
 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-    <div class="individual-listing-container">
+    <div class="individual-listing-container" data-id="<%= listing.id %>">
+      <div class="listing-container-hover"></div>
       <div class="photo-wrapper">
         <% if (listing.exclusive == true && listing.no_fee == true) { %>
           <div class="photo-tags">
@@ -20,9 +21,9 @@
           <h2>$<%= listing.price %></h2>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 bed-bath-wrapper">
-          <p><%= listing.bed_count %> Bed <%= listing.bath_count %> Bath </p>
-          <p><%= listing.neighborhood %></p>
+          <p class="info-details"><%= listing.bed_count %> Bed <%= listing.bath_count %> Bath </p>
+          <p class="info-details"><%= listing.neighborhood %></p>
         </div>
       </div>
     </div>
-  </div>
+</div>

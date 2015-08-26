@@ -1,21 +1,25 @@
-LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
-  template: JST['listings/sales_index'],
+LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
+  template: JST['listings/rentals_index'],
 
   initialize: function (options) {
     var view = this;
     view.listings = new LionsShare.Collections.Listings();
+    view.num_results = 0
+    view.rentals = new LionsShare.Collections.Listings();
     view.listings.fetch({
       success: function () {
         var list = view.listings.first().attributes.listings;
-        // debugger;
         list.forEach(function (listing) {
-          if (listing.type_of == "Sale") {
+          if (listing.type_of == "Rental") {
             view.addListingSubview(listing);
+            view.num_results += 1;
+            view.rentals.add(listing);
           }
         });
+        view.render();
       }
     });
-    // this.listenTo(this.listings, "sync", this.render);
+    this.listenTo(this.listings, "sync", this.render);
     // this.listenTo(this.listings, "add", this.addListingSubview);
   },
 
@@ -31,7 +35,8 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
 
   render: function () {
     var content = this.template({
-      listings: this.listings
+      listings: this.listings,
+      num_results: this.num_results
     });
 
     this.$el.html(content);
@@ -43,6 +48,28 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
     };
 
     var map = new google.maps.Map(document.getElementById("map-canvas"), map_options);
+    var map_pin_img = "<%= asset_path('map-pin-unselected.svg') %>";
+    var pinIcon = new google.maps.MarkerImage(
+      map_pin_img,
+      null,
+      null,
+      null,
+      new google.maps.Size(30, 40)
+    );
+
+    this.rentals.each(function (listing) {
+      var LatLng = {lat: listing.attributes.latitude,
+                    lng: listing.attributes.longitude};
+
+      var marker = new google.maps.Marker({
+        position: LatLng,
+        map: map,
+        id: 1,
+        icon: pinIcon
+      });
+    });
+
+    this.attachSubviews();
     return this;
   }
 });

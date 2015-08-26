@@ -32,10 +32,12 @@
 
 .clear-all-container {
   text-align: right;
+  padding-top: 15px;
+  color: #b1b1b1;
 }
 
 #map-canvas {
-  margin-top: 5%;
+  margin-top: 0px;
   display: block;
   width: 100%;
   height: 500px;
@@ -57,6 +59,7 @@
 
 .sort-by {
   width: 75%;
+  margin-bottom: 18px;
 }
 
 .sort-by-buttons {
@@ -95,7 +98,18 @@
 .individual-listing-container {
   float: center;
   width: 100%;
-  padding: 1.5em;
+  font-family: "AtlasGrotesk-Regular", sans-serif;
+}
+
+.listing-container-hover {
+  height: 92%;
+  position: absolute;
+  z-index: 1;
+  width: 92%;
+}
+
+.listing-container-hover:hover {
+  border: solid #c1a02f 3px;
 }
 
 .photo-wrapper {
@@ -130,7 +144,7 @@ p.exclusive-tag, p.no-fee-tag {
 
 .main-img {
   width: 100%;
-  height: auto;
+  height: 257px;
 }
 
 .info-wrapper {
@@ -138,11 +152,19 @@ p.exclusive-tag, p.no-fee-tag {
   background-color: #f2f2f2;
   margin-left: .01em;
   width: 100%;
+  height: 70px;
+  margin-bottom: 30px;
+}
+
+.info-details {
+  margin: 0 -10px 5px;
 }
 
 .price-wrapper h2 {
-  font-size: 200%;
+  font-size: 220%;
   font-family: 'Lora', serif;
+  margin-top: 5px;
+  margin-bottom: 20px;
 }
 
 .bed-bath-wrapper {

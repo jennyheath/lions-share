@@ -10,26 +10,6 @@ addresses = [
   '247 Dekalb Ave Brooklyn, NY 11205',
   '87 Lafayette Ave Brooklyn, NY 11217',
   '80 Hanson Pl Brooklyn, NY 11217',
-  '131 Cumberland Walk Brooklyn, NY 11205',
-  '303 Beverley Rd #9G, Brooklyn, NY 11218',
-  '2339 Bragg St, Brooklyn, NY 11229',
-  '696 E 43rd St, Brooklyn, NY 11203',
-  'E 71st St, Brooklyn, NY 11234',
-  '590 Myrtle Ave Brooklyn, NY 11205',
-  '1048 Bedford Ave Brooklyn, NY 11205',
-  '247 Dekalb Ave Brooklyn, NY 11205',
-  '87 Lafayette Ave Brooklyn, NY 11217',
-  '80 Hanson Pl Brooklyn, NY 11217',
-  '131 Cumberland Walk Brooklyn, NY 11205',
-  '303 Beverley Rd #9G, Brooklyn, NY 11218',
-  '2339 Bragg St, Brooklyn, NY 11229',
-  '696 E 43rd St, Brooklyn, NY 11203',
-  'E 71st St, Brooklyn, NY 11234',
-  '590 Myrtle Ave Brooklyn, NY 11205',
-  '1048 Bedford Ave Brooklyn, NY 11205',
-  '247 Dekalb Ave Brooklyn, NY 11205',
-  '87 Lafayette Ave Brooklyn, NY 11217',
-  '80 Hanson Pl Brooklyn, NY 11217',
   '131 Cumberland Walk Brooklyn, NY 11205'
 ]
 
@@ -45,26 +25,6 @@ photos = [
   'https://s3-us-west-1.amazonaws.com/thelionsshare/OI000005.jpg',
   'https://s3-us-west-1.amazonaws.com/thelionsshare/P7242571-001.jpeg',
   'https://s3-us-west-1.amazonaws.com/thelionsshare/_MG_5560.jpeg',
-  'https://s3-us-west-1.amazonaws.com/thelionsshare/unnamed.jpg',
-  'https://s3-us-west-1.amazonaws.com/thelionsshare/unnamed.jpg',
-  'https://s3-us-west-1.amazonaws.com/thelionsshare/unnamed.jpg',
-  'https://s3-us-west-1.amazonaws.com/thelionsshare/unnamed.jpg',
-  'https://s3-us-west-1.amazonaws.com/thelionsshare/unnamed.jpg',
-  'https://s3-us-west-1.amazonaws.com/thelionsshare/unnamed.jpg',
-  'https://s3-us-west-1.amazonaws.com/thelionsshare/unnamed.jpg',
-  'https://s3-us-west-1.amazonaws.com/thelionsshare/unnamed.jpg',
-  'https://s3-us-west-1.amazonaws.com/thelionsshare/unnamed.jpg',
-  'https://s3-us-west-1.amazonaws.com/thelionsshare/unnamed.jpg',
-  'https://s3-us-west-1.amazonaws.com/thelionsshare/unnamed.jpg',
-  'https://s3-us-west-1.amazonaws.com/thelionsshare/unnamed.jpg',
-  'https://s3-us-west-1.amazonaws.com/thelionsshare/unnamed.jpg',
-  'https://s3-us-west-1.amazonaws.com/thelionsshare/unnamed.jpg',
-  'https://s3-us-west-1.amazonaws.com/thelionsshare/unnamed.jpg',
-  'https://s3-us-west-1.amazonaws.com/thelionsshare/unnamed.jpg',
-  'https://s3-us-west-1.amazonaws.com/thelionsshare/unnamed.jpg',
-  'https://s3-us-west-1.amazonaws.com/thelionsshare/unnamed.jpg',
-  'https://s3-us-west-1.amazonaws.com/thelionsshare/unnamed.jpg',
-  'https://s3-us-west-1.amazonaws.com/thelionsshare/unnamed.jpg',
   'https://s3-us-west-1.amazonaws.com/thelionsshare/unnamed.jpg'
 ]
 
@@ -72,7 +32,7 @@ photos.each do |photo_url|
   Photo.create(url: photo_url)
 end
 
-30.times do
+10.times do
   Listing.create(
     type_of: ["Rental", "Sale"].sample,
     price: [1500,2000,2500,3000,3500].sample,

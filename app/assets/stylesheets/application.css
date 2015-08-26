@@ -30,3 +30,7 @@
   font-family: "AtlasGrotesk-Medium";
   src: url(/assets/AtlasGrotesk-Medium.otf);
 }
+
+.map-wrapper {
+  padding-right: 0px;
+}

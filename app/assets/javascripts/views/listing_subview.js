@@ -7,6 +7,10 @@ LionsShare.Views.ListingSubview = Backbone.View.extend({
     // this.listenTo(this.listing, 'sync', this.render);
   },
 
+  highlightPin: function () {
+
+  },
+
   render: function () {
     var content = this.template({
       listing: this.listing

@@ -1,0 +1,121 @@
+LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
+  template: JST['listings/sales_index'],
+
+  events: {
+    'mouseover .individual-listing-container': 'highlightPin',
+    'mouseleave .individual-listing-container': 'unhighlightPin'
+  },
+
+  initialize: function (options) {
+    var view = this;
+    view.listings = new LionsShare.Collections.Listings();
+    view.num_results = 0;
+    view.sales = new LionsShare.Collections.Listings();
+    view.listings.fetch({
+      success: function () {
+        var list = view.listings.first().attributes.listings;
+        list.forEach(function (listing) {
+          if (listing.type_of == "Sale") {
+            view.addListingSubview(listing);
+            view.num_results += 1;
+            view.sales.add(listing);
+          }
+        });
+        view.render();
+      }
+    });
+    this.listenTo(this.listings, "sync", this.render);
+    // this.listenTo(this.listings, "add", this.addListingSubview);
+  },
+
+  addListingSubview: function (listing) {
+    // var listing = this.listings.getOrFetch(model.id, { parse: true });
+    var subView = new LionsShare.Views.ListingSubview({
+      model: listing,
+      parentView: this
+    });
+
+    this.addSubview('.matches-wrapper', subView);
+  },
+
+  highlightPin: function (event) {
+    $listing = $(event.currentTarget);
+    var view = this;
+    this.markers.forEach(function (marker) {
+      if ($listing.data('id') == marker.id) {
+        marker.setMap(null);
+
+        var map_pin_img = "<%= asset_path('map-pin-selected.svg') %>";
+        var pinIcon = new google.maps.MarkerImage(
+          map_pin_img,
+          null,
+          null,
+          null,
+          new google.maps.Size(30, 40)
+        );
+        var LatLng = {lat: marker.position.G,
+                      lng: marker.position.K};
+        var marker = new google.maps.Marker({
+          position: LatLng,
+          map: view.map,
+          icon: pinIcon
+        });
+        view.highlightedPin = marker;
+      }
+    });
+  },
+
+  unhighlightPin: function (event) {
+    $listing = $(event.currentTarget);
+    var view = this;
+    this.markers.forEach(function (marker) {
+      if ($listing.data('id') == marker.id) {
+        view.highlightedPin.setMap(null);
+        marker.setMap(view.map);
+      }
+    });
+  },
+
+  render: function () {
+    var content = this.template({
+      listings: this.listings,
+      num_results: this.num_results
+    });
+
+    this.$el.html(content);
+    var map_options = {
+      // Initial LatLng set for Brooklyn
+      center: new google.maps.LatLng(40.650002, -73.949997),
+      zoom: 12,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    var map = new google.maps.Map(document.getElementById("map-canvas"), map_options);
+    this.map = map;
+    var map_pin_img = "<%= asset_path('map-pin-unselected.svg') %>";
+    var pinIcon = new google.maps.MarkerImage(
+      map_pin_img,
+      null,
+      null,
+      null,
+      new google.maps.Size(30, 40)
+    );
+    this.markers = [];
+
+    this.sales.each(function (listing) {
+      var LatLng = {lat: listing.attributes.latitude,
+                    lng: listing.attributes.longitude};
+
+      var marker = new google.maps.Marker({
+        position: LatLng,
+        map: map,
+        id: listing.attributes.id,
+        icon: pinIcon
+      });
+      this.markers.push(marker);
+    }.bind(this));
+
+    this.attachSubviews();
+    return this;
+  }
+});
