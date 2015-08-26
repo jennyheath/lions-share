@@ -21,6 +21,9 @@
 .filter-wrapper {
   background-color: #f2f2f2;
   padding: 1% 0;
+  position: fixed;
+  width: 100vw;
+  z-index: 100;
 }
 
 .form-control {
@@ -34,6 +37,11 @@
   text-align: right;
   padding-top: 15px;
   color: #b1b1b1;
+}
+
+.content-wrapper {
+  position: relative;
+  top: 70px;
 }
 
 #map-canvas {
