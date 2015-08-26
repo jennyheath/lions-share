@@ -5,7 +5,17 @@ LionsShare.Routers.Router = Backbone.Router.extend({
 
   routes: {
     '': 'welcome',
-    'sales': 'salesIndexView'
+    'sales': 'salesIndexView',
+    'rentals': 'rentalsIndexView'
+  },
+
+  rentalsIndexView: function () {
+    var rentals = LionsShare.Collections.listings;
+    var view = new LionsShare.Views.RentalsIndexView({
+      collection: rentals
+    });
+
+    this._swapView(view);
   },
 
   salesIndexView: function () {

@@ -1,14 +1,32 @@
-LionsShare.Views.SalesIndexView = Backbone.View.extend({
+LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
   template: JST['listings/sales_index'],
 
   initialize: function (options) {
-    this.listings = new LionsShare.Collections.Listings();
-    this.listings.fetch({
+    var view = this;
+    view.listings = new LionsShare.Collections.Listings();
+    view.listings.fetch({
       success: function () {
-        console.log("fetched successfully");
+        var list = view.listings.first().attributes.listings;
+        // debugger;
+        list.forEach(function (listing) {
+          if (listing.type_of == "Sale") {
+            view.addListingSubview(listing);
+          }
+        });
       }
     });
-    this.listenTo(this.listings, "sync", this.render);
+    // this.listenTo(this.listings, "sync", this.render);
+    // this.listenTo(this.listings, "add", this.addListingSubview);
+  },
+
+  addListingSubview: function (listing) {
+    // var listing = this.listings.getOrFetch(model.id, { parse: true });
+    var subView = new LionsShare.Views.ListingSubview({
+      model: listing,
+      parentView: this
+    });
+
+    this.addSubview('.matches-wrapper', subView);
   },
 
   render: function () {
