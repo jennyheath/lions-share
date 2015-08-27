@@ -143,10 +143,13 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
   openChecklist: function (event) {
     if ($(event.target).hasClass('toggle-dropdown')) {
       $dropdown = $(event.currentTarget.children[1]);
+      $toggle = $(event.currentTarget.children[0]);
       if ($dropdown.hasClass('open')) {
         $dropdown.removeClass('open');
+        $toggle.removeClass('open');
       } else {
         $dropdown.addClass('open');
+        $toggle.addClass('open');
       }
     }
   },

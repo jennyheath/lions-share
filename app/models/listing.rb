@@ -5,33 +5,33 @@ class Listing < ActiveRecord::Base
 
   # Also, as you can see from the migration for creation of this model, I decided not to have separate Sale and Rental models because there were so many fields that would be repeated -- it added unnecessary clunkiness to the data model
 
-  filterrific(
-    default_filter_params: {
-      sorted_by: 'created_at_desc'
-    },
-    available_filters: [
-      :sorted_by,
-      :search_query,
-      :with_neighborhood,
-      :with_bed,
-      :with_price,
-      :with_amenities
-    ]
-  )
-
-  scope :with_type, lambda { where(:type_of => type_of) }
-
-  scope :with_neighborhood, lambda { |neighborhoods|
-    where(neighborhood: [*neighborhoods])
-  }
-
-  scope :with_bed, lambda { |beds|
-    where(bed_count: [*beds])
-  }
-
-  scope :with_price, lambda { |prices|
-    where(price: [*prices])
-  }
+  # filterrific(
+  #   default_filter_params: {
+  #     sorted_by: 'created_at_desc'
+  #   },
+  #   available_filters: [
+  #     :sorted_by,
+  #     :search_query,
+  #     :with_neighborhood,
+  #     :with_bed,
+  #     :with_price,
+  #     :with_amenities
+  #   ]
+  # )
+  #
+  # scope :with_type, lambda { where(:type_of => type_of) }
+  #
+  # scope :with_neighborhood, lambda { |neighborhoods|
+  #   where(neighborhood: [*neighborhoods])
+  # }
+  #
+  # scope :with_bed, lambda { |beds|
+  #   where(bed_count: [*beds])
+  # }
+  #
+  # scope :with_price, lambda { |prices|
+  #   where(price: [*prices])
+  # }
 
   geocoded_by :address   # can also be an IP address
   after_validation :geocode          # auto-fetch coordinates

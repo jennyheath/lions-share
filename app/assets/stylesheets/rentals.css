@@ -8,6 +8,18 @@
   color: #C1A02F;
 }
 
+.dropdown-menu {
+  border: none;
+  border-radius: 0px;
+  width: 110%;
+  margin: 0px;
+}
+
+.dropdown-menu.open {
+  border: 1px solid #b1b1b1;
+  border-top: none;
+}
+
 .index-sorting {
   font-family: "AtlasGrotesk-Regular";
   height: 70px;
@@ -32,6 +44,11 @@
   width: 100%;
   height: 45px;
   padding: 15px;
+}
+
+.toggle-dropdown.open {
+  border: 1px solid #b1b1b1;
+  border-bottom: none;
 }
 
 .filter-page-container {
