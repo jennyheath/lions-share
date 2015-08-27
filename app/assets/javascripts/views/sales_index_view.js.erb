@@ -6,7 +6,8 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
     'mouseleave .individual-listing-container': 'unhighlightPin',
     'click .dropdown': 'openChecklist',
     'click [type="checkbox"]': 'filterListings',
-    'keyup .price-max': 'filterListings'
+    'keyup .price-max': 'filterListings',
+    'click .clear-all-container': 'clearFilters'
   },
 
   initialize: function (options) {
@@ -65,6 +66,16 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
       });
       this.markers.push(marker);
     }.bind(this));
+  },
+
+  clearFilters: function () {
+    $( "input:checked" ).each(function (i, box) {
+      $(box).attr('checked', false)
+    });
+    $('.price-min').val("");
+    $('.price-max').val("");
+
+    this.filterListings();
   },
 
   filterListings: function () {
