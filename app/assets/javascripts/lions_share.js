@@ -1,4 +1,4 @@
-(function () {
+// (function () {
 window.LionsShare = {
   Models: {},
   Collections: {},
@@ -11,4 +11,4 @@ window.LionsShare = {
     Backbone.history.start();
   }
 };
-})();
+// })();

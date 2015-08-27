@@ -17,10 +17,6 @@ Rails.application.routes.draw do
   # get '/rentals' => 'listings#rentals'
   # get '/sales' => 'listings#sales'
 
-  # Not gonna need these routes -- they were for the filters controller when I was still using the has_scope gem
-  # get '/filter_rentals' => 'filters#filter_rentals'
-  # get '/filter_sales' => 'filters#filter_sales'
-
   # This is where I've set up the routes for the /admin/... pages
   namespace :admin do
     # Directs /admin/listings/* to Admin::ListingsController
