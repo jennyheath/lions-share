@@ -2,32 +2,65 @@
   <div class="row index-sorting filter-wrapper">
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
       <div class="all-filters row">
-        <form class="filters">
           <div class="neighborhood-filter filter-dropdown col-xs-5 col-sm-5 col-md-5 col-lg-5">
-            <select class="form-control filterby" name="by_neighborhood">
-              <option>Select Neighborhoods</option>
-              <% debugger %>
-            </select>
+            <!-- <div class="dropdown-container"></div> -->
+            <div class="dropdown form-control filterby by_neighborhood">
+              <div class="toggle-dropdown">Select Neighborhoods <span class="caret"></span></div>
+              <div class="dropdown-menu">
+                <ul class="filter-list">
+                  <% listings.first().attributes.neighborhoods.forEach(function (neighborhood) { %>
+                    <li>
+                      <input class="neighborhood-checkbox" type="checkbox"><%= neighborhood %>
+                    </li>
+                  <% }) %>
+                </ul>
+              </div>
+            </div>
           </div>
           <div class="bed-filter filter-dropdown col-xs-2 col-sm-2 col-md-2 col-lg-2">
-            <select class="form-control filterby" name="by_neighborhood">
-              <option>Beds</option>
-            </select>
+            <div class="dropdown form-control filterby by_bed">
+              <div class="toggle-dropdown">Beds <span class="caret"></span></div>
+              <div class="dropdown-menu">
+                <ul class="filter-list">
+                  <% listings.first().attributes.beds.forEach(function (bed_num) { %>
+                    <li>
+                      <input class="bed-checkbox" type="checkbox"><%= bed_num %>
+                    </li>
+                  <% }) %>
+                </ul>
+              </div>
+            </div>
           </div>
           <div class="price-filter filter-dropdown col-xs-2 col-sm-2 col-md-2 col-lg-2">
-            <select class="form-control filterby" name="by_price">
-              <option>Price</option>
-            </select>
+            <div class="dropdown form-control filterby by_price">
+              <div class="toggle-dropdown">Price <span class="caret"></span></div>
+                <div class="dropdown-menu">
+                  <input type="text" placeholder="Minimum">
+                  to
+                  <input type="text" placeholder="Maximum">
+                  <input type="fee-checkbox">No Fee
+                </div>
+            </div>
+            </div>
+          <div class="amenity-filter filter-dropdown col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div class="dropdown form-control filterby by_amenity">
+              <div class="toggle-dropdown">Amenities <span class="caret"></span></div>
+              <div class="dropdown-menu">
+                <ul class="filter-list">
+                  <% listings.first().attributes.amenities.forEach(function (amenity) { %>
+                    <li>
+                      <input class="amenity-checkbox" type="checkbox"><%= amenity %>
+                    </li>
+                  <% }) %>
+                </ul>
+              </div>
+            </div>
+            </div>
           </div>
-          <div class="amenity-filter filter-dropdown col-xs-3 col-sm-3 col-md-3 col-lg-3">
-            <select class="form-control filterby" name="by_amenity">
-              <option>Amenities</option>
-            </select>
           </div>
-        </form>
       </div>
     </div>
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 clear-all-container">Clear All</div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 clear-all-container">Clear All</div>
   </div>
   <div class="row content-wrapper">
     <div class="col-sm-7 col-md-7 col-lg-7 sort-matches-container">

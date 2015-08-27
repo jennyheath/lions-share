@@ -3,7 +3,9 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
 
   events: {
     'mouseover .individual-listing-container': 'highlightPin',
-    'mouseleave .individual-listing-container': 'unhighlightPin'
+    'mouseleave .individual-listing-container': 'unhighlightPin',
+    'click .dropdown': 'openChecklist',
+    'click [type="checkbox"]': 'filterListings'
   },
 
   initialize: function (options) {
@@ -38,6 +40,53 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
     this.addSubview('.matches-wrapper', subView);
   },
 
+  filterListings: function () {
+    // $('.by_neighborhood > .dropdown-menu > ul > li').each(function (i, neighborhood) {
+    //   console.log(neighborhood);
+    //   // console.log($.trim(neighborhood.textContent))
+    // });
+    // document.getElementsByClassName("neighborhood-checkbox").forEach(function (neighborhood) {
+    //   console.log(neighborhood.checked);
+    // })
+    var neighborhoods = [];
+    var beds = [];
+    var amenities = [];
+    var no_fee = false;
+
+    $( "input:checked" ).each(function (i, filter) {
+      if ($(filter).hasClass("neighborhood-checkbox")) {
+        neighborhoods.push($.trim($(filter).parent().text()));
+      } else if ($(filter).hasClass("bed-checkbox")) {
+        beds.push($.trim($(filter).parent().text()));
+      } else if ($(filter).hasClass("amenity-checkbox")) {
+        amenities.push($.trim($(filter).parent().text()));
+      } else if ($(filter).hasClass("fee-checkbox")) {
+        no_fee = true;
+      }
+    });
+
+    this.listings.reset([]);
+    var view = this;
+    this.listings.fetch({
+      data: { filter_params: true,
+              neighborhood_params: neighborhoods,
+              bed_params: beds,
+              price_params: [],
+              no_fee_params: no_fee,
+              amenity_params: amenities
+            },
+      // success: function () {
+      //   this.render();
+      // }
+      // error: function () {
+      //   debugger;
+      // }
+    success: function () {
+      view.render();
+      console.log(view.listings);
+    }});
+  },
+
   highlightPin: function (event) {
     $listing = $(event.currentTarget);
     var view = this;
@@ -63,6 +112,17 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
         view.highlightedPin = marker;
       }
     });
+  },
+
+  openChecklist: function (event) {
+    if ($(event.target).hasClass('toggle-dropdown')) {
+      $dropdown = $(event.currentTarget.children[1]);
+      if ($dropdown.hasClass('open')) {
+        $dropdown.removeClass('open');
+      } else {
+        $dropdown.addClass('open');
+      }
+    }
   },
 
   unhighlightPin: function (event) {

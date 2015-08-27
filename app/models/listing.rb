@@ -8,7 +8,6 @@ class Listing < ActiveRecord::Base
   filterrific(
     default_filter_params: {
       sorted_by: 'created_at_desc'
-      # with_type: 'Rental'
     },
     available_filters: [
       :sorted_by,
