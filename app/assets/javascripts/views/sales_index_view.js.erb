@@ -7,7 +7,9 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
     'click .dropdown': 'openChecklist',
     'click [type="checkbox"]': 'filterListings',
     'keyup .price-max': 'filterListings',
-    'click .clear-all-container': 'clearFilters'
+    'click .clear-all-container': 'clearFilters',
+    'click .content-wrapper': 'closeDropdowns',
+    'click #navbar': 'closeDropdowns'
   },
 
   initialize: function (options) {
@@ -76,6 +78,12 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
     $('.price-max').val("");
 
     this.filterListings();
+  },
+
+  closeDropdowns: function (event) {
+    $('.open').each(function (i, dropdown) {
+      $(dropdown).removeClass('open')
+    });
   },
 
   filterListings: function () {

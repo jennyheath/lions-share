@@ -22,6 +22,24 @@
   font-size: 300%;
 }
 
+.price-dropdown {
+  width: 290% !important;
+}
+
+.fee-box {
+  margin-right: 5px !important;
+}
+
+.price-min, .price-max {
+  width: 90px;
+  border: none;
+  background-color: #f2f2f2;
+  color: #919191;
+  padding: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .listing-beds, .listing-baths, .listing-neighborhood {
   font-family: "AtlasGrotesk-Regular", sans-serif;
   font-size: 115%;
@@ -42,6 +60,8 @@
   padding-right: 30px;
   margin-top: 35px;
 }
+
+.
 
 .broker-box {
   height: 120px;
