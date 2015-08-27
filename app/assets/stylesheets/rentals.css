@@ -13,12 +13,24 @@
   border-radius: 0px;
   width: 110%;
   margin: 0px;
+  padding-bottom: 15px;
+  padding-top: 15px;
 }
 
 .dropdown-menu.open {
-  border: 1px solid #b1b1b1;
+  border: 1px solid #cdcdcd;
   border-top: none;
+  width: 120%;
 }
+
+.by_amenity > .dropdown-menu {
+  width: 350%;
+}
+
+.by_neighborhood > .dropdown-menu {
+  width: 150%;
+}
+
 
 .index-sorting {
   font-family: "AtlasGrotesk-Regular";
@@ -30,6 +42,55 @@
   padding: 0px;
   margin-right: 12px;
   color: #b1b1b1;
+}
+
+.filter-list {
+  padding-left: 15px;
+  margin-bottom: 0px;
+  display: inline-block;
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  /*width: 300%;*/
+}
+
+.beds-column {
+  columns: 1;
+  -webkit-columns: 1;
+  -moz-columns: 1;
+}
+
+.filter-list > li {
+  list-style: none;
+  display: inline-block;
+  width: 100%;
+}
+
+.neighborhoods-column > li {
+  width: 130%;
+}
+
+.amenities-column {
+  width: 110%;
+}
+
+.amenities-column > li {
+  width: 115%;
+}
+
+.filter-list > li > input {
+  margin-right: 10px;
+  display: inline-block;
+  float: left;
+}
+
+.filter-category {
+  display: inline-block;
+  float: left;
+}
+
+.open {
+  color: #000;
 }
 
 .dropdown-menu{
@@ -46,8 +107,12 @@
   padding: 15px;
 }
 
+.toggle-dropdown:hover {
+  cursor: default;
+}
+
 .toggle-dropdown.open {
-  border: 1px solid #b1b1b1;
+  border: 1px solid #cdcdcd;
   border-bottom: none;
 }
 
@@ -107,6 +172,11 @@
   width: 115px;
 }
 
+.results, .num-results {
+  display: inline-block;
+  padding-left: 5px;
+}
+
 .sort-wrapper {
   padding: 1em;
   padding-top: 20px;
@@ -148,6 +218,7 @@
 
 .matches-wrapper {
   display: inline-block;
+  margin-left: 13px;
 }
 
 .individual-listing-container {

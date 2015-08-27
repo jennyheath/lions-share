@@ -7,10 +7,11 @@
             <div class="dropdown form-control filterby by_neighborhood">
               <div class="toggle-dropdown">Select Neighborhoods <span class="caret"></span></div>
               <div class="dropdown-menu">
-                <ul class="filter-list">
+                <ul class="filter-list neighborhoods-column">
                   <% listings.first().attributes.neighborhoods.forEach(function (neighborhood) { %>
                     <li>
-                      <input class="neighborhood-checkbox" type="checkbox"><%= neighborhood %>
+                      <input class="neighborhood-checkbox" type="checkbox">
+                      <div class="filter-category"><%= neighborhood %></div>
                     </li>
                   <% }) %>
                 </ul>
@@ -21,10 +22,10 @@
             <div class="dropdown form-control filterby by_bed">
               <div class="toggle-dropdown">Beds <span class="caret"></span></div>
               <div class="dropdown-menu">
-                <ul class="filter-list">
+                <ul class="filter-list beds-column">
                   <% listings.first().attributes.beds.forEach(function (bed_num) { %>
                     <li>
-                      <input class="bed-checkbox" type="checkbox"><%= bed_num %>
+                      <input class="bed-checkbox" type="checkbox"><div class="filter-category"><%= bed_num %> Bedroom</div>
                     </li>
                   <% }) %>
                 </ul>
@@ -35,9 +36,9 @@
             <div class="dropdown form-control filterby by_price">
               <div class="toggle-dropdown">Price <span class="caret"></span></div>
                 <div class="dropdown-menu">
-                  <input type="text" placeholder="Minimum">
+                  <input class="price-min" type="text" placeholder="Minimum">
                   to
-                  <input type="text" placeholder="Maximum">
+                  <input class="price-max" type="text" placeholder="Maximum">
                   <input type="fee-checkbox">No Fee
                 </div>
             </div>
@@ -46,10 +47,11 @@
             <div class="dropdown form-control filterby by_amenity">
               <div class="toggle-dropdown">Amenities <span class="caret"></span></div>
               <div class="dropdown-menu">
-                <ul class="filter-list">
+                <ul class="filter-list amenities-column">
                   <% listings.first().attributes.amenities.forEach(function (amenity) { %>
                     <li>
-                      <input class="amenity-checkbox" type="checkbox"><%= amenity %>
+                      <input class="amenity-checkbox" type="checkbox">
+                      <div class="filter-category"><%= amenity %></div>
                     </li>
                   <% }) %>
                 </ul>
@@ -73,7 +75,7 @@
           </div>
         </ul>
         <div class="results-found col-xs-6 col-sm-6 col-md-6 col-lg-6">
-          <div class="num-results"></div> results found
+          <div class="num-results"></div><div class="results"> results found</div>
         </div>
       </div>
       <div class="row matches-wrapper">

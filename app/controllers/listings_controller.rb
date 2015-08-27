@@ -52,12 +52,14 @@ class ListingsController < ApplicationController
       if no_fee.to_s == true
         filter_query += " AND (no_fee = true)"
       end
+      if !amenities.empty?
+        # FIX THIS
+        amenities_query = (Array.new(amenities.count, "amenities.name LIKE ?"))
+                          .join(" AND ")
+        filter_query += "AND (" + amenities_query + ")" if !amenities.empty?
+      end
 
-      # amenities_query = (Array.new(amenities.count, "amenities.name LIKE ?"))
-      #                   .join(" AND ")
-      # filter_query += "AND (" + amenities_query + ")" if !amenities.empty?
-
-      query = [sql_str + " " + filter_query] + neighborhoods + beds
+      query = [sql_str + " " + filter_query] + neighborhoods + beds + amenities
       @listings = Listing.find_by_sql(query).uniq
       render :index
     else

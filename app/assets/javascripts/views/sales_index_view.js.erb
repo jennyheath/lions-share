@@ -5,7 +5,8 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
     'mouseover .individual-listing-container': 'highlightPin',
     'mouseleave .individual-listing-container': 'unhighlightPin',
     'click .dropdown': 'openChecklist',
-    'click [type="checkbox"]': 'filterListings'
+    'click [type="checkbox"]': 'filterListings',
+    'keyup .price-max': 'filterListings'
   },
 
   initialize: function (options) {
@@ -70,6 +71,7 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
     $('.matches-wrapper').html("");
     var neighborhoods = [];
     var beds = [];
+    var price_range = []
     var amenities = [];
     var no_fee = false;
 
@@ -84,6 +86,12 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
         no_fee = true;
       }
     });
+    var min_price = $('.price-min').val();
+    var max_price = $('.price-max').val();
+    if (min_price !== "" && max_price !== "") {
+      price_range.push(min_price);
+      price_range.push(max_price);
+    }
 
     this.listings.reset([]);
     var view = this;
@@ -91,7 +99,7 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
       data: { filter_params: true,
               neighborhood_params: neighborhoods,
               bed_params: beds,
-              price_params: [],
+              price_params: price_range,
               no_fee_params: no_fee,
               amenity_params: amenities
             },
@@ -110,7 +118,6 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
         view.addMapPins(sales);
       }
     });
-
   },
 
   highlightPin: function (event) {

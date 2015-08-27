@@ -3,12 +3,12 @@
     <img class="listing-main-img" src="<%= listing.escape('main_photo_url') %>">
   </div>
   <div class="listing-show-info group col-xs-6 col-sm-6 col-md-6 col-lg-6">
-    <h1>$<%= listing.escape('price') %></h1>
-    <h2><%= listing.escape('bed_count') %> Bed</h2>
-    <h2><%= listing.escape('bath_count') %> Bath</h2>
-    <h2><%= listing.escape('neighborhood') %></h2>
-    <p><%= listing.escape('description') %></p>
-    <ul>
+    <h1 class="listing-price">$<%= listing.escape('price') %></h1>
+    <h2 class="listing-beds"><%= listing.escape('bed_count') %> Bed</h2>
+    <h2 class="listing-baths"><%= listing.escape('bath_count') %> Bath</h2>
+    <h2 class="listing-neighborhood"><%= listing.escape('neighborhood') %></h2>
+    <p class="listing-description"><%= listing.escape('description') %></p>
+    <ul class="listing-amenities">
       <% listing.get('amenities').forEach(function (amenity) { %>
         <li><%=  amenity.name %></li>
       <%  }) %>
