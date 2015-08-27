@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-
-  # root 'welcome#index'
   root 'static_pages#root'
 
   # Example of regular route:
