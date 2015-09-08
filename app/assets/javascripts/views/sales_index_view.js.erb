@@ -4,7 +4,8 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
   events: {
     'mouseover .individual-listing-container': 'highlightPin',
     'mouseleave .individual-listing-container': 'unhighlightPin',
-    'click .dropdown': 'toggleChecklist',
+    'click .caret': 'toggleChecklist',
+    // 'click .dropdown': 'toggleChecklist',
     'click [type="checkbox"]': 'filterListings',
     'keyup .price-max': 'filterListings',
     'click .clear-all-container': 'clearFilters',
@@ -97,6 +98,7 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
 
   closeDropdowns: function (event) {
     if (event.target.className.indexOf("stay-open") !== -1) {
+      // debugger;
       var $clicked = event.target;
       $('.open').each(function (i, dropdown) {
         if ($(dropdown).hasClass('toggle-dropdown')) {
@@ -104,12 +106,14 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
           var caseLi = $clicked.parentElement.parentElement.previousElementSibling;
           var caseUl = $clicked.parentElement.previousElementSibling;
           var caseMenu = $clicked.previousElementSibling;
+          var caseCaret = $clicked.parentElement;
 
           if (dropdown !== $clicked &&
               dropdown !== caseCheck &&
               dropdown !== caseLi &&
               dropdown !== caseUl &&
-              dropdown !== caseMenu) {
+              dropdown !== caseMenu &&
+              dropdown !== caseCaret) {
             $(dropdown).removeClass('open');
             $(dropdown.nextElementSibling).removeClass('open');
             $(dropdown.children[0]).removeClass('caret-reversed');
@@ -134,6 +138,7 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
     var amenities = [];
     var no_fee = false;
 
+    // get currently selected filters
     $( "input:checked" ).each(function (i, filter) {
       if ($(filter).hasClass("neighborhood-checkbox")) {
         neighborhoods.push($.trim($(filter).parent().text()));
@@ -167,7 +172,20 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
         var sales = new LionsShare.Collections.Listings();
         var list = view.listings.first().attributes.listings;
         list.forEach(function (listing) {
-          if (listing.type_of == "Sale") {
+          // filter amenities
+          var listing_amenities = [];
+          listing.amenities.forEach(function (amenity) {
+            listing_amenities.push(amenity.name)
+          });
+          var hasAllAmenities = true;
+          amenities.forEach(function (amenity) {
+            if (listing_amenities.indexOf(amenity) < 0) {
+              hasAllAmenities = false;
+            }
+          })
+
+          // append filtered list
+          if (listing.type_of == "Sale" && hasAllAmenities === true) {
             $('.matches-wrapper').append(view.addListingSubview(listing));
             num_results += 1;
             sales.add(listing);
@@ -217,6 +235,18 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
         $toggle.removeClass('open');
       } else {
         $(event.target.children[0]).addClass("caret-reversed");
+        $dropdown.addClass('open');
+        $toggle.addClass('open');
+      }
+    } else if ($(event.target).hasClass('caret')) {
+      $dropdown = $(event.target.parentElement);
+      $toggle = $(event.target.parentElement.nextElementSibling);
+      if ($dropdown.hasClass('open')) {
+        $(event.target).removeClass("caret-reversed");
+        $dropdown.removeClass('open');
+        $toggle.removeClass('open');
+      } else {
+        $(event.target).addClass("caret-reversed");
         $dropdown.addClass('open');
         $toggle.addClass('open');
       }
