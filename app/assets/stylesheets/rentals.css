@@ -43,6 +43,12 @@
   border: none;
 }
 
+.select-sort {
+  background-color: #f2f2f2;
+  color: #C1A02F;
+  font-weight: 600;
+}
+
 .filter-dropdown {
   padding: 0px;
   margin-right: 12px;
@@ -205,6 +211,7 @@
 .sort-by-border {
   /*border: .2em solid #f2f2f2;*/
   width: 120px;
+  cursor: default;
 }
 
 .sort-label {

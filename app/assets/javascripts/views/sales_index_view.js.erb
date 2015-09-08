@@ -19,17 +19,17 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
     view.listings = new LionsShare.Collections.Listings();
     view.listings.fetch({
       success: function () {
-        var num_results = 0;
+        // var num_results = 0;
         view.sales = new LionsShare.Collections.Listings();
         var list = view.listings.first().attributes.listings;
         list.forEach(function (listing) {
           if (listing.type_of == "Sale") {
             view.addListingSubview(listing);
-            num_results += 1;
+            // num_results += 1;
             view.sales.add(listing);
           }
         });
-        $('.num-results').text(num_results);
+        // $('.num-results').text(num_results);
         view.render();
       }
     });
@@ -92,13 +92,14 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
     });
     $('.price-min').val("");
     $('.price-max').val("");
+    $('.price-sort').removeClass('select-sort');
+    $('.newest-sort').removeClass('select-sort');
 
     this.filterListings();
   },
 
   closeDropdowns: function (event) {
     if (event.target.className.indexOf("stay-open") !== -1) {
-      // debugger;
       var $clicked = event.target;
       $('.open').each(function (i, dropdown) {
         if ($(dropdown).hasClass('toggle-dropdown')) {
@@ -127,6 +128,14 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
       $('.open').each(function (i, dropdown) {
         $(dropdown).removeClass('open')
       });
+    }
+
+    // if the event was triggered manually from filterListings (line 213)
+    if (this.openMenus) {
+      this.openMenus.each(function (i, dropdown) {
+        $(dropdown).addClass('open');
+      });
+      this.openMenus = null;
     }
   },
 
@@ -169,7 +178,8 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
             },
       success: function () {
         var num_results = 0;
-        var sales = new LionsShare.Collections.Listings();
+        // var sales = new LionsShare.Collections.Listings();
+        view.sales = new LionsShare.Collections.Listings();
         var list = view.listings.first().attributes.listings;
         list.forEach(function (listing) {
           // filter amenities
@@ -188,11 +198,22 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
           if (listing.type_of == "Sale" && hasAllAmenities === true) {
             $('.matches-wrapper').append(view.addListingSubview(listing));
             num_results += 1;
-            sales.add(listing);
+            // sales.add(listing);
+            view.sales.add(listing);
           }
         });
         $('.num-results').text(num_results);
-        view.addMapPins(sales);
+        // view.addMapPins(sales);
+        view.addMapPins(view.sales);
+
+        // preserve sorting and keep menus open when event triggered
+        if ($('.price-sort').hasClass('select-sort')) {
+          view.openMenus = $('.open');
+          $('.price-sort').trigger('click');
+        } else if ($('.newest-sort').hasClass('select-sort')) {
+          view.openMenus = $('.open');
+          $('.newest-sort').trigger('click');
+        }
       }
     });
   },
@@ -275,6 +296,8 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
   },
 
   sortByNewest: function (event) {
+    $(event.target).addClass('select-sort');
+    $('.price-sort').removeClass('select-sort');
     var view = this;
     view.sales.comparator = "updated_at";
     view.sales.sort();
@@ -288,7 +311,9 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
     });
   },
 
-  sortByPrice: function (event) {
+  sortByPrice: function (event, options) {
+    $(event.target).addClass('select-sort');
+    $('.newest-sort').removeClass('select-sort');
     var view = this;
     view.sales.comparator = "price";
     view.sales.sort();
@@ -309,6 +334,8 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
     this.$el.html(content);
     this.addMapPins(this.sales);
     this.attachSubviews();
+    var num_results = $('.individual-listing-container').length;
+    $('.num-results').text(num_results);
     return this;
   }
 });
