@@ -4,12 +4,13 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
   events: {
     'mouseover .individual-listing-container': 'highlightPin',
     'mouseleave .individual-listing-container': 'unhighlightPin',
-    'click .dropdown': 'openChecklist',
+    'click .dropdown': 'toggleChecklist',
     'click [type="checkbox"]': 'filterListings',
     'keyup .price-max': 'filterListings',
     'click .clear-all-container': 'clearFilters',
-    'click .content-wrapper': 'closeDropdowns',
-    'click #navbar': 'closeDropdowns'
+    'click': 'closeDropdowns',
+    'click .price-sort': 'sortByPrice',
+    'click .newest-sort': 'sortByNewest'
   },
 
   initialize: function (options) {
@@ -17,16 +18,27 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
     view.listings = new LionsShare.Collections.Listings();
     view.listings.fetch({
       success: function () {
-        console.log(view.listings);
+        var num_results = 0;
+        view.sales = new LionsShare.Collections.Listings();
+        var list = view.listings.first().attributes.listings;
+        list.forEach(function (listing) {
+          if (listing.type_of == "Sale") {
+            view.addListingSubview(listing);
+            num_results += 1;
+            view.sales.add(listing);
+          }
+        });
+        $('.num-results').text(num_results);
         view.render();
       }
     });
+
     // this.listenTo(this.listings, "sync", this.render);
     // this.listenTo(this.listings, "add", this.addListingSubview);
   },
 
   addListingSubview: function (listing) {
-    if (listing.type_of !== "Sale") { return; }
+    // if (listing.type_of !== "Sale") { return; }
     var subView = new LionsShare.Views.ListingSubview({
       model: listing,
       parentView: this
@@ -39,7 +51,7 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
   addMapPins: function (sales) {
     var map_options = {
       // Initial LatLng set for Brooklyn
-      center: new google.maps.LatLng(40.650002, -73.949997),
+      center: new google.maps.LatLng(40.63, -73.949997), //40.650002
       zoom: 12,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -66,6 +78,9 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
         id: listing.attributes.id,
         icon: pinIcon
       });
+      marker.addListener('click', function() {
+        this.scrollToListing(marker.id);
+      }.bind(this));
       this.markers.push(marker);
     }.bind(this));
   },
@@ -81,9 +96,34 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
   },
 
   closeDropdowns: function (event) {
-    $('.open').each(function (i, dropdown) {
-      $(dropdown).removeClass('open')
-    });
+    if (event.target.className.indexOf("stay-open") !== -1) {
+      var $clicked = event.target;
+      $('.open').each(function (i, dropdown) {
+        if ($(dropdown).hasClass('toggle-dropdown')) {
+          var caseCheck = $clicked.parentElement.parentElement.parentElement.previousElementSibling;
+          var caseLi = $clicked.parentElement.parentElement.previousElementSibling;
+          var caseUl = $clicked.parentElement.previousElementSibling;
+          var caseMenu = $clicked.previousElementSibling;
+
+          if (dropdown !== $clicked &&
+              dropdown !== caseCheck &&
+              dropdown !== caseLi &&
+              dropdown !== caseUl &&
+              dropdown !== caseMenu) {
+            $(dropdown).removeClass('open');
+            $(dropdown.nextElementSibling).removeClass('open');
+            $(dropdown.children[0]).removeClass('caret-reversed');
+          }
+        }
+      });
+    } else {
+      $('.caret-reversed').each(function (i, dropdown) {
+        $(dropdown).removeClass('caret-reversed');
+      });
+      $('.open').each(function (i, dropdown) {
+        $(dropdown).removeClass('open')
+      });
+    }
   },
 
   filterListings: function () {
@@ -98,7 +138,7 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
       if ($(filter).hasClass("neighborhood-checkbox")) {
         neighborhoods.push($.trim($(filter).parent().text()));
       } else if ($(filter).hasClass("bed-checkbox")) {
-        beds.push($.trim($(filter).parent().text()));
+        beds.push(Number($.trim($(filter).parent().text())[0]));
       } else if ($(filter).hasClass("amenity-checkbox")) {
         amenities.push($.trim($(filter).parent().text()));
       } else if ($(filter).hasClass("fee-checkbox")) {
@@ -140,6 +180,7 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
   },
 
   highlightPin: function (event) {
+    $('.listing-container-hover').removeClass('selected-listing');
     $listing = $(event.currentTarget);
     var view = this;
     this.markers.forEach(function (marker) {
@@ -166,14 +207,16 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
     });
   },
 
-  openChecklist: function (event) {
+  toggleChecklist: function (event) {
     if ($(event.target).hasClass('toggle-dropdown')) {
       $dropdown = $(event.currentTarget.children[1]);
       $toggle = $(event.currentTarget.children[0]);
       if ($dropdown.hasClass('open')) {
+        $(event.target.children[0]).removeClass("caret-reversed");
         $dropdown.removeClass('open');
         $toggle.removeClass('open');
       } else {
+        $(event.target.children[0]).addClass("caret-reversed");
         $dropdown.addClass('open');
         $toggle.addClass('open');
       }
@@ -191,26 +234,50 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
     });
   },
 
+  scrollToListing: function (listingId) {
+    $('.individual-listing-container').each(function (i, listing) {
+      if (listing.getAttribute('data-id') == listingId) {
+        var scrollPos = $(listing).offset();
+        window.scrollTo(scrollPos.left, scrollPos.top - 140);
+        $($($(listing).children()[0]).children()[0]).addClass("selected-listing")
+      }
+    });
+  },
+
+  sortByNewest: function (event) {
+    var view = this;
+    view.sales.comparator = "updated_at";
+    view.sales.sort();
+    var subviews = view.subviews('.matches-wrapper');
+    subviews.each(function (subview) {
+      subview.remove();
+    });
+    view.sales.models.forEach(function (sale) {
+      var subview = view.addListingSubview(sale.attributes);
+      view.attachSubview('.matches-wrapper', subview);
+    });
+  },
+
+  sortByPrice: function (event) {
+    var view = this;
+    view.sales.comparator = "price";
+    view.sales.sort();
+    var subviews = view.subviews('.matches-wrapper');
+    subviews.each(function (subview) {
+      subview.remove();
+    });
+    view.sales.models.forEach(function (sale) {
+      var subview = view.addListingSubview(sale.attributes);
+      view.attachSubview('.matches-wrapper', subview);
+    });
+  },
+
   render: function () {
     var content = this.template({
       listings: this.listings
     });
     this.$el.html(content);
-
-    var view = this;
-    var num_results = 0;
-    view.sales = new LionsShare.Collections.Listings();
-    var list = view.listings.first().attributes.listings;
-    list.forEach(function (listing) {
-      if (listing.type_of == "Sale") {
-        view.addListingSubview(listing);
-        num_results += 1;
-        view.sales.add(listing);
-      }
-    });
-    $('.num-results').text(num_results);
-
-    this.addMapPins(view.sales);
+    this.addMapPins(this.sales);
     this.attachSubviews();
     return this;
   }

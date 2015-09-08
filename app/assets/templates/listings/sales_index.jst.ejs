@@ -4,14 +4,14 @@
       <div class="all-filters row">
           <div class="neighborhood-filter filter-dropdown col-xs-5 col-sm-5 col-md-5 col-lg-5">
             <!-- <div class="dropdown-container"></div> -->
-            <div class="dropdown form-control filterby by_neighborhood">
-              <div class="toggle-dropdown">Select Neighborhoods <span class="caret"></span></div>
-              <div class="dropdown-menu">
-                <ul class="filter-list neighborhoods-column">
+            <div class="stay-open dropdown form-control filterby by_neighborhood">
+              <div class="stay-open toggle-dropdown">Select Neighborhoods <span class="stay-open caret"></span></div>
+              <div class="stay-open dropdown-menu">
+                <ul class="stay-open filter-list neighborhoods-column">
                   <% listings.first().attributes.neighborhoods.forEach(function (neighborhood) { %>
-                    <li>
-                      <input class="neighborhood-checkbox" type="checkbox">
-                      <div class="filter-category"><%= neighborhood %></div>
+                    <li class="stay-open">
+                      <input class="stay-open neighborhood-checkbox" type="checkbox">
+                      <div class="stay-open filter-category"><%= neighborhood %></div>
                     </li>
                   <% }) %>
                 </ul>
@@ -19,13 +19,14 @@
             </div>
           </div>
           <div class="bed-filter filter-dropdown col-xs-2 col-sm-2 col-md-2 col-lg-2">
-            <div class="dropdown form-control filterby by_bed">
-              <div class="toggle-dropdown">Beds <span class="caret"></span></div>
-              <div class="dropdown-menu">
-                <ul class="filter-list beds-column">
+            <div class="stay-open dropdown form-control filterby by_bed">
+              <div class="stay-open toggle-dropdown">Beds <span class="caret"></span></div>
+              <div class="stay-open dropdown-menu">
+                <ul class="stay-open filter-list beds-column">
                   <% listings.first().attributes.beds.forEach(function (bed_num) { %>
-                    <li>
-                      <input class="bed-checkbox" type="checkbox"><div class="filter-category"><%= bed_num %> Bedroom</div>
+                    <li class="stay-open">
+                      <input class="stay-open bed-checkbox" type="checkbox">
+                      <div class="stay-open filter-category"><%= bed_num %> Bedroom</div>
                     </li>
                   <% }) %>
                 </ul>
@@ -33,25 +34,25 @@
             </div>
           </div>
           <div class="price-filter filter-dropdown col-xs-2 col-sm-2 col-md-2 col-lg-2">
-            <div class="dropdown form-control filterby by_price">
-              <div class="toggle-dropdown">Price <span class="caret"></span></div>
-                <div class="dropdown-menu price-dropdown">
-                  <input class="price-min" type="text" placeholder="Minimum">
+            <div class="stay-open dropdown form-control filterby by_price">
+              <div class="stay-open toggle-dropdown">Price <span class="caret"></span></div>
+                <div class="stay-open dropdown-menu price-dropdown">
+                  <input class="stay-open price-min" type="text" placeholder="Minimum">
                   to
-                  <input class="price-max" type="text" placeholder="Maximum">
-                  <input class="fee-box" type="checkbox">No Fee
+                  <input class="stay-open price-max" type="text" placeholder="Maximum">
+                  <input class="stay-open fee-box" type="checkbox">No Fee
                 </div>
             </div>
             </div>
           <div class="amenity-filter filter-dropdown col-xs-4 col-sm-4 col-md-4 col-lg-4">
-            <div class="dropdown form-control filterby by_amenity">
-              <div class="toggle-dropdown">Amenities <span class="caret"></span></div>
-              <div class="dropdown-menu">
-                <ul class="filter-list amenities-column">
+            <div class="stay-open dropdown form-control filterby by_amenity">
+              <div class="stay-open toggle-dropdown">Amenities <span class="caret"></span></div>
+              <div class="stay-open dropdown-menu">
+                <ul class="stay-open filter-list amenities-column">
                   <% listings.first().attributes.amenities.forEach(function (amenity) { %>
-                    <li>
-                      <input class="amenity-checkbox" type="checkbox">
-                      <div class="filter-category"><%= amenity %></div>
+                    <li class="stay-open">
+                      <input class="stay-open amenity-checkbox" type="checkbox">
+                      <div class="stay-open filter-category"><%= amenity %></div>
                     </li>
                   <% }) %>
                 </ul>
@@ -70,8 +71,8 @@
           <ul class="sort-by col-xs-6 col-sm-6 col-md-6 col-lg-6">
           <li class= "sort-label">Sort By</li>
           <div class="sort-by-buttons">
-            <li class="sort-by-border">Price</li>
-            <li class="sort-by-border">Newest</li>
+            <li class="sort-by-border price-sort">Price</li>
+            <li class="sort-by-border newest-sort">Newest</li>
           </div>
         </ul>
         <div class="results-found col-xs-6 col-sm-6 col-md-6 col-lg-6">

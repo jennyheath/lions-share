@@ -8,6 +8,11 @@
   color: #C1A02F;
 }
 
+.caret.caret-reversed {
+  border-top-width: 0;
+  border-bottom: 4px solid #C1A02F;
+}
+
 .dropdown-menu {
   border: none;
   border-radius: 0px;
@@ -151,10 +156,6 @@
   top: 70px;
 }
 
-.listing-show-container {
-  margin-top: 70px;
-}
-
 #map-canvas {
   margin-top: 0px;
   display: block;
@@ -235,6 +236,10 @@
 }
 
 .listing-container-hover:hover {
+  border: solid #c1a02f 3px;
+}
+
+.selected-listing {
   border: solid #c1a02f 3px;
 }
 
