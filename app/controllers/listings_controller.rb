@@ -49,7 +49,7 @@ class ListingsController < ApplicationController
                       " AND listings.price <= " + price_range[1].to_s
         filter_query += " AND (" + price_query + ")"
       end
-      if no_fee.to_s == true
+      if no_fee == "true"
         filter_query += " AND (no_fee = true)"
       end
       if !amenities.empty?
