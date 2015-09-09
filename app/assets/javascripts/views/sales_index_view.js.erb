@@ -4,8 +4,8 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
   events: {
     'mouseover .individual-listing-container': 'highlightPin',
     'mouseleave .individual-listing-container': 'unhighlightPin',
-    'click .caret': 'toggleChecklist',
-    // 'click .dropdown': 'toggleChecklist',
+    'click .caret': 'toggleCaret',
+    'click .dropdown': 'toggleChecklist',
     'click [type="checkbox"]': 'filterListings',
     'keyup .price-max': 'filterListings',
     'click .clear-all-container': 'clearFilters',
@@ -115,6 +115,7 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
               dropdown !== caseUl &&
               dropdown !== caseMenu &&
               dropdown !== caseCaret) {
+            // debugger;
             $(dropdown).removeClass('open');
             $(dropdown.nextElementSibling).removeClass('open');
             $(dropdown.children[0]).removeClass('caret-reversed');
@@ -137,6 +138,34 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
       });
       this.openMenus = null;
     }
+  },
+
+  highlightPin: function (event) {
+    $('.listing-container-hover').removeClass('selected-listing');
+    $listing = $(event.currentTarget);
+    var view = this;
+    this.markers.forEach(function (marker) {
+      if ($listing.data('id') == marker.id) {
+        marker.setMap(null);
+
+        var map_pin_img = "<%= asset_path('map-pin-selected.svg') %>";
+        var pinIcon = new google.maps.MarkerImage(
+          map_pin_img,
+          null,
+          null,
+          null,
+          new google.maps.Size(30, 40)
+        );
+        var LatLng = {lat: marker.position.G,
+                      lng: marker.position.K};
+        var marker = new google.maps.Marker({
+          position: LatLng,
+          map: view.map,
+          icon: pinIcon
+        });
+        view.highlightedPin = marker;
+      }
+    });
   },
 
   filterListings: function () {
@@ -218,59 +247,36 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
     });
   },
 
-  highlightPin: function (event) {
-    $('.listing-container-hover').removeClass('selected-listing');
-    $listing = $(event.currentTarget);
-    var view = this;
-    this.markers.forEach(function (marker) {
-      if ($listing.data('id') == marker.id) {
-        marker.setMap(null);
-
-        var map_pin_img = "<%= asset_path('map-pin-selected.svg') %>";
-        var pinIcon = new google.maps.MarkerImage(
-          map_pin_img,
-          null,
-          null,
-          null,
-          new google.maps.Size(30, 40)
-        );
-        var LatLng = {lat: marker.position.G,
-                      lng: marker.position.K};
-        var marker = new google.maps.Marker({
-          position: LatLng,
-          map: view.map,
-          icon: pinIcon
-        });
-        view.highlightedPin = marker;
-      }
-    });
+  toggleChecklist: function (event) {
+    if (this.caretClicked === true) {
+      this.caretClicked = null;
+      return;
+    }
+    $dropdown = $(event.currentTarget.children[1]);
+    $toggle = $(event.currentTarget.children[0]);
+    if ($dropdown.hasClass('open')) {
+      $(event.target.children[0]).removeClass("caret-reversed");
+      $dropdown.removeClass('open');
+      $toggle.removeClass('open');
+    } else {
+      $(event.target.children[0]).addClass("caret-reversed");
+      $dropdown.addClass('open');
+      $toggle.addClass('open');
+    }
   },
 
-  toggleChecklist: function (event) {
-    if ($(event.target).hasClass('toggle-dropdown')) {
-      $dropdown = $(event.currentTarget.children[1]);
-      $toggle = $(event.currentTarget.children[0]);
-      if ($dropdown.hasClass('open')) {
-        $(event.target.children[0]).removeClass("caret-reversed");
-        $dropdown.removeClass('open');
-        $toggle.removeClass('open');
-      } else {
-        $(event.target.children[0]).addClass("caret-reversed");
-        $dropdown.addClass('open');
-        $toggle.addClass('open');
-      }
-    } else if ($(event.target).hasClass('caret')) {
-      $dropdown = $(event.target.parentElement);
-      $toggle = $(event.target.parentElement.nextElementSibling);
-      if ($dropdown.hasClass('open')) {
-        $(event.target).removeClass("caret-reversed");
-        $dropdown.removeClass('open');
-        $toggle.removeClass('open');
-      } else {
-        $(event.target).addClass("caret-reversed");
-        $dropdown.addClass('open');
-        $toggle.addClass('open');
-      }
+  toggleCaret: function (event) {
+    this.caretClicked = true;
+    $dropdown = $(event.target.parentElement);
+    $toggle = $(event.target.parentElement.nextElementSibling);
+    if ($dropdown.hasClass('open')) {
+      $(event.target).removeClass("caret-reversed");
+      $dropdown.removeClass('open');
+      $toggle.removeClass('open');
+    } else {
+      $(event.target).addClass("caret-reversed");
+      $dropdown.addClass('open');
+      $toggle.addClass('open');
     }
   },
 
