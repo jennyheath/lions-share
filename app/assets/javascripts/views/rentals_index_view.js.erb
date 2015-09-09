@@ -3,42 +3,145 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
 
   events: {
     'mouseover .individual-listing-container': 'highlightPin',
-    'mouseleave .individual-listing-container': 'unhighlightPin'
+    'mouseleave .individual-listing-container': 'unhighlightPin',
+    'click .caret': 'toggleCaret',
+    'click .dropdown': 'toggleChecklist',
+    'click [type="checkbox"]': 'filterListings',
+    'keyup .price-max': 'filterListings',
+    'click .clear-all-container': 'clearFilters',
+    'click': 'closeDropdowns',
+    'click .price-sort': 'sortByPrice',
+    'click .newest-sort': 'sortByNewest'
   },
 
   initialize: function (options) {
     var view = this;
     view.listings = new LionsShare.Collections.Listings();
-    view.num_results = 0
-    view.rentals = new LionsShare.Collections.Listings();
     view.listings.fetch({
       success: function () {
+        // var num_results = 0;
+        view.rentals = new LionsShare.Collections.Listings();
         var list = view.listings.first().attributes.listings;
         list.forEach(function (listing) {
           if (listing.type_of == "Rental") {
             view.addListingSubview(listing);
-            view.num_results += 1;
+            // num_results += 1;
             view.rentals.add(listing);
           }
         });
+        // $('.num-results').text(num_results);
         view.render();
       }
     });
-    this.listenTo(this.listings, "sync", this.render);
+
+    // this.listenTo(this.listings, "sync", this.render);
     // this.listenTo(this.listings, "add", this.addListingSubview);
   },
 
   addListingSubview: function (listing) {
-    // var listing = this.listings.getOrFetch(model.id, { parse: true });
+    // if (listing.type_of !== "Rental") { return; }
     var subView = new LionsShare.Views.ListingSubview({
       model: listing,
       parentView: this
     });
 
     this.addSubview('.matches-wrapper', subView);
+    return subView;
+  },
+
+  addMapPins: function (rentals) {
+    var map_options = {
+      // Initial LatLng set for Brooklyn
+      center: new google.maps.LatLng(40.63, -73.949997), //40.650002
+      zoom: 12,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    var map = new google.maps.Map(document.getElementById("map-canvas"), map_options);
+    this.map = map;
+    var map_pin_img = "<%= asset_path('map-pin-unselected.svg') %>";
+    var pinIcon = new google.maps.MarkerImage(
+      map_pin_img,
+      null,
+      null,
+      null,
+      new google.maps.Size(30, 40)
+    );
+    this.markers = [];
+
+    rentals.each(function (listing) {
+      var LatLng = {lat: listing.attributes.latitude,
+                    lng: listing.attributes.longitude};
+
+      var marker = new google.maps.Marker({
+        position: LatLng,
+        map: map,
+        id: listing.attributes.id,
+        icon: pinIcon
+      });
+      marker.addListener('click', function() {
+        this.scrollToListing(marker.id);
+      }.bind(this));
+      this.markers.push(marker);
+    }.bind(this));
+  },
+
+  clearFilters: function () {
+    $( "input:checked" ).each(function (i, box) {
+      $(box).attr('checked', false)
+    });
+    $('.price-min').val("");
+    $('.price-max').val("");
+    $('.price-sort').removeClass('select-sort');
+    $('.newest-sort').removeClass('select-sort');
+
+    this.filterListings();
+  },
+
+  closeDropdowns: function (event) {
+    if (event.target.className.indexOf("stay-open") !== -1) {
+      var $clicked = event.target;
+      $('.open').each(function (i, dropdown) {
+        if ($(dropdown).hasClass('toggle-dropdown')) {
+          var caseCheck = $clicked.parentElement.parentElement.parentElement.previousElementSibling;
+          var caseLi = $clicked.parentElement.parentElement.previousElementSibling;
+          var caseUl = $clicked.parentElement.previousElementSibling;
+          var caseMenu = $clicked.previousElementSibling;
+          var caseCaret = $clicked.parentElement;
+
+          if (dropdown !== $clicked &&
+              dropdown !== caseCheck &&
+              dropdown !== caseLi &&
+              dropdown !== caseUl &&
+              dropdown !== caseMenu &&
+              dropdown !== caseCaret) {
+            // debugger;
+            $(dropdown).removeClass('open');
+            $(dropdown.nextElementSibling).removeClass('open');
+            $(dropdown.children[0]).removeClass('caret-reversed');
+          }
+        }
+      });
+    } else {
+      $('.caret-reversed').each(function (i, dropdown) {
+        $(dropdown).removeClass('caret-reversed');
+      });
+      $('.open').each(function (i, dropdown) {
+        $(dropdown).removeClass('open')
+      });
+    }
+
+    // if the event was triggered manually from filterListings (line 213)
+    if (this.openMenus) {
+      this.openMenus.each(function (i, dropdown) {
+        $(dropdown).addClass('open');
+      });
+      this.openMenus = null;
+    }
   },
 
   highlightPin: function (event) {
+    $('.listing-container-hover').removeClass('selected-listing');
     $listing = $(event.currentTarget);
     var view = this;
     this.markers.forEach(function (marker) {
@@ -65,6 +168,123 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
     });
   },
 
+  filterListings: function () {
+    $('.matches-wrapper').html("");
+    var neighborhoods = [];
+    var beds = [];
+    var price_range = []
+    var amenities = [];
+    var no_fee = false;
+
+    // get currently selected filters
+    $( "input:checked" ).each(function (i, filter) {
+      if ($(filter).hasClass("neighborhood-checkbox")) {
+        neighborhoods.push($.trim($(filter).parent().text()));
+      } else if ($(filter).hasClass("bed-checkbox")) {
+        beds.push(Number($.trim($(filter).parent().text())[0]));
+      } else if ($(filter).hasClass("amenity-checkbox")) {
+        amenities.push($.trim($(filter).parent().text()));
+      } else if ($(filter).hasClass("fee-box")) {
+        no_fee = true;
+      }
+    });
+    var min_price = $('.price-min').val();
+    var max_price = $('.price-max').val();
+    if (min_price !== "" && max_price !== "") {
+      price_range.push(min_price);
+      price_range.push(max_price);
+    }
+
+    this.listings.reset([]);
+    var view = this;
+    this.listings.fetch({
+      data: { filter_params: true,
+              neighborhood_params: neighborhoods,
+              bed_params: beds,
+              price_params: price_range,
+              no_fee_params: no_fee,
+              amenity_params: amenities
+            },
+      success: function () {
+        var num_results = 0;
+        // var rentals = new LionsShare.Collections.Listings();
+        view.rentals = new LionsShare.Collections.Listings();
+        var list = view.listings.first().attributes.listings;
+        list.forEach(function (listing) {
+          // filter amenities
+          var listing_amenities = [];
+          listing.amenities.forEach(function (amenity) {
+            listing_amenities.push(amenity.name)
+          });
+          var hasAllAmenities = true;
+          amenities.forEach(function (amenity) {
+            if (listing_amenities.indexOf(amenity) < 0) {
+              hasAllAmenities = false;
+            }
+          })
+
+          // append filtered list
+          if (listing.type_of == "Rental" && hasAllAmenities === true) {
+            $('.matches-wrapper').append(view.addListingSubview(listing));
+            num_results += 1;
+            // rentals.add(listing);
+            view.rentals.add(listing);
+          }
+        });
+        $('.num-results').text(num_results);
+        // view.addMapPins(rentals);
+        view.addMapPins(view.rentals);
+
+        // preserve sorting and keep menus open when event triggered
+        if ($('.price-sort').hasClass('select-sort')) {
+          view.openMenus = $('.open');
+          $('.price-sort').trigger('click');
+        } else if ($('.newest-sort').hasClass('select-sort')) {
+          view.openMenus = $('.open');
+          $('.newest-sort').trigger('click');
+        }
+      }
+    });
+  },
+
+  toggleChecklist: function (event) {
+    if ($(event.target).hasClass("dropdown") ||
+        $(event.target).hasClass("toggle-dropdown")) {
+      if (this.caretClicked === true) {
+        this.caretClicked = null;
+        return;
+      }
+      $dropdown = $(event.currentTarget.children[1]);
+      $toggle = $(event.currentTarget.children[0]);
+      if ($dropdown.hasClass('open')) {
+        $(event.target.children[0]).removeClass("caret-reversed");
+        $dropdown.removeClass('open');
+        $toggle.removeClass('open');
+      } else {
+        $(event.target.children[0]).addClass("caret-reversed");
+        $dropdown.addClass('open');
+        $toggle.addClass('open');
+      }
+    }
+  },
+
+  toggleCaret: function (event) {
+    if ($(event.target).hasClass("caret")) {
+      this.caretClicked = true;
+      $dropdown = $(event.target.parentElement);
+      $toggle = $(event.target.parentElement.nextElementSibling);
+      if ($dropdown.hasClass('open')) {
+        $(event.target).removeClass("caret-reversed");
+        $dropdown.removeClass('open');
+        $toggle.removeClass('open');
+      } else {
+        $(event.target).addClass("caret-reversed");
+        $dropdown.addClass('open');
+        $toggle.addClass('open');
+      }
+    }
+  },
+
   unhighlightPin: function (event) {
     $listing = $(event.currentTarget);
     var view = this;
@@ -76,46 +296,57 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
     });
   },
 
+  scrollToListing: function (listingId) {
+    $('.individual-listing-container').each(function (i, listing) {
+      if (listing.getAttribute('data-id') == listingId) {
+        var scrollPos = $(listing).offset();
+        window.scrollTo(scrollPos.left, scrollPos.top - 140);
+        $($($(listing).children()[0]).children()[0]).addClass("selected-listing")
+      }
+    });
+  },
+
+  sortByNewest: function (event) {
+    $(event.target).addClass('select-sort');
+    $('.price-sort').removeClass('select-sort');
+    var view = this;
+    view.rentals.comparator = "updated_at";
+    view.rentals.sort();
+    var subviews = view.subviews('.matches-wrapper');
+    subviews.each(function (subview) {
+      subview.remove();
+    });
+    view.rentals.models.forEach(function (rental) {
+      var subview = view.addListingSubview(rental.attributes);
+      view.attachSubview('.matches-wrapper', subview);
+    });
+  },
+
+  sortByPrice: function (event, options) {
+    $(event.target).addClass('select-sort');
+    $('.newest-sort').removeClass('select-sort');
+    var view = this;
+    view.rentals.comparator = "price";
+    view.rentals.sort();
+    var subviews = view.subviews('.matches-wrapper');
+    subviews.each(function (subview) {
+      subview.remove();
+    });
+    view.rentals.models.forEach(function (rental) {
+      var subview = view.addListingSubview(rental.attributes);
+      view.attachSubview('.matches-wrapper', subview);
+    });
+  },
+
   render: function () {
     var content = this.template({
-      listings: this.listings,
-      num_results: this.num_results
+      listings: this.listings
     });
-
     this.$el.html(content);
-    var map_options = {
-      // Initial LatLng set for Brooklyn
-      center: new google.maps.LatLng(40.650002, -73.949997),
-      zoom: 12,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-
-    var map = new google.maps.Map(document.getElementById("map-canvas"), map_options);
-    this.map = map;
-    var map_pin_img = "<%= asset_path('map-pin-unselected.svg') %>";
-    var pinIcon = new google.maps.MarkerImage(
-      map_pin_img,
-      null,
-      null,
-      null,
-      new google.maps.Size(30, 40)
-    );
-    this.markers = [];
-
-    this.rentals.each(function (listing) {
-      var LatLng = {lat: listing.attributes.latitude,
-                    lng: listing.attributes.longitude};
-
-      var marker = new google.maps.Marker({
-        position: LatLng,
-        map: map,
-        id: listing.attributes.id,
-        icon: pinIcon
-      });
-      this.markers.push(marker);
-    }.bind(this));
-
+    this.addMapPins(this.rentals);
     this.attachSubviews();
+    var num_results = $('.individual-listing-container').length;
+    $('.num-results').text(num_results);
     return this;
   }
 });

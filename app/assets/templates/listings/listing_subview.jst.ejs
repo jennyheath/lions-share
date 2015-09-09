@@ -8,9 +8,11 @@
             <p class="exclusive-tag">Exclusive</p>
             <p class="no-fee-tag">No Fee</p>
           </div>
-        <% } else if (listing.exclusive == true) { %>
+        <% } %>
+        <% if (listing.exclusive == true && listing.no_fee !== true) { %>
             <div class="exclusive-tag">Exclusive</div>
-        <% } else { %>
+        <% } %>
+        <% if (listing.no_fee == true && listing.exclusive !== true) { %>
             <div class="no-fee-tag">No Fee</div>
         <% } %>
         <a href="#listings/<%= listing.id %>">

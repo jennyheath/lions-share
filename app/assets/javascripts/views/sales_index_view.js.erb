@@ -115,7 +115,6 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
               dropdown !== caseUl &&
               dropdown !== caseMenu &&
               dropdown !== caseCaret) {
-            // debugger;
             $(dropdown).removeClass('open');
             $(dropdown.nextElementSibling).removeClass('open');
             $(dropdown.children[0]).removeClass('caret-reversed');
@@ -248,35 +247,40 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
   },
 
   toggleChecklist: function (event) {
-    if (this.caretClicked === true) {
-      this.caretClicked = null;
-      return;
-    }
-    $dropdown = $(event.currentTarget.children[1]);
-    $toggle = $(event.currentTarget.children[0]);
-    if ($dropdown.hasClass('open')) {
-      $(event.target.children[0]).removeClass("caret-reversed");
-      $dropdown.removeClass('open');
-      $toggle.removeClass('open');
-    } else {
-      $(event.target.children[0]).addClass("caret-reversed");
-      $dropdown.addClass('open');
-      $toggle.addClass('open');
+    if ($(event.target).hasClass("dropdown") ||
+        $(event.target).hasClass("toggle-dropdown")) {
+      if (this.caretClicked === true) {
+        this.caretClicked = null;
+        return;
+      }
+      $dropdown = $(event.currentTarget.children[1]);
+      $toggle = $(event.currentTarget.children[0]);
+      if ($dropdown.hasClass('open')) {
+        $(event.target.children[0]).removeClass("caret-reversed");
+        $dropdown.removeClass('open');
+        $toggle.removeClass('open');
+      } else {
+        $(event.target.children[0]).addClass("caret-reversed");
+        $dropdown.addClass('open');
+        $toggle.addClass('open');
+      }
     }
   },
 
   toggleCaret: function (event) {
-    this.caretClicked = true;
-    $dropdown = $(event.target.parentElement);
-    $toggle = $(event.target.parentElement.nextElementSibling);
-    if ($dropdown.hasClass('open')) {
-      $(event.target).removeClass("caret-reversed");
-      $dropdown.removeClass('open');
-      $toggle.removeClass('open');
-    } else {
-      $(event.target).addClass("caret-reversed");
-      $dropdown.addClass('open');
-      $toggle.addClass('open');
+    if ($(event.target).hasClass("caret")) {
+      this.caretClicked = true;
+      $dropdown = $(event.target.parentElement);
+      $toggle = $(event.target.parentElement.nextElementSibling);
+      if ($dropdown.hasClass('open')) {
+        $(event.target).removeClass("caret-reversed");
+        $dropdown.removeClass('open');
+        $toggle.removeClass('open');
+      } else {
+        $(event.target).addClass("caret-reversed");
+        $dropdown.addClass('open');
+        $toggle.addClass('open');
+      }
     }
   },
 

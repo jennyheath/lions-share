@@ -262,6 +262,7 @@
 /*need to fix padding when there are both tags*/
 p.exclusive-tag, p.no-fee-tag {
   position: relative;
+  padding: 2% 4% 1% 4%;
 }
 
 .exclusive-tag, .no-fee-tag {
