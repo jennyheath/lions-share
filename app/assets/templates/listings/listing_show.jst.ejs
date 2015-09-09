@@ -25,4 +25,71 @@
       <button class="contact-button">Contact</button>
     </div>
   </div>
+  <div class="clear"></div>
+  <div class="listing-photos">
+    <div class="photos-title">Photos</div>
+    <% var photos = listing.get('photos') %>
+    <% for (i = 0; i < 2; i++) { %>
+      <div class="listing-photo-container col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <img class="listing-photo" src="<%= photos[i].url %>">
+      </div>
+    <% } %>
+    <% for (i = 2; i < 5; i++) { %>
+      <div class="listing-photo-container col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <img class="listing-photo" src="<%= photos[i].url %>">
+      </div>
+    <% } %>
+    <div class="view-all">
+      View All
+    </div>
+    <div class="hidden-photos">
+      <% for (i = 5; i < photos.length; i++) { %>
+        <div class="listing-photo-container col-xs-4 col-sm-4 col-md-4 col-lg-4">
+          <img class="listing-photo" src="<%= photos[i].url %>">
+        </div>
+      <% } %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="map-container">
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 subway-box">
+      <div class="subway-lines">
+        <div class="subway-title">Location & Transit</div>
+        <ul class="subway-list">
+        </ul>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 subway-box">
+      <div id="subway-map"></div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="listing-footer">
+    <div class="footer-top">
+      <div class="footer-logo col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <img class="footer-logo-img" src="https://s3-us-west-1.amazonaws.com/lions-share-pictures/logo-blue.png">
+      </div>
+      <div class="footer-address col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <div class="address-title">Location</div>
+        123 Main Street<br>
+        Brooklyn, New York 11216<br>
+        212.555.2522
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-icons col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <img class="footer-icon-img" src="https://s3-us-west-1.amazonaws.com/lions-share-pictures/instagram.png">
+        <img class="footer-icon-img" src="https://s3-us-west-1.amazonaws.com/lions-share-pictures/twitter.png">
+        <img class="footer-icon-img" src="https://s3-us-west-1.amazonaws.com/lions-share-pictures/facebook.png">
+      </div>
+      <div class="footer-terms col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <a class="terms-link" href="#">Terms & Conditions and Privacy Policy</a>
+        <p class="terms-copyright">&#169; The Lion's Share, Inc. All Rights Reserved. 2015</p>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+  </div>
 </div>

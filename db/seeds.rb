@@ -83,10 +83,31 @@ end
   )
 end
 
+extra_photos = [
+  "https://s3-us-west-1.amazonaws.com/lions-share-pictures/image-1.jpg",
+  "https://s3-us-west-1.amazonaws.com/lions-share-pictures/image-10.jpg",
+  "https://s3-us-west-1.amazonaws.com/lions-share-pictures/image-11.jpg",
+  "https://s3-us-west-1.amazonaws.com/lions-share-pictures/image-2.jpg",
+  "https://s3-us-west-1.amazonaws.com/lions-share-pictures/image-3.jpg",
+  "https://s3-us-west-1.amazonaws.com/lions-share-pictures/image-4.jpg",
+  "https://s3-us-west-1.amazonaws.com/lions-share-pictures/image-5.jpg",
+  "https://s3-us-west-1.amazonaws.com/lions-share-pictures/image-6.jpg",
+  "https://s3-us-west-1.amazonaws.com/lions-share-pictures/image-7.jpg",
+  "https://s3-us-west-1.amazonaws.com/lions-share-pictures/image-8.jpg",
+  "https://s3-us-west-1.amazonaws.com/lions-share-pictures/image-9.jpg",
+  "https://s3-us-west-1.amazonaws.com/lions-share-pictures/image.jpg"
+]
+
+# extra_photos.each do |photo_url|
+#   Photo.create(url: photo_url)
+# end
+
 Listing.all.each do |listing|
   5.times do
     listing.amenities << Amenity.all.sample
   end
   listing.brokers << Broker.all.sample
-  # listing.photos.create(url: photos.sample)
+  10.times do
+    listing.photos << Photo.create(url: extra_photos.sample)
+  end
 end
