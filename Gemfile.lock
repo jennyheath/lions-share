@@ -222,6 +222,7 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk (~> 2)
   backbone-on-rails
+  bcrypt (~> 3.1.7)
   bootstrap-multiselect-rails
   byebug
   coffee-rails (~> 4.1.0)

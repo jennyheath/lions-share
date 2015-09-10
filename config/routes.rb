@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   namespace :admin do
     # Directs /admin/listings/* to Admin::ListingsController
     # (app/controllers/admin/listings_controller.rb)
+    resources :users
+    resource :session, only: [:new, :create, :destroy]
     resources :listings
   end
 end

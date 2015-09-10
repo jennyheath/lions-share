@@ -1,4 +1,6 @@
 class Admin::ListingsController < ApplicationController
+  before_action :require_signed_in!
+
   def new
     @listing = Listing.new
   end

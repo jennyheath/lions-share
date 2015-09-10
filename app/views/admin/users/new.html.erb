@@ -1,0 +1,9 @@
+<form action="<%= admin_users_url %>" method="post">
+  <%= auth_token %>
+  <input type="text" name="user[username]" placeholder="username">
+  <br>
+  <input type="password" name="user[password]" placeholder="password">
+  <br>
+  <input type="submit" value="Sign Up">
+</form>
+<div class="errors"><%= render "shared/errors" %></div>
