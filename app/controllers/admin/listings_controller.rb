@@ -1,12 +1,12 @@
 class Admin::ListingsController < ApplicationController
   def new
     @listing = Listing.new
-    @brokers = Broker.all
   end
 
   def create
     @listing = Listing.new(listing_params)
-    @brokers = Broker.all
+    @broker = Broker.find(params[:listing][:broker])
+    @listing.brokers << @broker
 
     if @listing.save
       render :saved
@@ -26,6 +26,10 @@ class Admin::ListingsController < ApplicationController
 
   def update
     @listing = Listing.find(params[:id])
+    @listing.brokers = []
+    @broker = Broker.find(params[:listing][:broker])
+    @listing.brokers << @broker
+
     if @listing.update_attributes(listing_params)
       render :saved
     else

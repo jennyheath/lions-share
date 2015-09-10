@@ -1,10 +1,12 @@
 <% action = (action_type == :new) ? admin_listings_url : admin_listing_url(listing) %>
+<% method = (action_type == :new) ? :post : :patch %>
 <% button_text = (action_type == :new) ? "Create Listing" : "Update Listing"%>
 
 <%= render 'shared/errors' %>
 
 <br><br>
 <form action="<%= action %>" method="POST">
+  <input type="hidden" name="_method" value="<%= method %>">
   <%= auth_token %>
   <input
     type="radio"
@@ -145,16 +147,32 @@
     <input type="checkbox" name="listing[featured]"
     <%= 'checked="true"' if listing.featured %>>
   </label>
+  <br>
 
   <label>No fee?:
     <input type="checkbox" name="listing[no_fee]"
     <%= 'checked="true"' if listing.no_fee %>>
   </label>
+  <br>
 
   <label>Exclusive?:
     <input type="checkbox" name="listing[exclusive]"
     <%= 'checked="true"' if listing.exclusive %>>
   </label>
+  <br>
+
+  <p>Broker:</p>
+  <br>
+    <% Broker.all.each do |broker| %>
+    <input
+      type="radio"
+      name="listing[broker]"
+      value="<%= broker.id %>"
+      id="listing_broker"
+      <%= listing.brokers[0] == broker ? "checked" : "" %>>
+    <label for="listing_broker"><%= broker.first_name %> <%= broker.last_name %></label>
+    <br>
+    <% end %>
 
   <input type="submit" value="<%= button_text %>">
   <% if action_type == :edit %>
