@@ -3,7 +3,8 @@ LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
 
   events: {
     'click .view-all': 'showPhotos',
-    'click .contact-button': 'brokerModal'
+    'click .contact-button': 'brokerModal',
+    'click button.close': 'clearModal'
   },
 
   initialize: function (options) {
@@ -62,6 +63,17 @@ LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
     $('#brokerModal').modal('show');
     this.addBrokerSubview(this.listing.get('brokers')[0]);
     this.attachSubviews();
+  },
+
+  clearModal: function (event) {
+    // this.subviews().forEach(function (subview) {
+    //   subview.remove();
+    // });
+    // this.subviews('.broker-contact-info').forEach(function (sub) {
+    //   sub.remove();
+    // });
+    // $('.broker-contact-info').html("");
+    this._subviews = {}
   },
 
   getSubways: function () {
