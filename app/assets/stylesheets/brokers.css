@@ -1,0 +1,85 @@
+.hide {
+  display: none;
+}
+
+.modal-dialog {
+  margin-top: 8%;
+  width: 35%;
+  height: 70%;
+  overflow: hidden;
+}
+
+.modal-content {
+  border-radius: 0px;
+}
+
+.modal-body {
+  padding: 0px;
+}
+
+button.close {
+  padding: 3%;
+}
+
+.broker-contact-info {
+  font-family: "AtlasGrotesk-Regular", Helvetica, sans-serif;
+  color: #7b7b7b;
+}
+
+.broker-modal-img {
+  height: 11%;
+  margin: 5%;
+  float: left;
+}
+
+.broker-title {
+  border-bottom: 2px solid #f2f2f2;
+  padding: 4%;
+  font-size: 90%;
+}
+
+.broker-modal-name {
+  font-size: 115%;
+  margin-top: 4%;
+}
+
+.broker-modal-phone, .broker-modal-email {
+  color: #131647;
+  font-family: "AtlasGrotesk-Medium", Helvetica, sans-serif;
+  font-size: 90%;
+}
+
+.broker-modal-phone {
+  margin-top: 2%;
+}
+
+.message-box {
+  margin-top: 6%;
+  margin-left: 5%;
+}
+
+.see-broker-list {
+  text-align: center;
+  color: #131647;
+  margin: 5%;
+  font-family: "AtlasGrotesk-Medium", Helvetica, sans-serif;
+}
+
+.broker-modal-list {
+  overflow: scroll;
+  height: 89%;
+}
+
+.broker-list-img {
+  height: 13%;
+}
+
+.broker-list-name {
+  margin-top: 9%;
+  float: left;
+}
+
+.choose-broker {
+  width: 100%;
+  border-bottom: 2px solid #f2f2f2;
+}

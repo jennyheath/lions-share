@@ -31,3 +31,14 @@ json.amenities do
     json.extract! amenity, :name
   end
 end
+
+json.all_brokers do
+  json.array! @brokers.each do |broker|
+    json.extract! broker, :id,
+                          :first_name,
+                          :last_name,
+                          :phone,
+                          :email,
+                          :photo_url
+  end
+end

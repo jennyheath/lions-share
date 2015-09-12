@@ -23,6 +23,7 @@ json.listings do
     end
   end
 end
+
 json.neighborhoods @neighborhoods
 json.beds @beds
 json.amenities @amenities

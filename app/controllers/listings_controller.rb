@@ -68,6 +68,7 @@ class ListingsController < ApplicationController
   end
 
   def show
+    @brokers = Broker.all
     @listing = Listing.find(params[:id])
   end
 

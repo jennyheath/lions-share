@@ -64,6 +64,7 @@
       <div id="subway-map"></div>
       <div class="clear"></div>
     </div>
+    <div class="clear"></div>
   </div>
   <div class="listing-footer">
     <div class="footer-top">
@@ -93,3 +94,24 @@
     <div class="clear"></div>
   </div>
 </div>
+<div class="modal fade" id="brokerModal" tabindex="-1" role="dialog" aria-labelledby="brokerModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <div class="broker-contact-info"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $('#brokerModal').on('shown.bs.modal', function () {
+    $('#myInput').focus()
+  })
+  // $('.choose-broker').on('click', function (event) {
+  //   debugger;
+  //   // broker =
+  //   $('.all-agents').addClass('hide');
+  //   $('.single-agent').removeClass('hide');
+  // })
+</script>

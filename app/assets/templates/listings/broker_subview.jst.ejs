@@ -1,0 +1,27 @@
+<div class="single-agent">
+  <div class="broker-title">Contact Agent</div>
+  <img class="broker-modal-img" src="<%= broker.photo_url %>">
+  <div class="broker-modal-name"><%= broker.first_name %> <%= broker.last_name %></div>
+  <div class="broker-modal-phone"><%= broker.phone %></div>
+  <div class="broker-modal-email"><%= broker.email %></div>
+  <div class="message-box">
+    <p>Message</p>
+  </div>
+  <br>
+  <div class="see-broker-list">Contact a different agent</div>
+</div>
+<div class="all-agents hide">
+  <div class="broker-title">Choose an Agent</div>
+  <div class="broker-modal-list">
+    <% var brokerList = listing.get('all_brokers') %>
+    <% brokerList.forEach(function (broker) { %>
+      <div class="choose-broker">
+        <img class="broker-modal-img broker-list-img" src="<%= broker.photo_url %>">
+        <div class="broker-modal-name broker-list-name">
+          <%= broker.first_name %> <%= broker.last_name %>
+        </div>
+        <div class="clear"></div>
+      </div>
+    <% }) %>
+  </div>
+</div>

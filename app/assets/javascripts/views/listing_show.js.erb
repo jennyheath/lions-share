@@ -1,0 +1,113 @@
+LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
+  template: JST['listings/listing_show'],
+
+  events: {
+    'click .view-all': 'showPhotos',
+    'click .contact-button': 'brokerModal'
+  },
+
+  initialize: function (options) {
+    var view = this;
+    this.listing = options.model;
+    this.listing.fetch({
+      success: function () {
+        view.getSubways();
+      }
+    });
+
+    this.listenTo(this.listing, 'sync', this.render);
+  },
+
+  addBrokerSubview: function (broker) {
+    var subView = new LionsShare.Views.BrokerSubview({
+      broker: broker,
+      listing: this.listing
+    });
+
+    this.addSubview('.broker-contact-info', subView);
+    return subView;
+  },
+
+  addMap: function () {
+    this.lat = this.listing.get('latitude');
+    this.lng = this.listing.get('longitude');
+    var LatLng = {lat: this.lat, lng: this.lng};
+
+    var map_options = {
+      center: new google.maps.LatLng(this.lat, this.lng),
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    var map = new google.maps.Map(document.getElementById("subway-map"), map_options);
+    this.map = map;
+    var map_pin_img = "https://s3-us-west-1.amazonaws.com/lions-share-pictures/map-pin-unselected.svg";
+    var pinIcon = new google.maps.MarkerImage(
+      map_pin_img,
+      null,
+      null,
+      null,
+      new google.maps.Size(30, 40)
+    );
+
+    var marker = new google.maps.Marker({
+      position: LatLng,
+      map: map,
+      id: this.listing.attributes.id,
+      icon: pinIcon
+    });
+  },
+
+  brokerModal: function (event) {
+    $('#brokerModal').modal('show');
+    this.addBrokerSubview(this.listing.get('brokers')[0]);
+    this.attachSubviews();
+  },
+
+  getSubways: function () {
+    var view = this;
+    var listingLocation = new google.maps.LatLng(this.lat, this.lng);
+    var request = {
+      location: listingLocation,
+      radius: '804.67',
+      types: ['subway_station']
+    };
+    service = new google.maps.places.PlacesService(this.map);
+    service.nearbySearch(request, function (results) {
+      results.forEach(function (station) {
+        var $stationLi = $('<li>').addClass('subway-station');
+        var $stationName = $('<div>').addClass('station-name');
+        $stationName.html(station.name);
+        $stationLi.append($stationName);
+
+        var $stationDistance = $('<div>').addClass('station-distance');
+        var listingLoc = new google.maps.LatLng(this.listing.get('latitude'), this.listing.get('longitude'));
+        var stationLoc = station.geometry.location;
+        var distance = google.maps.geometry.spherical.computeDistanceBetween(listingLoc, stationLoc) / 1609.34;
+        var walkingTime = distance * 20;
+        $stationDistance.html(Math.round(walkingTime) + " min, " + (distance).toFixed(2) + " miles");
+
+        $stationLi.append($('<img>').addClass('walking-man').attr('src', 'assets/walking_man.svg'));
+        $stationLi.append($stationDistance);
+        $('.subway-list').append($stationLi);
+      }.bind(this));
+    }.bind(this));
+    $('.subway-box').append($('<div>').addClass('clear'));
+  },
+
+  showPhotos: function (event) {
+    $(event.target.nextElementSibling).addClass('show-photos');
+    $(event.target).addClass('hide-text');
+  },
+
+  render: function () {
+    var content = this.template({
+      listing: this.listing,
+      broker: this.listing.get('brokers')[0]
+    });
+
+    this.$el.html(content);
+    this.addMap();
+    return this;
+  }
+});
