@@ -44,6 +44,13 @@ class Admin::ListingsController < ApplicationController
 
   def update
     @listing = Listing.find(params[:id])
+    @listing.address = params[:street_address]
+
+    if params[:image]
+      @listing.main_photo_url = "http://res.cloudinary.com/" +
+                                ENV['cloud_name'] + "/" + params[:image]
+    end
+
     @listing.brokers = []
     @broker = Broker.find(params[:listing][:broker])
     @listing.brokers << @broker

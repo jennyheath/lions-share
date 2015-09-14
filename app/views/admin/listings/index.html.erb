@@ -1,12 +1,16 @@
-<br><br><br>
-<h2>All Listings</h2>
-<% @listings.each do |listing| %>
-  <p>
-    $<%= listing.price %>, <%= listing.bed_count %> bedroom @ <%= listing.address %>
-    <a href="/admin/listings/<%=listing.id%>/edit">Edit this listing</a>
-  </p>
-<% end %>
-<br><br>
-<a href="/admin/listings/new">Create a new listing</a>
-<br>
-<%= button_to "Sign out", admin_session_url, method: :delete %>
+<div class="admin-index">
+  <h2 class="admin-index-title">All Listings</h2>
+  <div class="admin-listings">
+    <% @listings.each do |listing| %>
+      <p class="admin-listing">
+        $<%= listing.price %>, <%= listing.bed_count %> bedroom @ <%= listing.address %>
+        <a class="admin-edit-link" href="/admin/listings/<%=listing.id%>/edit">[Edit this listing]</a>
+      </p>
+    <% end %>
+  </div>
+  <div class="admin-index-footer">
+    <a href="/admin/listings/new">Create a new listing</a>
+    <br><br>
+    <%= button_to "Sign out", admin_session_url, method: :delete %>
+  </div>
+</div>

@@ -1,12 +1,10 @@
 <% action = (action_type == :new) ? admin_listings_url : admin_listing_url(listing) %>
 <% method = (action_type == :new) ? :post : :patch %>
 <% button_text = (action_type == :new) ? "Create Listing" : "Update Listing"%>
-<% address = (action_type == :new) ? listing.address : "" %>
 
 <%= render 'shared/errors' %>
 
-<br><br>
-<form action="<%= action %>" method="POST">
+<form class="admin-form" action="<%= action %>" method="POST">
   <input type="hidden" name="_method" value="<%= method %>">
   <%= auth_token %>
   <input
@@ -25,32 +23,36 @@
     <%= listing.type_of == "Sale" ? "checked" : "" %>>
   <label for="listing_sale">Sale</label>
   <br>
-
+  <br>
   <label>Price:
-    <input type="text" value="<%= listing.price %>" name="listing[price]">
+    <input class="text-input" type="text" value="<%= listing.price %>" name="listing[price]">
   </label>
   <br>
-
+  <br>
+  <% address = (action_type == :new) ? "" : listing.address %>
   <label>Street Address:
-    <input type="text" value="<%= address %>" name="street_address">
+    <input class="text-input" type="text" value="<%= address %>" name="street_address">
   </label>
+  <br>
   <br>
   <% if (action_type == :new) %>
     <label>City (i.e. Brooklyn):
-      <input type="text" value="" name="city">
+      <input class="text-input" type="text" value="" name="city">
     </label>
     <br>
+    <br>
     <label>Zipcode:
-      <input type="text" value="" name="zip">
+      <input class="text-input" type="text" value="" name="zip">
     </label>
+    <br>
     <br>
   <% end %>
 
   <label>Description:
-    <textarea name="listing[description]"><%= listing.description %></textarea>
+    <textarea class="text-input" name="listing[description]"><%= listing.description %></textarea>
   </label>
   <br>
-
+  <br>
   <p>Bedrooms:</p>
     <input
       type="radio"
@@ -84,7 +86,7 @@
       <%= listing.bed_count == 4 ? "checked" : "" %>>
     <label for="listing_beds">4</label>
     <br>
-
+    <br>
   <p>Bathrooms:</p>
     <input
       type="radio"
@@ -110,7 +112,7 @@
       <%= listing.bath_count == 3 ? "checked" : "" %>>
     <label for="listing_baths">3</label>
     <br>
-
+    <br>
 
   <p>Neighborhood:</p>
     <input
@@ -153,6 +155,7 @@
       <%= listing.neighborhood == "Greenpoint" ? "checked" : "" %>>
     <label for="listing_neighborhood">Greenpoint</label>
     <br>
+    <br>
 
   <label>Featured?:
     <input type="checkbox" name="listing[featured]"
@@ -173,7 +176,6 @@
   <br>
 
   <p>Broker:</p>
-  <br>
   <% Broker.all.each do |broker| %>
   <input
     type="radio"
@@ -184,18 +186,21 @@
   <label for="listing_broker"><%= broker.first_name %> <%= broker.last_name %></label>
   <br>
   <% end %>
+  <br><br>
 
   <p>Main Photo:</p>
   <%= cl_image_upload_tag(:image) %>
   <span class="preview"></span>
   <div class="image_public_id"></div>
-
+  <br><br>
+  
   <p>Additional Photos:</p>
   <%= cl_image_upload_tag(:image_1) %>
   <%= cl_image_upload_tag(:image_2) %>
   <%= cl_image_upload_tag(:image_3) %>
   <%= cl_image_upload_tag(:image_4) %>
   <%= cl_image_upload_tag(:image_5) %>
+  <br><br>
 
   <input type="submit" value="<%= button_text %>">
   <% if action_type == :edit %>

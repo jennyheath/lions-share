@@ -1,9 +1,9 @@
-<form action="<%= admin_session_url %>" method="post">
+<form class="sign-in-form" action="<%= admin_session_url %>" method="post">
   <%= auth_token %>
-  <input type="text" name="user[username]" placeholder="username">
+  <input class="sign-in-field" type="text" name="user[username]" placeholder="username">
   <br>
-  <input type="password" name="user[password]" placeholder="password">
+  <input class="sign-in-field" type="password" name="user[password]" placeholder="password">
   <br>
-  <input type="submit" value="Sign in">
+  <input class="sign-in-button" type="submit" value="Sign in">
 </form>
 <div class="errors"><%= render "shared/errors" %></div>

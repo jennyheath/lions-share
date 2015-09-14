@@ -1,0 +1,60 @@
+.sign-in-form {
+  margin: 10%;
+}
+
+.sign-in-field {
+  margin: 1%;
+  padding: 1%;
+}
+
+.sign-in-button {
+  margin: 1%;
+}
+
+.admin-index {
+  margin-top: 10%;
+  font-family: "AtlasGrotesk-Regular", Helvetica, sans-serif;
+}
+
+.admin-index-title {
+  margin-left: 50px;
+}
+
+.admin-listings {
+  margin: 20px;
+  margin-left: 50px;
+}
+
+.admin-edit-link {
+  margin-left: 10px;
+}
+
+.admin-listing {
+  margin-bottom: 15px;
+}
+
+.admin-index-footer {
+  margin: 50px;
+  margin-top: 0px;
+}
+
+.saved-message {
+  margin: 10%;
+  font-family: "AtlasGrotesk-Regular", Helvetica, sans-serif;
+}
+
+.admin-form-title {
+  margin-top: 10%;
+  margin-left: 50px;
+  font-family: "AtlasGrotesk-Regular", Helvetica, sans-serif;
+}
+
+.admin-form {
+  margin: 20px;
+  margin-left: 50px;
+  font-family: "AtlasGrotesk-Regular", Helvetica, sans-serif;
+}
+
+.text-input {
+  width: 120%;
+}
