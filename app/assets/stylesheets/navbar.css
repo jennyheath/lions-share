@@ -56,3 +56,59 @@
 .nav-link-border a:hover {
   text-decoration: none;
 }
+
+.navbar-toggle {
+  border: none;
+}
+
+.navbar-toggle:hover {
+  background-color: #fff;
+}
+
+.icon-bar {
+  height: 0.2em !important;
+  background-color: #121546 !important;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar-brand {
+    padding: 5%;
+    padding-left: 2%;
+    width: 80%;
+  }
+
+  .navbar-brand img {
+    width: 100%;
+  }
+
+  .navbar-toggle {
+    margin-right: 6%;
+    margin-top: 3%;
+  }
+
+  ul.navbar-nav {
+    width: 50%;
+    float: right;
+    text-align: center;
+    padding-right: 5%;
+    background-color: #fff;
+    z-index: 1000;
+  }
+
+  .nav-link-border:hover > .nav-link {
+    font-family: "AtlasGrotesk-Regular";
+  }
+
+  .nav-link-border:hover {
+    border: none;
+  }
+
+  .nav-link:hover {
+    color: #fff !important;
+    border: none;
+  }
+
+  .nav-link-border:hover {
+    background-color: #e0cf97 !important;
+  }
+}

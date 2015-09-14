@@ -310,3 +310,101 @@ p.exclusive-tag, p.no-fee-tag {
   text-align: right;
   font-size: 100%;
 }
+
+.show-other-filters {
+  display: none;
+}
+
+.mobile-browse-footer {
+  display: none;
+}
+
+@media screen and (max-width: 500px) {
+  .clear-all-container {
+    display: none;
+  }
+
+  .filter-dropdown {
+    width: 105%;
+    margin: 2%;
+    margin-left: 4%;
+  }
+
+  .filter-wrapper {
+    height: auto;
+    position: relative;
+  }
+
+  .content-wrapper {
+    top: 5px;
+  }
+
+  .hide-filter {
+    display: none;
+  }
+
+  /*.show-other-filters {
+    display: block;
+  }*/
+
+  .dropdown-menu.open {
+    width: 113% !important;
+  }
+
+  .individual-listing-container {
+    padding-right: 6%;
+  }
+
+  .mobile-browse-footer {
+    display: block;
+    background-color: #0E1131;
+    height: 60%;
+    margin-right: -17px;
+    padding: 20px;
+    font-family: "AtlasGrotesk-Regular", Helvetica, sans-serif;
+  }
+
+  .results-found {
+    display: none;
+  }
+
+  .sort-by {
+    padding: 0px;
+    padding-left: 7%;
+  }
+
+  .footer-logo {
+    text-align: center;
+    float: none;
+    margin-left: 8%;
+  }
+
+  .footer-logo-img {
+    width: 100%;
+  }
+
+  .footer-address {
+    text-align: center;
+    font-size: 120%;
+    padding-top: 0px;
+  }
+
+  .footer-icons {
+    text-align: center;
+    padding-left: 20%;
+    margin-bottom: 5%;
+    margin-top: 2%;
+  }
+
+  .footer-icon-img {
+    width: 32px;
+    margin-right: 7%;
+  }
+
+  .footer-terms {
+    text-align: center;
+    width: 90%;
+    padding-left: 5%;
+    padding-right: 0px;
+  }
+}

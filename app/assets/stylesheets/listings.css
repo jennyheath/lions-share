@@ -291,3 +291,31 @@
 .terms-copyright {
   color: #7b7b7b;
 }
+
+@media screen and (max-width: 500px) {
+  .listing-show-container {
+    margin: 0px;
+  }
+
+  .listing-img-container {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .broker-box {
+    display: none;
+  }
+
+  .listing-photos {
+    display: none;
+  }
+
+  .listing-show-info {
+    height: auto;
+  }
+
+  .subway-box {
+    width: 100%;
+  }
+}
