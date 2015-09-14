@@ -81,12 +81,16 @@ LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
     var listingLocation = new google.maps.LatLng(this.lat, this.lng);
     var request = {
       location: listingLocation,
-      radius: '804.67',
+      radius: '1609.34',
       types: ['subway_station']
     };
     service = new google.maps.places.PlacesService(this.map);
+    var numStations = 0;
     service.nearbySearch(request, function (results) {
       results.forEach(function (station) {
+        if (numStations > 3) {
+          return;
+        }
         var $stationLi = $('<li>').addClass('subway-station');
         var $stationName = $('<div>').addClass('station-name');
         $stationName.html(station.name);
@@ -102,6 +106,7 @@ LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
         $stationLi.append($('<img>').addClass('walking-man').attr('src', 'assets/walking_man.svg'));
         $stationLi.append($stationDistance);
         $('.subway-list').append($stationLi);
+        numStations += 1;
       }.bind(this));
     }.bind(this));
     $('.subway-box').append($('<div>').addClass('clear'));

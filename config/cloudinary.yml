@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dl1rhzsmu
+  api_key: '638362255665497'
+  api_secret: yDU49rKJeIwaCJRmbSIkPtWcdpw
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dl1rhzsmu
+  api_key: '638362255665497'
+  api_secret: yDU49rKJeIwaCJRmbSIkPtWcdpw
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dl1rhzsmu
+  api_key: '638362255665497'
+  api_secret: yDU49rKJeIwaCJRmbSIkPtWcdpw
+  enhance_image_tag: true
+  static_image_support: false

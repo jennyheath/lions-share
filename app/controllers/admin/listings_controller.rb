@@ -1,3 +1,5 @@
+require 'cloudinary'
+
 class Admin::ListingsController < ApplicationController
   before_action :require_signed_in!
 
@@ -7,8 +9,22 @@ class Admin::ListingsController < ApplicationController
 
   def create
     @listing = Listing.new(listing_params)
+    @listing.address = params[:street_address] + ", " + params[:city] + ", NY " + params[:zip]
+    @listing.featured = false if !params[:listing][:featured]
+    @listing.exclusive = false if !params[:listing][:exclusive]
+    @listing.no_fee = false if !params[:listing][:no_fee]
+
+    @listing.main_photo_url = "http://res.cloudinary.com/" +
+                              ENV['cloud_name'] + "/" + params[:image]
+
     @broker = Broker.find(params[:listing][:broker])
     @listing.brokers << @broker
+
+    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_1])
+    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_2])
+    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_3])
+    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_4])
+    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_5])
 
     if @listing.save
       render :saved

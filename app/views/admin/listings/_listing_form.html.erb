@@ -1,6 +1,7 @@
 <% action = (action_type == :new) ? admin_listings_url : admin_listing_url(listing) %>
 <% method = (action_type == :new) ? :post : :patch %>
 <% button_text = (action_type == :new) ? "Create Listing" : "Update Listing"%>
+<% address = (action_type == :new) ? listing.address : "" %>
 
 <%= render 'shared/errors' %>
 
@@ -30,10 +31,20 @@
   </label>
   <br>
 
-  <label>Address:
-    <input type="text" value="<%= listing.address %>" name="listing[address]">
+  <label>Street Address:
+    <input type="text" value="<%= address %>" name="street_address">
   </label>
   <br>
+  <% if (action_type == :new) %>
+    <label>City (i.e. Brooklyn):
+      <input type="text" value="" name="city">
+    </label>
+    <br>
+    <label>Zipcode:
+      <input type="text" value="" name="zip">
+    </label>
+    <br>
+  <% end %>
 
   <label>Description:
     <textarea name="listing[description]"><%= listing.description %></textarea>
@@ -163,16 +174,28 @@
 
   <p>Broker:</p>
   <br>
-    <% Broker.all.each do |broker| %>
-    <input
-      type="radio"
-      name="listing[broker]"
-      value="<%= broker.id %>"
-      id="listing_broker"
-      <%= listing.brokers[0] == broker ? "checked" : "" %>>
-    <label for="listing_broker"><%= broker.first_name %> <%= broker.last_name %></label>
-    <br>
-    <% end %>
+  <% Broker.all.each do |broker| %>
+  <input
+    type="radio"
+    name="listing[broker]"
+    value="<%= broker.id %>"
+    id="listing_broker"
+    <%= listing.brokers[0] == broker ? "checked" : "" %>>
+  <label for="listing_broker"><%= broker.first_name %> <%= broker.last_name %></label>
+  <br>
+  <% end %>
+
+  <p>Main Photo:</p>
+  <%= cl_image_upload_tag(:image) %>
+  <span class="preview"></span>
+  <div class="image_public_id"></div>
+
+  <p>Additional Photos:</p>
+  <%= cl_image_upload_tag(:image_1) %>
+  <%= cl_image_upload_tag(:image_2) %>
+  <%= cl_image_upload_tag(:image_3) %>
+  <%= cl_image_upload_tag(:image_4) %>
+  <%= cl_image_upload_tag(:image_5) %>
 
   <input type="submit" value="<%= button_text %>">
   <% if action_type == :edit %>

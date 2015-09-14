@@ -3,9 +3,9 @@
 }
 
 .modal-dialog {
-  margin-top: 8%;
-  width: 35%;
-  height: 70%;
+  margin-top: 6%;
+  width: 30%;
+  height: 80%;
   overflow: hidden;
 }
 
@@ -53,21 +53,56 @@ button.close {
   margin-top: 2%;
 }
 
+.broker-modal-email {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
 .message-box {
   margin-top: 6%;
   margin-left: 5%;
 }
 
+.email-message{
+  width: 95%;
+  padding: 4%;
+  margin-top: 4%;
+  margin-bottom: 4%;
+  border: none;
+  resize: none;
+  background-color: #f2f2f2;
+  font-size: 91%;
+}
+
+.return-email {
+  width: 95%;
+  padding: 3%;
+  font-size: 91%;
+  border: none;
+  background-color: #f2f2f2;
+}
+
+.submit-email {
+  width: 95%;
+  padding: 3%;
+  border: 3px solid #e0cf97;
+  background-color: transparent;
+  color: #c1a02f;
+  font-size: 91%;
+}
+
 .see-broker-list {
   text-align: center;
   color: #131647;
-  margin: 5%;
+  margin: 4%;
   font-family: "AtlasGrotesk-Medium", Helvetica, sans-serif;
+  font-size: 91%;
 }
 
 .broker-modal-list {
   overflow: scroll;
   height: 89%;
+  padding-bottom: 23%;
 }
 
 .broker-list-img {
@@ -79,7 +114,39 @@ button.close {
   float: left;
 }
 
+.checkmark {
+  width: 25px;
+  margin: 9%;
+  margin-left: 15%;
+}
+
 .choose-broker {
   width: 100%;
   border-bottom: 2px solid #f2f2f2;
+}
+
+.choose-broker:last-child {
+  border: none;
+}
+
+.selected-agent {
+  background-color: #e0cf97;
+}
+
+.select-agent-container {
+  height: 15%;
+  z-index: 100;
+  position: absolute;
+  bottom: 0px;
+  background-color: #fff;
+  width: 100%;
+}
+
+.select-agent {
+  margin: 5%;
+  padding: 3%;
+  border: 3px solid #e0cf97;
+  font-size: 91%;
+  color: #c1a02f;
+  text-align: center;
 }
