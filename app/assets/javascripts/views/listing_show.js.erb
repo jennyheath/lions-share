@@ -60,6 +60,7 @@ LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
   },
 
   brokerModal: function (event) {
+    jQuery.noConflict();
     $('#brokerModal').modal('show');
     this.addBrokerSubview(this.listing.get('brokers')[0]);
     this.attachSubviews();
@@ -77,15 +78,20 @@ LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
   },
 
   getSubways: function () {
-    var view = this;
+    // EXPERIMENTAL CODE
+      // this.subwayLatLngs = [];
+      // this.mouseEvents = [];
+    // EXPERIMENTAL CODE
     var listingLocation = new google.maps.LatLng(this.lat, this.lng);
     var request = {
       location: listingLocation,
       radius: '1609.34',
-      types: ['subway_station']
+      types: ['subway_station'],
     };
+
     service = new google.maps.places.PlacesService(this.map);
     var numStations = 0;
+
     service.nearbySearch(request, function (results) {
       results.forEach(function (station) {
         if (numStations > 3) {
@@ -107,10 +113,36 @@ LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
         $stationLi.append($stationDistance);
         $('.subway-list').append($stationLi);
         numStations += 1;
+
+        // EXPERIMENTAL CODE
+          // var stationLoc = new google.maps.LatLng(station.geometry.location.H, station.geometry.location.L);
+          // this.subwayLatLngs.push(stationLoc);
+          // var mouseEvent = {
+          //   stop: null,
+          //   latLng: stationLoc
+          // }
+          // google.maps.event.trigger(this.map, 'click', mouseEvent);
+          // // var icon = $('.renderable-component-icon');
+          // this.mouseEvents.push(mouseEvent);
+        // EXPERIMENTAL CODE
       }.bind(this));
+      // this.clickStations();
     }.bind(this));
     $('.subway-box').append($('<div>').addClass('clear'));
   },
+
+  // EXPERIMENTAL CODE
+    // clickStations: function () {
+    //   // console.log(this.subwayLatLngs);
+    //   var f = this.subwayLatLngs[0];
+    //   var mev = {
+    //     stop: null,
+    //     latLng: f
+    //   }
+    //
+    //   google.maps.event.trigger(this.map, 'click', mev);
+    // },
+  // EXPERIMENTAL CODE
 
   showPhotos: function (event) {
     $(event.target.nextElementSibling).addClass('show-photos');

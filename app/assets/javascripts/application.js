@@ -13,10 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.serializeJSON
+//= require bootstrap
 //= require underscore
 //= require backbone
-//= require underscore
-//= require bootstrap-multiselect
 //= require lions_share
 //= require_tree ../templates
 //= require_tree ./models
