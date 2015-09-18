@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   # get '/sales' => 'listings#sales'
 
   # This is where I've set up the routes for the /admin/... pages
+  get 'admin' => 'admin/sessions#new'
+
   namespace :admin do
     # Directs /admin/listings/* to Admin::ListingsController
     # (app/controllers/admin/listings_controller.rb)
