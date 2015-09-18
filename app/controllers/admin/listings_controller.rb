@@ -67,8 +67,8 @@ class Admin::ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     @listing.destroy
     flash[:notice] = ["Listing deleted"]
-    @listing = Listing.new
-    render :new
+    @listings = Listing.all
+    render :index
   end
 
   private

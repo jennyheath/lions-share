@@ -1,0 +1,16 @@
+<div class="admin-index">
+  <h2 class="admin-index-title">All Brokers</h2>
+  <div class="admin-listings">
+    <% @brokers.each do |broker| %>
+      <p class="admin-listing">
+        <%= broker.first_name %> <%= broker.last_name %>
+        <a class="admin-edit-link" href="/admin/brokers/<%=broker.id%>/edit">[Edit broker information]</a>
+      </p>
+    <% end %>
+  </div>
+  <div class="admin-index-footer">
+    <a href="/admin/brokers/new">Add a new broker</a>
+    <br><br>
+    <a href="/admin/listings">Back to listings</a>
+  </div>
+</div>

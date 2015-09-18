@@ -1,0 +1,52 @@
+<% action = (action_type == :new) ? admin_brokers_url : admin_broker_url(broker) %>
+<% method = (action_type == :new) ? :post : :patch %>
+<% button_text = (action_type == :new) ? "Create Broker" : "Update Broker"%>
+
+<%= render 'shared/errors' %>
+
+<form class="admin-form" action="<%= action %>" method="POST">
+  <input type="hidden" name="_method" value="<%= method %>">
+  <%= auth_token %>
+  <br>
+  <br>
+  <label>First Name:
+    <input class="text-input" type="text" value="<%= broker.first_name %>" name="broker[first_name]">
+  </label>
+  <br>
+  <br>
+  <label>Last Name:
+    <input class="text-input" type="text" value="<%= broker.last_name %>" name="broker[last_name]">
+  </label>
+  <br>
+  <br>
+  <label>Title:
+    <% title = (broker.title == nil) ? "" : broker.title %>
+    <input class="text-input" type="text" value="<%= title %>" name="broker[title]">
+  </label>
+  <br>
+  <br>
+  <label>Email:
+    <input class="text-input" type="text" value="<%= broker.email %>" name="broker[email]">
+  </label>
+  <br>
+  <br>
+  <label>Phone:
+    <input class="text-input" type="text" value="<%= broker.phone %>" name="broker[phone]">
+  </label>
+  <br>
+  <br>
+
+  <p>Photo:</p>
+  <%= cl_image_upload_tag(:image) %>
+  <span class="preview"></span>
+  <div class="image_public_id"></div>
+  <br><br>
+
+  <input type="submit" value="<%= button_text %>">
+  <% if action_type == :edit %>
+  <%= link_to "Delete Broker", admin_broker_url(broker), method: :delete, class: 'btn' %>
+  <% end %>
+</form>
+
+<br>
+<a class="back-to-listings" href="/admin/brokers">Back to brokers</a>

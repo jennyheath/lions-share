@@ -193,7 +193,7 @@
   <span class="preview"></span>
   <div class="image_public_id"></div>
   <br><br>
-  
+
   <p>Additional Photos:</p>
   <%= cl_image_upload_tag(:image_1) %>
   <%= cl_image_upload_tag(:image_2) %>
@@ -207,3 +207,6 @@
   <%= link_to "Delete Listing", admin_listing_url(listing), method: :delete, class: 'btn' %>
   <% end %>
 </form>
+
+<br>
+<a class="back-to-listings" href="/admin/listings">Back to Listings</a>
