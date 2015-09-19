@@ -9,9 +9,17 @@
     <h2 class="listing-neighborhood"><%= listing.escape('neighborhood') %></h2>
     <p class="listing-description"><%= listing.escape('description') %></p>
     <ul class="listing-amenities">
-      <% listing.get('amenities').forEach(function (amenity) { %>
-        <li><%=  amenity.name %></li>
+      <% var amenities = listing.get('amenities') %>
+      <% var unique = [] %>
+      <% amenities.forEach(function (amenity) { %>
+        <% var name = amenity.name %>
+        <% if (unique.indexOf(amenity.name) === -1) { %>
+          <% unique.push(name) %>
+        <% } %>
       <%  }) %>
+      <% unique.forEach(function (amenity) { %>
+        <li><%= amenity %></li>
+      <% }) %>
     </ul>
     <div class="broker-box">
       <% var first_broker = listing.get('brokers')[0] %>
