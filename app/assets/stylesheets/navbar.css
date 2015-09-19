@@ -1,3 +1,11 @@
+.navbar-header {
+  width: 39%;
+}
+
+.navbar-brand, .navbar-brand img {
+  width: 100%;
+}
+
 .navbar-fixed-top {
   color: #ffffff;
   border-bottom: solid #f2f2f2 .2em;
@@ -21,7 +29,6 @@
 
 /*need to do a media query to keep this in the navbar at smaller screen sizes*/
 .navbar-brand img {
-  width: 52%;
   height: auto;
 }
 
@@ -71,10 +78,14 @@
 }
 
 @media screen and (max-width: 500px) {
+  .navbar-header {
+    width: 100%;
+  }
+
   .navbar-brand {
-    padding: 5%;
+    padding: 4%;
     padding-left: 2%;
-    width: 80%;
+    width: 71%;
   }
 
   .navbar-brand img {
@@ -82,7 +93,7 @@
   }
 
   .navbar-toggle {
-    margin-right: 6%;
+    margin-right: 0px;
     margin-top: 3%;
   }
 

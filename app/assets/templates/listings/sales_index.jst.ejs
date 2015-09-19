@@ -18,7 +18,6 @@
               </div>
             </div>
           </div>
-          <div class="show-other-filters">+</div>
           <div class="bed-filter filter-dropdown col-xs-2 col-sm-2 col-md-2 col-lg-2">
             <div class="stay-open dropdown form-control filterby by_bed">
               <div class="stay-open toggle-dropdown">Beds <span class="stay-open caret"></span></div>
@@ -61,6 +60,9 @@
             </div>
             </div>
           </div>
+        </div>
+        <div class="show-other-filters">
+          <p class="plus-sign">+</p>
         </div>
         <div class="clear"></div>
       </div>
@@ -119,20 +121,39 @@
 <script>
   // media query event handler
   if (matchMedia) {
-  var mq = window.matchMedia("(min-width: 500px)");
-  mq.addListener(WidthChange);
-  WidthChange(mq);
+    var mq = window.matchMedia("(min-width: 500px)");
+    mq.addListener(WidthChange);
+    WidthChange(mq);
   }
+
+  $(document).ready(function () {
+    if (window.matchMedia("(min-width: 500px)").matches) {
+      // debugger;
+    } else {
+      $('.bed-filter').addClass('hide-filter');
+      $('.price-filter').addClass('hide-filter');
+      $('.amenity-filter').addClass('hide-filter');
+    }
+  });
 
   // media query change
   function WidthChange(mq) {
     window.removeEventListener(WidthChange);
     if (mq.matches) {
-      // $('.bed-filter').addClass('hide-filter');
-      // $('.price-filter').addClass('hide-filter');
-      // $('.amenity-filter').addClass('hide-filter');
+      $('.bed-filter').addClass('hide-filter');
+      $('.price-filter').addClass('hide-filter');
+      $('.amenity-filter').addClass('hide-filter');
     }
     else {
     }
   }
+
+  $('.show-other-filters').on('click', function () {
+    $('.show-other-filters').css('display', 'none');
+    $('.plus-sign').css('display', 'none');
+
+    $('.bed-filter').removeClass('hide-filter');
+    $('.price-filter').removeClass('hide-filter');
+    $('.amenity-filter').removeClass('hide-filter');
+  })
 </script>

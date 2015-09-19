@@ -319,6 +319,10 @@ p.exclusive-tag, p.no-fee-tag {
   display: none;
 }
 
+.show-other-filters {
+  display: none;
+}
+
 @media screen and (max-width: 500px) {
   .clear-all-container {
     display: none;
@@ -343,9 +347,23 @@ p.exclusive-tag, p.no-fee-tag {
     display: none;
   }
 
-  /*.show-other-filters {
-    display: block;
-  }*/
+  .show-other-filters {
+    width: 10%;
+    margin-right: 3.5%;
+    float: right;
+    text-align: center;
+    margin-top: 1.5%;
+    background-color: #fff;
+    margin-bottom: 2%;
+    right: 0px;
+    display: table;
+  }
+
+  .plus-sign {
+    display: table-cell;
+    font-size: 33px;
+    color: #C1A02F;
+  }
 
   .dropdown-menu.open {
     width: 113% !important;
@@ -371,6 +389,14 @@ p.exclusive-tag, p.no-fee-tag {
   .sort-by {
     padding: 0px;
     padding-left: 7%;
+  }
+
+  .sort-by-buttons {
+    width: 60%;
+  }
+
+  .sort-by-border {
+    width: 47%;
   }
 
   .footer-logo {
