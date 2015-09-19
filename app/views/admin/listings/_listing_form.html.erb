@@ -210,3 +210,13 @@
 
 <br>
 <a class="back-to-listings" href="/admin/listings">Back to Listings</a>
+
+<script src='/assets/jquery.cloudinary.js' type='text/javascript'></script>
+<script>
+  // window.onload = function () {
+  $(document).ready(function () {
+    $('.cloudinary-fileupload').cloudinary_fileupload({
+      replaceFileInput: false
+    });
+  });
+</script>

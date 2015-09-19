@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.serializeJSON
+//= require cloudinary
 //= require bootstrap
 //= require underscore
 //= require backbone
@@ -23,5 +24,4 @@
 //= require_tree ./utils
 //= require_tree ./views
 //= require_tree ./routers
-//= require cloudinary
 //= require_tree .
