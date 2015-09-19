@@ -155,12 +155,13 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
           null,
           new google.maps.Size(30, 40)
         );
-        var LatLng = {lat: marker.position.H,
-                      lng: marker.position.L};
-        console.log(LatLng);
-        console.log(marker);
+        // var LatLng = {lat: marker.position.H,
+        //               lng: marker.position.L};
+        // console.log(LatLng);
+        // console.log(marker);
+        // debugger;
         var marker = new google.maps.Marker({
-          position: LatLng,
+          position: marker.position,
           map: view.map,
           icon: pinIcon
         });
