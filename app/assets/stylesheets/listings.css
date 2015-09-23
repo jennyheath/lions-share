@@ -119,13 +119,23 @@
   font-family: "AtlasGrotesk-Medium", sans-serif;
 }
 
-.contact-button {
+.contact-button, .view-photos-button {
   width: 157px;
   height: 51px;
   background-color: transparent;
   border: 2px solid #e0cf97;
   color: #c1a02f;
   float: right;
+}
+
+.view-photos-button {
+  float: none;
+}
+
+.contact-button:hover, .view-photos-button:hover {
+  border: none;
+  background-color: #c1a02f;
+  color: #fff;
 }
 
 .listing-photos {

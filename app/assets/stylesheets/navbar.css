@@ -53,7 +53,7 @@
 }
 
 .nav-link-border:hover > .nav-link {
-  font-family: "AtlasGrotesk-Medium" !important;
+  /*font-family: "AtlasGrotesk-Medium" !important;*/
 }
 
 .nav-link-border a {
