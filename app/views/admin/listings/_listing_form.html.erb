@@ -174,6 +174,77 @@
     <%= 'checked="true"' if listing.exclusive %>>
   </label>
   <br>
+  <br>
+
+  <p>Amenities:</p>
+    <input type="checkbox" name="listing[highceilings]"
+    <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'High Ceilings'").first) %>>
+    <label>High Ceilings</label>
+    <br>
+    <input type="checkbox" name="listing[luxuries]"
+    <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'Luxuries'").first) %>>
+    <label>Luxuries</label>
+    <br>
+    <input type="checkbox" name="listing[skylineview]"
+    <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'Skyline view'").first) %>>
+    <label>Skyline view</label>
+    <br>
+    <input type="checkbox" name="listing[elevator]"
+    <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'Elevator'").first) %>>
+    <label>Elevator</label>
+    <br>
+    <input type="checkbox" name="listing[granitecountertops]"
+    <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'Granite countertops'").first) %>>
+    <label>Granite countertops</label>
+    <br>
+    <input type="checkbox" name="listing[sharedbackyard]"
+    <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'Shared backyard'").first) %>>
+    <label>Shared backyard</label>
+    <br>
+    <input type="checkbox" name="listing[dishwasher]"
+    <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'Dishwasher'").first) %>>
+    <label>Dishwasher</label>
+    <br>
+    <input type="checkbox" name="listing[eatinkitchen]"
+    <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'Eat In Kitchen'").first) %>>
+    <label>Eat In Kitchen</label>
+    <br>
+    <input type="checkbox" name="listing[allpetsok]"
+    <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'All pets ok'").first) %>>
+    <label>All pets ok</label>
+    <br>
+    <input type="checkbox" name="listing[laundryinbuilding]"
+    <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'Laundry In building'").first) %>>
+    <label>Laundry In building</label>
+    <br>
+    <input type="checkbox" name="listing[zipcar]"
+    <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'Zipcar'").first) %>>
+    <label>Zipcar</label>
+    <br>
+    <input type="checkbox" name="listing[hardwoodfloors]"
+    <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'Hardwood floors'").first) %>>
+    <label>Hardwood floors</label>
+    <br>
+    <input type="checkbox" name="listing[roofdeck]"
+    <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'RoofDeck'").first) %>>
+    <label>RoofDeck</label>
+    <br>
+    <input type="checkbox" name="listing[roofaccess]"
+    <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'Roof access'").first) %>>
+    <label>Roof access</label>
+    <br>
+    <input type="checkbox" name="listing[stainlessteelappliances]"
+    <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'Stainless Steel Appliances'").first) %>>
+    <label>Stainless Steel Appliances</label>
+    <br>
+    <input type="checkbox" name="listing[outdoorspace]"
+    <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'Outdoor Space'").first) %>>
+    <label>Outdoor Space</label>
+    <br>
+    <input type="checkbox" name="listing[videointercom]"
+    <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'Video Intercom'").first) %>>
+    <label>Video Intercom</label>
+  <br><br>
 
   <p>Broker:</p>
   <% Broker.all.each do |broker| %>
@@ -200,6 +271,12 @@
   <%= cl_image_upload_tag(:image_3) %>
   <%= cl_image_upload_tag(:image_4) %>
   <%= cl_image_upload_tag(:image_5) %>
+  <%= cl_image_upload_tag(:image_5) %>
+  <%= cl_image_upload_tag(:image_6) %>
+  <%= cl_image_upload_tag(:image_7) %>
+  <%= cl_image_upload_tag(:image_8) %>
+  <%= cl_image_upload_tag(:image_9) %>
+  <%= cl_image_upload_tag(:image_10) %>
   <br><br>
 
   <input type="submit" value="<%= button_text %>">

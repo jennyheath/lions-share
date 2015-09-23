@@ -20,11 +20,69 @@ class Admin::ListingsController < ApplicationController
     @broker = Broker.find(params[:listing][:broker])
     @listing.brokers << @broker
 
+    @listing.amenities = []
+    if params[:listing][:highceilings]
+      @listing.amenities << Amenity.find_by_name('High Ceilings')
+    end
+    if params[:listing][:luxuries]
+      @listing.amenities << Amenity.find_by_name('Luxuries')
+    end
+    if params[:listing][:skylineview]
+      @listing.amenities << Amenity.find_by_name('Skyline view')
+    end
+    if params[:listing][:elevator]
+      @listing.amenities << Amenity.find_by_name('Elevator')
+    end
+    if params[:listing][:granitecountertops]
+      @listing.amenities << Amenity.find_by_name('Granite countertops')
+    end
+    if params[:listing][:sharedbackyard]
+      @listing.amenities << Amenity.find_by_name('Shared backyard')
+    end
+    if params[:listing][:dishwasher]
+      @listing.amenities << Amenity.find_by_name('Dishwasher')
+    end
+    if params[:listing][:eatinkitchen]
+      @listing.amenities << Amenity.find_by_name('Eat In Kitchen')
+    end
+    if params[:listing][:allpetsok]
+      @listing.amenities << Amenity.find_by_name('All pets ok')
+    end
+    if params[:listing][:laundryinbuilding]
+      @listing.amenities << Amenity.find_by_name('Laundry In building')
+    end
+    if params[:listing][:zipcar]
+      @listing.amenities << Amenity.find_by_name('Zipcar')
+    end
+    if params[:listing][:hardwoodfloors]
+      @listing.amenities << Amenity.find_by_name('Hardwood floors')
+    end
+    if params[:listing][:roofdeck]
+      @listing.amenities << Amenity.find_by_name('RoofDeck')
+    end
+    if params[:listing][:roofaccess]
+      @listing.amenities << Amenity.find_by_name('Roof access')
+    end
+    if params[:listing][:stainlessteelappliances]
+      @listing.amenities << Amenity.find_by_name('Stainless Steel Appliances')
+    end
+    if params[:listing][:outdoorspace]
+      @listing.amenities << Amenity.find_by_name('Outdoor Space<')
+    end
+    if params[:listing][:videointercom]
+      @listing.amenities << Amenity.find_by_name('Video Intercom')
+    end
+
     @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_1])
     @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_2])
     @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_3])
     @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_4])
     @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_5])
+    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_6])
+    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_7])
+    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_8])
+    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_9])
+    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_10])
 
     if @listing.save
       render :saved
@@ -54,6 +112,59 @@ class Admin::ListingsController < ApplicationController
     @listing.brokers = []
     @broker = Broker.find(params[:listing][:broker])
     @listing.brokers << @broker
+
+    @listing.amenities = []
+    if params[:listing][:highceilings]
+      @listing.amenities << Amenity.find_by_name('High Ceilings')
+    end
+    if params[:listing][:luxuries]
+      @listing.amenities << Amenity.find_by_name('Luxuries')
+    end
+    if params[:listing][:skylineview]
+      @listing.amenities << Amenity.find_by_name('Skyline view')
+    end
+    if params[:listing][:elevator]
+      @listing.amenities << Amenity.find_by_name('Elevator')
+    end
+    if params[:listing][:granitecountertops]
+      @listing.amenities << Amenity.find_by_name('Granite countertops')
+    end
+    if params[:listing][:sharedbackyard]
+      @listing.amenities << Amenity.find_by_name('Shared backyard')
+    end
+    if params[:listing][:dishwasher]
+      @listing.amenities << Amenity.find_by_name('Dishwasher')
+    end
+    if params[:listing][:eatinkitchen]
+      @listing.amenities << Amenity.find_by_name('Eat In Kitchen')
+    end
+    if params[:listing][:allpetsok]
+      @listing.amenities << Amenity.find_by_name('All pets ok')
+    end
+    if params[:listing][:laundryinbuilding]
+      @listing.amenities << Amenity.find_by_name('Laundry In building')
+    end
+    if params[:listing][:zipcar]
+      @listing.amenities << Amenity.find_by_name('Zipcar')
+    end
+    if params[:listing][:hardwoodfloors]
+      @listing.amenities << Amenity.find_by_name('Hardwood floors')
+    end
+    if params[:listing][:roofdeck]
+      @listing.amenities << Amenity.find_by_name('RoofDeck')
+    end
+    if params[:listing][:roofaccess]
+      @listing.amenities << Amenity.find_by_name('Roof access')
+    end
+    if params[:listing][:stainlessteelappliances]
+      @listing.amenities << Amenity.find_by_name('Stainless Steel Appliances')
+    end
+    if params[:listing][:outdoorspace]
+      @listing.amenities << Amenity.find_by_name('Outdoor Space<')
+    end
+    if params[:listing][:videointercom]
+      @listing.amenities << Amenity.find_by_name('Video Intercom')
+    end
 
     if @listing.update_attributes(listing_params)
       render :saved
