@@ -91,6 +91,7 @@ LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
 
     service = new google.maps.places.PlacesService(this.map);
     var numStations = 0;
+    debugger;
 
     service.nearbySearch(request, function (results) {
       results.forEach(function (station) {
@@ -157,6 +158,8 @@ LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
 
     this.$el.html(content);
     this.addMap();
+    var transitLayer = new google.maps.TransitLayer();
+    transitLayer.setMap(this.map);
     return this;
   }
 });
