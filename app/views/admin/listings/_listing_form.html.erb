@@ -24,7 +24,40 @@
   <label for="listing_sale">Sale</label>
   <br>
   <br>
-  <label>Price:
+  <p>Building type (sales only):</p>
+  <input
+    type="radio"
+    name="listing[building_type]"
+    value="Condo"
+    id="condo"
+    <%= listing.building_type == "Condo" ? "checked" : "" %>>
+  <label for="condo">Condo</label>
+  <br>
+  <input
+    type="radio"
+    name="listing[building_type]"
+    value="Co-op"
+    id="co-op"
+    <%= listing.building_type == "Co-op" ? "checked" : "" %>>
+  <label for="co-op">Co-op</label>
+  <input
+    type="radio"
+    name="listing[building_type]"
+    value="House"
+    id="house"
+    <%= listing.building_type == "House" ? "checked" : "" %>>
+  <label for="house">House</label>
+  <br>
+  <input
+    type="radio"
+    name="listing[building_type]"
+    value="Multi-family"
+    id="multi-family"
+    <%= listing.building_type == "Multi-family" ? "checked" : "" %>>
+  <label for="multi-family">Multi-family</label>
+  <br>
+  <br>
+  <label>Price (please omit commas, they will be added automatically):
     <input class="text-input" type="text" value="<%= listing.price %>" name="listing[price]">
   </label>
   <br>
@@ -47,9 +80,23 @@
     <br>
     <br>
   <% end %>
-
+  <br>
+  <label>Yearly Taxes:
+    <input class="text-input" type="text" value="<%= listing.yearly_taxes %>" name="listing[yearly_taxes]">
+  </label>
+  <br>
   <label>Description:
     <textarea class="text-input" name="listing[description]"><%= listing.description %></textarea>
+  </label>
+  <br>
+  <br>
+  <label>Square Footage:
+    <input class="text-input" type="text" value="<%= listing.square_footage %>" name="listing[square_footage]">
+  </label>
+  <br>
+  <br>
+  <label>Lot Square Footage:
+    <input class="text-input" type="text" value="<%= listing.lot_square_footage %>" name="listing[lot_square_footage]">
   </label>
   <br>
   <br>
@@ -258,25 +305,29 @@
   <br>
   <% end %>
   <br><br>
-
+  <p>Floorplan:</p>
+    <%= cl_image_upload_tag(:image) %>
+  <br><br>
   <p>Main Photo:</p>
-  <%= cl_image_upload_tag(:image) %>
-  <span class="preview"></span>
-  <div class="image_public_id"></div>
+    <%= cl_image_upload_tag(:image) %>
+    <span class="preview"></span>
+    <div class="image_public_id"></div>
   <br><br>
 
-  <p>Additional Photos:</p>
-  <%= cl_image_upload_tag(:image_1) %>
-  <%= cl_image_upload_tag(:image_2) %>
-  <%= cl_image_upload_tag(:image_3) %>
-  <%= cl_image_upload_tag(:image_4) %>
-  <%= cl_image_upload_tag(:image_5) %>
-  <%= cl_image_upload_tag(:image_5) %>
-  <%= cl_image_upload_tag(:image_6) %>
-  <%= cl_image_upload_tag(:image_7) %>
-  <%= cl_image_upload_tag(:image_8) %>
-  <%= cl_image_upload_tag(:image_9) %>
-  <%= cl_image_upload_tag(:image_10) %>
+  <% if (action_type == :new) %>
+    <p>Additional Photos:</p>
+    <%= cl_image_upload_tag(:image_1) %>
+    <%= cl_image_upload_tag(:image_2) %>
+    <%= cl_image_upload_tag(:image_3) %>
+    <%= cl_image_upload_tag(:image_4) %>
+    <%= cl_image_upload_tag(:image_5) %>
+    <%= cl_image_upload_tag(:image_5) %>
+    <%= cl_image_upload_tag(:image_6) %>
+    <%= cl_image_upload_tag(:image_7) %>
+    <%= cl_image_upload_tag(:image_8) %>
+    <%= cl_image_upload_tag(:image_9) %>
+    <%= cl_image_upload_tag(:image_10) %>
+  <% end %>
   <br><br>
 
   <input type="submit" value="<%= button_text %>">

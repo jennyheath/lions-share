@@ -21,7 +21,18 @@
       </div>
       <div class="info-wrapper row">
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 price-wrapper">
-          <h2>$<%= listing.price %></h2>
+          <% var priceString = [] %>
+          <% var letters = listing.price.toString().split('') %>
+          <% while (letters.length > 3) { %>
+            <% priceString.push(letters.pop()) %>
+            <% priceString.push(letters.pop()) %>
+            <% priceString.push(letters.pop()) %>
+            <% priceString.push(',') %>
+          <% } %>
+          <% letters.reverse().forEach(function (letter) { %>
+            <% priceString.push(letter) %>
+          <%  }) %>
+          <h2>$<%=  priceString.reverse().join('') %></h2>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 bed-bath-wrapper">
           <p class="info-details"><%= listing.bed_count %> Bed <%= listing.bath_count %> Bath </p>

@@ -67,22 +67,22 @@ class Admin::ListingsController < ApplicationController
       @listing.amenities << Amenity.find_by_name('Stainless Steel Appliances')
     end
     if params[:listing][:outdoorspace]
-      @listing.amenities << Amenity.find_by_name('Outdoor Space<')
+      @listing.amenities << Amenity.find_by_name('Outdoor Space')
     end
     if params[:listing][:videointercom]
       @listing.amenities << Amenity.find_by_name('Video Intercom')
     end
 
-    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_1])
-    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_2])
-    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_3])
-    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_4])
-    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_5])
-    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_6])
-    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_7])
-    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_8])
-    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_9])
-    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_10])
+    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_1]) if params[:image_1]
+    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_2]) if params[:image_2]
+    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_3]) if params[:image_3]
+    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_4]) if params[:image_4]
+    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_5]) if params[:image_5]
+    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_6]) if params[:image_6]
+    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_7]) if params[:image_7]
+    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_8]) if params[:image_8]
+    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_9]) if params[:image_9]
+    @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_10]) if params[:image_10]
 
     if @listing.save
       render :saved

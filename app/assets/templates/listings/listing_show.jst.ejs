@@ -3,11 +3,27 @@
     <img class="listing-main-img" src="<%= listing.escape('main_photo_url') %>">
   </div>
   <div class="listing-show-info group col-xs-10 col-sm-6 col-md-6 col-lg-6">
-    <h1 class="listing-price">$<%= listing.escape('price') %></h1>
-    <h2 class="listing-beds"><%= listing.escape('bed_count') %> Bed</h2>
-    <h2 class="listing-baths"><%= listing.escape('bath_count') %> Bath</h2>
-    <h2 class="listing-neighborhood"><%= listing.escape('neighborhood') %></h2>
+    <% function commaSeparateNumber(val){ %>
+      <% while (/(\d+)(\d{3})/.test(val.toString())){ %>
+        <% val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2'); %>
+      <% } %>
+      <% return val; %>
+    <% } %>
+    <h1 class="listing-price">$<%= commaSeparateNumber(listing.escape('price')) %></h1>
+    <abbr class="timeago" title="<%= listing.escape('updated_at') %>"></abbr>
+    <div class="bed-bath-neighborhood">
+      <h2 class="listing-beds"><%= listing.escape('bed_count') %> Bed</h2>
+      <h2 class="listing-baths"><%= listing.escape('bath_count') %> Bath</h2>
+      <% if (listing.escape('type_of') == "Sale") { %>
+        <div class="listing-buildingtype"><%= listing.escape('building_type') %></div>
+      <% } %>
+      <h2 class="listing-neighborhood"><%= listing.escape('neighborhood') %></h2>
+    </div>
     <p class="listing-description"><%= listing.escape('description') %></p>
+    <div class="lot-info">Sq Ft: <%= commaSeparateNumber(listing.escape('square_footage')) %> sqft</div>
+    <div class="lot-info">Yearly Taxes: $<%= commaSeparateNumber(listing.escape('yearly_taxes')) %></div>
+    <div class="lot-info">Lot Sq Ft: <%= commaSeparateNumber(listing.escape('square_footage')) %> sqft</div>
+    <div class="lot-info floor-plan">Floorplan</div>
     <ul class="listing-amenities">
       <% var amenities = listing.get('amenities') %>
       <% var unique = [] %>
@@ -39,24 +55,30 @@
     <% var photos = listing.get('photos') %>
     <% for (i = 0; i < 2; i++) { %>
       <div class="listing-photo-container col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <img class="listing-photo" src="<%= photos[i].url %>">
+        <% if (photos[i]) { %>
+          <img class="listing-photo" src="<%= photos[i].url %>">
+        <% } %>
       </div>
     <% } %>
     <% for (i = 2; i < 5; i++) { %>
       <div class="listing-photo-container col-xs-4 col-sm-4 col-md-4 col-lg-4">
-        <img class="listing-photo" src="<%= photos[i].url %>">
+        <% if (photos[i]) { %>
+          <img class="listing-photo" src="<%= photos[i].url %>">
+        <% } %>
       </div>
     <% } %>
-    <div class="view-all">
-      <button class="view-photos-button">View All</button>
-    </div>
-    <div class="hidden-photos">
-      <% for (i = 5; i < photos.length; i++) { %>
-        <div class="listing-photo-container col-xs-4 col-sm-4 col-md-4 col-lg-4">
-          <img class="listing-photo" src="<%= photos[i].url %>">
-        </div>
-      <% } %>
-    </div>
+    <% if (photos.length > 5) { %>
+      <div class="view-all">
+        <button class="view-photos-button">View All</button>
+      </div>
+      <div class="hidden-photos">
+        <% for (i = 5; i < photos.length; i++) { %>
+          <div class="listing-photo-container col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <img class="listing-photo" src="<%= photos[i].url %>">
+          </div>
+        <% } %>
+      </div>
+    <% } %>
     <div class="clear"></div>
   </div>
   <div class="map-container">
@@ -77,7 +99,7 @@
   <div class="listing-footer">
     <div class="footer-top">
       <div class="footer-logo col-xs-10 col-sm-6 col-md-6 col-lg-6">
-        <img class="footer-logo-img" src="https://s3-us-west-1.amazonaws.com/lions-share-pictures/logo-blue.png">
+        <img class="footer-logo-img" src="assets/logo_dark_background.png">
       </div>
       <div class="footer-address col-xs-10 col-sm-6 col-md-6 col-lg-6">
         <div class="address-title">Location</div>
@@ -103,11 +125,24 @@
   </div>
 </div>
 <div class="modal fade" id="brokerModal" tabindex="-1" role="dialog" aria-labelledby="brokerModalLabel">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog broker-modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <div class="broker-contact-info"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="floorplanModal" tabindex="-1" role="dialog" aria-labelledby="brokerModalLabel">
+  <button type="button" class="close close-floorplan" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <div class="modal-dialog floorplan-modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img class="floor-plan-img" src="<%= listing.escape('floor_plan_url') %>">
+        <div class="clear"></div>
       </div>
     </div>
   </div>
@@ -138,4 +173,7 @@
       $('.listing-footer').addClass('mobile-browse-footer');
     }
   }
+  jQuery(document).ready(function() {
+    jQuery("abbr.timeago").timeago();
+  });
 </script>

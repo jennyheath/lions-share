@@ -274,7 +274,7 @@ p.exclusive-tag, p.no-fee-tag {
 }
 
 .exclusive-tag {
-  background-color: #c12f9d;
+  background-color: #18cd82;
 }
 
 .no-fee-tag {
@@ -301,7 +301,7 @@ p.exclusive-tag, p.no-fee-tag {
 
 .price-wrapper h2 {
   font-size: 220%;
-  font-family: 'Lora', serif;
+  font-family: 'Brawler-Regular', serif;
   margin-top: 5px;
   margin-bottom: 20px;
 }

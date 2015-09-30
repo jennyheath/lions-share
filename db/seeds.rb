@@ -44,8 +44,19 @@ end
     address: addresses.pop,
     exclusive: [false, true].sample,
     no_fee: [false, true].sample,
-    main_photo_url: photos.pop
+    main_photo_url: photos.pop,
+    square_footage: [1700, 2000, 3200, 4400].sample,
+    lot_square_footage: [1800, 2000, 2200].sample,
+    yearly_taxes: [2100, 2400].sample,
+    floor_plan_url: "http://res.cloudinary.com/dl1rhzsmu/image/upload/v1443639659/Screen_Shot_2015-09-30_at_12.00.04_PM_wp5yfx.png"
   )
+end
+
+building_types = ["Condo", "Co-op", "House", "Multi-family"]
+
+Listing.where(type_of: "Sale").each do |listing|
+  listing.building_type = building_types.sample
+  listing.save!
 end
 
 amenities = [

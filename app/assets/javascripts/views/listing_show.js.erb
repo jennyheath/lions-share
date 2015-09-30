@@ -4,6 +4,7 @@ LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
   events: {
     'click .view-all': 'showPhotos',
     'click .contact-button': 'brokerModal',
+    'click .floor-plan': 'floorplanModal',
     'click button.close': 'clearModal'
   },
 
@@ -66,6 +67,12 @@ LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
     this.attachSubviews();
   },
 
+  floorplanModal: function (event) {
+    jQuery.noConflict();
+    $('#floorplanModal').modal('show');
+    this.attachSubviews();
+  },
+
   clearModal: function (event) {
     // this.subviews().forEach(function (subview) {
     //   subview.remove();
@@ -91,7 +98,6 @@ LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
 
     service = new google.maps.places.PlacesService(this.map);
     var numStations = 0;
-    debugger;
 
     service.nearbySearch(request, function (results) {
       results.forEach(function (station) {
@@ -146,7 +152,8 @@ LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
   // EXPERIMENTAL CODE
 
   showPhotos: function (event) {
-    $(event.target.nextElementSibling).addClass('show-photos');
+    // $(event.target.nextElementSibling).addClass('show-photos');
+    $('.hidden-photos').addClass('show-photos');
     $(event.target).addClass('hide-text');
   },
 

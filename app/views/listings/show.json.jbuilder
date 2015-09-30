@@ -6,6 +6,11 @@ json.neighborhood @listing.neighborhood
 json.featured @listing.featured
 json.address @listing.address
 json.description @listing.description
+json.square_footage @listing.square_footage
+json.lot_square_footage @listing.lot_square_footage
+json.yearly_taxes @listing.yearly_taxes
+json.floor_plan_url @listing.floor_plan_url
+json.building_type @listing.building_type
 json.exclusive @listing.exclusive
 json.no_fee @listing.no_fee
 json.main_photo_url @listing.main_photo_url
