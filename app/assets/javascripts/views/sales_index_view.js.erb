@@ -173,6 +173,7 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
     var beds = [];
     var price_range = []
     var amenities = [];
+    var building_types = [];
     var no_fee = false;
 
     // get currently selected filters
@@ -185,6 +186,8 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
         amenities.push($.trim($(filter).parent().text()));
       } else if ($(filter).hasClass("fee-box")) {
         no_fee = true;
+      } else if ($(filter).hasClass("building-checkbox")) {
+        building_types.push($.trim($(filter).parent().text()));
       }
     });
     var min_price = $('.price-min').val();
@@ -202,7 +205,8 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
               bed_params: beds,
               price_params: price_range,
               no_fee_params: no_fee,
-              amenity_params: amenities
+              amenity_params: amenities,
+              building_params: building_types
             },
       success: function () {
         var num_results = 0;

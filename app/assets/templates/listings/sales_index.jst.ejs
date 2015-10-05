@@ -43,7 +43,22 @@
                   <input class="stay-open fee-box" type="checkbox">No Fee
                 </div>
             </div>
+          </div>
+          <div class="building-type-filter filter-dropdown col-xs-5 col-sm-5 col-md-5 col-lg-5">
+            <div class="stay-open dropdown form-control filterby by_building_type">
+              <div class="stay-open toggle-dropdown">Building Type <span class="stay-open caret"></span></div>
+              <div class="stay-open dropdown-menu">
+                <ul class="stay-open filter-list building-type-column">
+                  <% listings.first().attributes.building_types.forEach(function (building_type) { %>
+                    <li class="stay-open">
+                      <input class="stay-open building-checkbox" type="checkbox">
+                      <div class="stay-open filter-category"><%= building_type %></div>
+                    </li>
+                  <% }) %>
+                </ul>
+              </div>
             </div>
+          </div>
           <div class="amenity-filter filter-dropdown col-xs-4 col-sm-4 col-md-4 col-lg-4">
             <div class="stay-open dropdown form-control filterby by_amenity">
               <div class="stay-open toggle-dropdown">Amenities <span class="stay-open caret"></span></div>
@@ -67,7 +82,7 @@
         <div class="clear"></div>
       </div>
     </div>
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 clear-all-container">Clear All</div>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 clear-all-container">Clear All</div>
 
 <div class="row content-wrapper">
   <div class="col-sm-7 col-md-7 col-lg-7 sort-matches-container">

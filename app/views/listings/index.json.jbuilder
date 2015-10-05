@@ -27,3 +27,4 @@ end
 json.neighborhoods @neighborhoods
 json.beds @beds
 json.amenities @amenities
+json.building_types @building_types

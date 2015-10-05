@@ -10,6 +10,7 @@ class ListingsController < ApplicationController
       end
     end
     @amenities = amenities.uniq
+    @building_types = Listing.all.uniq.pluck(:building_type).select{ |type| type != nil }
     puts params[:filter_params]
 
     if params[:filter_params]
@@ -32,6 +33,7 @@ class ListingsController < ApplicationController
       price_range = params[:price_params].to_a
       no_fee = params[:no_fee_params]
       amenities = params[:amenity_params].to_a
+      building_types = params[:building_params].to_a
 
       filter_query = ""
       if !neighborhoods.empty?
@@ -57,8 +59,12 @@ class ListingsController < ApplicationController
                           .join(" OR ")
         filter_query += "AND (" + amenities_query + ")" if !amenities.empty?
       end
-
-      query = [sql_str + " " + filter_query] + neighborhoods + beds + amenities
+      if !building_types.empty?
+        buildings_query = (Array.new(building_types.count, "listings.building_type LIKE ?"))
+                          .join(" OR ")
+        filter_query += "AND (" + buildings_query + ")"
+      end
+      query = [sql_str + " " + filter_query] + neighborhoods + beds + amenities + building_types
       @listings = Listing.includes(:amenities).find_by_sql(query).uniq
       render :index
     else
