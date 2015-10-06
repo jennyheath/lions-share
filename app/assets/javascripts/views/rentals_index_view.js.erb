@@ -260,12 +260,35 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
         $(event.target.children[0]).removeClass("caret-reversed");
         $dropdown.removeClass('open');
         $toggle.removeClass('open');
+        // this.updateFilters($dropdown);
       } else {
         $(event.target.children[0]).addClass("caret-reversed");
         $dropdown.addClass('open');
         $toggle.addClass('open');
       }
     }
+  },
+
+  updateFilters: function () {
+    var filterString = "";
+    if ($dropdown.children().children().length !== 0) {
+      $dropdown.children().children().each(function (i, childElement) {
+        if (childElement.id && $(childElement).children()[0].checked) {
+          if (filterString !== "") {
+            filterString += ", "
+            filterString += childElement.id
+          } else {
+            filterString += childElement.id
+          }
+        }
+      });
+    } else {
+      filterString = '$' + $('.price-min').val() + " to $" + $('.price-max').val();
+      $dropdown.siblings().parent().parent().css("width", "160px");
+    }
+    var $caret = $('<span>').addClass("stay-open caret");
+    $dropdown.siblings().text(filterString);
+    $dropdown.siblings().append($caret);
   },
 
   toggleCaret: function (event) {
@@ -277,6 +300,7 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
         $(event.target).removeClass("caret-reversed");
         $dropdown.removeClass('open');
         $toggle.removeClass('open');
+        this.updateFilters($dropdown);
       } else {
         $(event.target).addClass("caret-reversed");
         $dropdown.addClass('open');
