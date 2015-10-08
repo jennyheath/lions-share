@@ -1,0 +1,84 @@
+<div class="about-container row">
+  <div class="about-left-col col-xs-7 col-sm-7 col-md-7 col-lg-7">
+    <h1 class="about-title">We know Brooklyn, <br>inside and out.</h1>
+    <p class="about-info">The Lion's Share, Inc. is a celebrated real estate firm and licensed
+      brokerage located in Brooklyn, New York. Our team of experienced
+      agents cover sales and rentals throughout the borough. We
+      specialize in the neighborhoods of Fort Greene, Clinton Hill,
+      Bed-Stuy, Crown Heights, Prospect Park, Park Slope, Cobble Hill,
+      and Carrol Gardens.
+      <br><br>
+      For more information, please fill the following form and we will get
+      back to you shortly.</p>
+
+    <div class="dropdown email-dropdown">Subject <span class="about-caret caret"></span>
+      <ul class="email-menu dropdown-menu">
+        <li class="subject-item">Rental Inquiry</li>
+        <li class="subject-item">Sales</li>
+        <li class="subject-item">Career Opportunities</li>
+        <li class="subject-item">Other</li>
+      </ul>
+    </div>
+
+    <p class="about-email about-email-title">Message</p>
+    <form class="about-email" action="//formspree.io/lionshareinc@gmail.com" method="POST">
+      <input class="about-subject" type="hidden" name="_subject" value="No subject" />
+      <input class="return-email about-form"
+             type="email"
+             name="_replyto"
+             placeholder="Your email address">
+      <textarea class="email-message about-form"
+                name="message"
+                placeholder="Your message"
+                rows="6"></textarea>
+      <input class="submit-email about-submit about-form" type="submit" value="Send Message">
+    </form>
+  </div>
+  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+    <img class="lion-icon" src="assets/lion_icon.png">
+    <div class="about-subheader">Contact Information</div>
+    <div class="about-contact-info">P: 212 555 2525</div>
+    <div class="about-contact-info">P: 212 663 0329</div>
+    <div class="about-subheader">Office</div>
+    <div class="about-contact-info">115 South Oxford St</div>
+    <div class="about-contact-info">Brooklyn, New York 11217</div>
+    <div class="about-subheader">Career Opportunities</div>
+    <div class="about-contact-info about-email">lionshareinc@gmail.com</div>
+  </div>
+</div>
+
+<script>
+  dropdownListener = function () {
+    $('.email-dropdown').on('click', function () {
+      if ($('.email-menu').hasClass('open')) {
+        $('.email-menu').removeClass('open');
+        $('.about-caret').removeClass('about-caret-reversed');
+      } else {
+        $('.email-menu').addClass('open');
+        $('.about-caret').addClass('about-caret-reversed');
+      }
+    });
+  }
+
+  changeTitleListener = function () {
+    $('.subject-item').on('click', function (event) {
+      event.stopPropagation();
+      var subject = $(event.target).text();
+      $('.about-subject').val(subject);
+
+      var clone = $('.email-dropdown').clone();
+      var children = clone.children().remove();
+      clone.text(subject);
+      clone.append(children);
+      $('.email-dropdown').replaceWith(clone);
+
+      $('.email-menu').removeClass('open');
+      $('.about-caret').removeClass('about-caret-reversed');
+      dropdownListener();
+      changeTitleListener();
+    });
+  }
+
+  dropdownListener();
+  changeTitleListener();
+</script>
