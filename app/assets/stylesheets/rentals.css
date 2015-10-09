@@ -1,6 +1,6 @@
 
 .all-filters {
-  width: 75vw;
+  width: 80vw;
 }
 
 .caret {
@@ -364,7 +364,7 @@ p.exclusive-tag, p.no-fee-tag {
     margin-right: 3.5%;
     float: right;
     text-align: center;
-    margin-top: 1.5%;
+    margin-top: 2%;
     background-color: #fff;
     margin-bottom: 2%;
     right: 0px;
@@ -445,4 +445,35 @@ p.exclusive-tag, p.no-fee-tag {
     padding-left: 5%;
     padding-right: 0px;
   }
+}
+
+.browse-footer {
+  background-color: #0E1131;
+  position: fixed;
+  height: 0px;
+  width: 100vw;
+  bottom: 0px;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.browse-footer-logo {
+  padding-top: 13px;
+}
+
+.browse-copyright {
+  margin-top: 20px;
+}
+
+.footer-hover {
+  background-color: transparent;
+  height: 60px;
+  width: 100vw;
+  position: fixed;
+  bottom: 0px;
+  z-index: 10000;
+}
+
+.footer-hover:hover > .browse-footer {
+  height: 60px;
 }
