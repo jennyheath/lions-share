@@ -79,8 +79,9 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
         id: listing.attributes.id,
         icon: pinIcon
       });
-      marker.addListener('click', function() {
+      marker.addListener('click', function () {
         this.scrollToListing(marker.id);
+        this.highlightPin(null, listing.id);
       }.bind(this));
       this.markers.push(marker);
     }.bind(this));
@@ -141,14 +142,28 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
   },
 
   highlightPin: function (event) {
-    $('.listing-container-hover').removeClass('selected-listing');
-    $listing = $(event.currentTarget);
+    if (this.highlightedPin) {
+      this.unhighlightPin(null, this.highlightedPin);
+    }
+    if (event !== null) {
+      $listing = $(event.currentTarget);
+      $('.listing-container-hover').removeClass('selected-listing');
+      this.halfOpacity = true;
+    } else {
+      var listingId = arguments[1];
+      $listing = $("[data-id='" + listingId + "']");
+    }
     var view = this;
     this.markers.forEach(function (marker) {
       if ($listing.data('id') == marker.id) {
         marker.setMap(null);
 
-        var map_pin_img = "<%= asset_path('map-pin-selected.svg') %>";
+        if (view.halfOpacity === true) {
+          var map_pin_img = "<%= asset_path('map-pin-half.png') %>";
+        } else {
+          var map_pin_img = "<%= asset_path('map-pin-selected.svg') %>";
+        }
+        view.halfOpacity = false;
         var pinIcon = new google.maps.MarkerImage(
           map_pin_img,
           null,
@@ -310,7 +325,13 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
   },
 
   unhighlightPin: function (event) {
-    $listing = $(event.currentTarget);
+    if (event !== null) {
+      $listing = $(event.currentTarget);
+    } else {
+      var marker = arguments[1];
+      this.highlightedPin.setMap(null);
+      marker.setMap(this.map);
+    }
     var view = this;
     this.markers.forEach(function (marker) {
       if ($listing.data('id') == marker.id) {
@@ -321,6 +342,7 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
   },
 
   scrollToListing: function (listingId) {
+    $('.listing-container-hover').removeClass('selected-listing');
     $('.individual-listing-container').each(function (i, listing) {
       if (listing.getAttribute('data-id') == listingId) {
         var scrollPos = $(listing).offset();
