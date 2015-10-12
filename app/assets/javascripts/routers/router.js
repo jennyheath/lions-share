@@ -7,7 +7,14 @@ LionsShare.Routers.Router = Backbone.Router.extend({
     '': 'welcome',
     'sales': 'salesIndexView',
     'rentals': 'rentalsIndexView',
-    'listings/:id': 'listingShow'
+    'listings/:id': 'listingShow',
+    'about_us': 'aboutUs'
+  },
+
+  aboutUs: function () {
+    var view = new LionsShare.Views.AboutUs();
+    
+    this._swapView(view);
   },
 
   listingShow: function (id) {

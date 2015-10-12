@@ -1,3 +1,7 @@
+.about-email > a {
+  color: inherit;
+}
+
 .about-container {
   margin-top: 70px;
   padding: 70px;
@@ -25,7 +29,7 @@
 
 .email-dropdown {
   padding: 2%;
-  width: 35%;
+  width: 40%;
   border: 1px solid #b1b1b1;
   font-family: "AtlasGrotesk-Regular", sans-serif;
 }
@@ -84,6 +88,12 @@
 .about-submit {
   font-size: 103% !important;
   padding: 2%;
+}
+
+.about-submit:hover {
+  background-color: #c1a02f;
+  color: #fff;
+  border: 3px solid #c1a02f;
 }
 
 .about-form {

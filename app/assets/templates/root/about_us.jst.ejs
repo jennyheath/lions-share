@@ -43,7 +43,9 @@
     <div class="about-contact-info">115 South Oxford St</div>
     <div class="about-contact-info">Brooklyn, New York 11217</div>
     <div class="about-subheader">Career Opportunities</div>
-    <div class="about-contact-info about-email">lionshareinc@gmail.com</div>
+    <div class="about-contact-info about-email">
+      <a href="mailto:lionshareinc@gmail.com">lionshareinc@gmail.com</a>
+    </div>
   </div>
 </div>
 
@@ -61,47 +63,47 @@
     <div class="clear"></div>
   </div>
   <div class="footer-bottom">
-    <div class="footer-icons col-xs-10 col-sm-6 col-md-6 col-lg-6">
-      <a class="terms-link" href="#">Terms & Conditions and Privacy Policy</a>
-    </div>
-    <div class="footer-terms col-xs-10 col-sm-6 col-md-6 col-lg-6">
-      <p class="terms-copyright">&#169; The Lion's Share, Inc. All Rights Reserved. 2015</p>
-    </div>
-    <div class="clear"></div>
+  <div class="footer-icons col-xs-10 col-sm-6 col-md-6 col-lg-6">
+    <a class="terms-link" href="#">Terms & Conditions and Privacy Policy</a>
+  </div>
+  <div class="footer-terms col-xs-10 col-sm-6 col-md-6 col-lg-6">
+    <p class="terms-copyright">&#169; The Lion's Share, Inc. All Rights Reserved. 2015</p>
+  </div>
+  <div class="clear"></div>
   </div>
   <div class="clear"></div>
 </div>
 
 <script>
   dropdownListener = function () {
-    $('.email-dropdown').on('click', function () {
-      if ($('.email-menu').hasClass('open')) {
-        $('.email-menu').removeClass('open');
-        $('.about-caret').removeClass('about-caret-reversed');
-      } else {
-        $('.email-menu').addClass('open');
-        $('.about-caret').addClass('about-caret-reversed');
-      }
-    });
+  $('.email-dropdown').on('click', function () {
+    if ($('.email-menu').hasClass('open')) {
+      $('.email-menu').removeClass('open');
+      $('.about-caret').removeClass('about-caret-reversed');
+    } else {
+      $('.email-menu').addClass('open');
+      $('.about-caret').addClass('about-caret-reversed');
+    }
+  });
   }
 
   changeTitleListener = function () {
-    $('.subject-item').on('click', function (event) {
-      event.stopPropagation();
-      var subject = $(event.target).text();
-      $('.about-subject').val(subject);
+  $('.subject-item').on('click', function (event) {
+    event.stopPropagation();
+    var subject = $(event.target).text();
+    $('.about-subject').val(subject);
 
-      var clone = $('.email-dropdown').clone();
-      var children = clone.children().remove();
-      clone.text(subject);
-      clone.append(children);
-      $('.email-dropdown').replaceWith(clone);
+    var clone = $('.email-dropdown').clone();
+    var children = clone.children().remove();
+    clone.text(subject);
+    clone.append(children);
+    $('.email-dropdown').replaceWith(clone);
 
-      $('.email-menu').removeClass('open');
-      $('.about-caret').removeClass('about-caret-reversed');
-      dropdownListener();
-      changeTitleListener();
-    });
+    $('.email-menu').removeClass('open');
+    $('.about-caret').removeClass('about-caret-reversed');
+    dropdownListener();
+    changeTitleListener();
+  });
   }
 
   dropdownListener();
