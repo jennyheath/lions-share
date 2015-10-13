@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  # before_action :require_signed_in!, only: [:show, :edit, :update, :destroy]
+  before_action :require_signed_in!, only: [:new, :create]
 
   def new
     @user = User.new
@@ -10,7 +10,7 @@ class Admin::UsersController < ApplicationController
 
     if @user.save
       sign_in(@user)
-      redirect_to root_url
+      redirect_to admin_listings_url
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new
