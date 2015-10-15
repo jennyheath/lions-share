@@ -50,6 +50,7 @@
     </div>
   </div>
   <div class="clear"></div>
+
   <div class="listing-photos">
     <div class="photos-title">Photos</div>
     <% var photos = listing.get('photos') %>
@@ -81,6 +82,7 @@
     <% } %>
     <div class="clear"></div>
   </div>
+
   <div class="map-container">
     <div class="col-xs-10 col-sm-6 col-md-6 col-lg-6 subway-box">
       <div class="subway-lines">
@@ -96,6 +98,7 @@
     </div>
     <div class="clear"></div>
   </div>
+
   <div class="listing-footer">
     <div class="footer-top">
       <div class="footer-logo col-xs-10 col-sm-6 col-md-6 col-lg-6">
@@ -121,6 +124,7 @@
     <div class="clear"></div>
   </div>
 </div>
+
 <div class="modal fade" id="brokerModal" tabindex="-1" role="dialog" aria-labelledby="brokerModalLabel">
   <div class="modal-dialog broker-modal-dialog" role="document">
     <div class="modal-content">
@@ -131,6 +135,7 @@
     </div>
   </div>
 </div>
+
 <div class="modal fade" id="floorplanModal" tabindex="-1" role="dialog" aria-labelledby="brokerModalLabel">
   <button type="button" class="close close-floorplan" data-dismiss="modal" aria-label="Close">
     <span aria-hidden="true">&times;</span>
@@ -144,16 +149,34 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel">
+  <div class="modal-dialog confirmation-modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row"><div class="check-column col-lg-3 col-md-3 col-sm-3 col-xs-3">
+          <img class="confirmation-img" src="assets/confirmation_checkmark.png">
+        </div></div>
+        <h2 class="sent-message-title">Message Sent!</h2>
+        <p class="sent-message-text">A reply will be sent to the email address you provided as soon as possible!</p>
+          <button class="closeConfirmation" type="button" data-dismiss="modal" aria-label="Close">
+            Close
+          </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
+  $('.closeConfirmation').on('click', function () {
+    window.setTimeout(function () {
+      window.location.replace('#listings/<%= listing.id %>');
+    }, 1000);
+  });
   $('#brokerModal').on('shown.bs.modal', function () {
-    $('#myInput').focus()
-  })
-  // $('.choose-broker').on('click', function (event) {
-  //   debugger;
-  //   // broker =
-  //   $('.all-agents').addClass('hide');
-  //   $('.single-agent').removeClass('hide');
-  // })
+    $('#myInput').focus();
+  });
+
   if (matchMedia) {
     var mq = window.matchMedia("(min-width: 500px)");
     mq.addListener(WidthChange);

@@ -11,12 +11,12 @@ LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
   initialize: function (options) {
     var view = this;
     this.listing = options.model;
+    this.confirmation = options.modal;
     this.listing.fetch({
       success: function () {
         view.getSubways();
       }
     });
-
     this.listenTo(this.listing, 'sync', this.render);
   },
 
@@ -28,6 +28,10 @@ LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
 
     this.addSubview('.broker-contact-info', subView);
     return subView;
+  },
+
+  afterRender: function () {
+    console.log("rendered");
   },
 
   addMap: function () {
@@ -74,21 +78,10 @@ LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
   },
 
   clearModal: function (event) {
-    // this.subviews().forEach(function (subview) {
-    //   subview.remove();
-    // });
-    // this.subviews('.broker-contact-info').forEach(function (sub) {
-    //   sub.remove();
-    // });
-    // $('.broker-contact-info').html("");
-    this._subviews = {}
+    this._subviews = {};
   },
 
   getSubways: function () {
-    // EXPERIMENTAL CODE
-      // this.subwayLatLngs = [];
-      // this.mouseEvents = [];
-    // EXPERIMENTAL CODE
     var listingLocation = new google.maps.LatLng(this.lat, this.lng);
     var request = {
       location: listingLocation,
@@ -121,38 +114,17 @@ LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
         $('.subway-list').append($stationLi);
         numStations += 1;
 
-        // EXPERIMENTAL CODE
-          // var stationLoc = new google.maps.LatLng(station.geometry.location.H, station.geometry.location.L);
-          // this.subwayLatLngs.push(stationLoc);
-          // var mouseEvent = {
-          //   stop: null,
-          //   latLng: stationLoc
-          // }
-          // google.maps.event.trigger(this.map, 'click', mouseEvent);
-          // // var icon = $('.renderable-component-icon');
-          // this.mouseEvents.push(mouseEvent);
-        // EXPERIMENTAL CODE
       }.bind(this));
-      // this.clickStations();
     }.bind(this));
     $('.subway-box').append($('<div>').addClass('clear'));
   },
 
-  // EXPERIMENTAL CODE
-    // clickStations: function () {
-    //   // console.log(this.subwayLatLngs);
-    //   var f = this.subwayLatLngs[0];
-    //   var mev = {
-    //     stop: null,
-    //     latLng: f
-    //   }
-    //
-    //   google.maps.event.trigger(this.map, 'click', mev);
-    // },
-  // EXPERIMENTAL CODE
+  openConfirmation: function () {
+    jQuery.noConflict();
+    $('#confirmationModal').modal('show');
+  },
 
   showPhotos: function (event) {
-    // $(event.target.nextElementSibling).addClass('show-photos');
     $('.hidden-photos').addClass('show-photos');
     $(event.target).addClass('hide-text');
   },
@@ -167,6 +139,12 @@ LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
     this.addMap();
     var transitLayer = new google.maps.TransitLayer();
     transitLayer.setMap(this.map);
+    if (this.confirmation === true) {
+      window.setTimeout(function () {
+        this.openConfirmation();
+      }.bind(this), 1);
+    }
+
     return this;
   }
 });

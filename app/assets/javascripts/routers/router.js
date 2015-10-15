@@ -8,19 +8,42 @@ LionsShare.Routers.Router = Backbone.Router.extend({
     'sales': 'salesIndexView',
     'rentals': 'rentalsIndexView',
     'listings/:id': 'listingShow',
-    'about_us': 'aboutUs'
+    'about_us': 'aboutUs',
+    'listings/:id/emailConfirmation': 'listingShowWithConfirmation',
+    'about_us/emailConfirmation': 'aboutWithConfirmation'
   },
 
   aboutUs: function () {
-    var view = new LionsShare.Views.AboutUs();
-    
+    var view = new LionsShare.Views.AboutUs({
+      modal: false
+    });
+
+    this._swapView(view);
+  },
+
+  aboutWithConfirmation: function () {
+    var view = new LionsShare.Views.AboutUs({
+      modal: true
+    });
+
     this._swapView(view);
   },
 
   listingShow: function (id) {
     var listing = LionsShare.Collections.listings.getOrFetch(id);
     var view = new LionsShare.Views.ListingShow({
-      model: listing
+      model: listing,
+      modal: false
+    });
+
+    this._swapView(view);
+  },
+
+  listingShowWithConfirmation: function (id) {
+    var listing = LionsShare.Collections.listings.getOrFetch(id);
+    var view = new LionsShare.Views.ListingShow({
+      model: listing,
+      modal: true
     });
 
     this._swapView(view);

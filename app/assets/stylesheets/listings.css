@@ -358,6 +358,49 @@
   color: #7b7b7b;
 }
 
+.modal-dialog.confirmation-modal-dialog {
+  margin-top: 10%;
+  width: 35%;
+  height: 60%;
+  overflow: hidden;
+}
+
+.modal-dialog.confirmation-modal-dialog > .modal-content {
+  height: 100%;
+}
+
+.sent-message-title, .sent-message-text {
+  font-family: "AtlasGrotesk-Regular", sans-serif;
+  color: #626262;
+  text-align: center;
+}
+
+.sent-message-title {
+  font-size: 18px;
+}
+
+.sent-message-text {
+  font-size: 14px;
+  margin: 8%;
+  margin-bottom: 3%;
+}
+
+.closeConfirmation {
+  width: 92%;
+  margin: 4%;
+  font-family: "AtlasGrotesk-Regular", sans-serif;
+}
+
+.confirmation-img {
+  width: 100%;
+}
+
+.check-column {
+  margin: 0 auto;
+  float: none;
+  margin-top: 12%;
+}
+
 @media screen and (max-width: 500px) {
   .listing-show-container {
     margin: 0px;
