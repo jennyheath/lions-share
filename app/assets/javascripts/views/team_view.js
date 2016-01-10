@@ -18,8 +18,14 @@ LionsShare.Views.BrokersIndexView = Backbone.CompositeView.extend({
       model: broker,
       parentView: this
     });
-
-    this.addSubview('.brokers-index', subView);
+    debugger;
+    subView.$el.addClass('team-member-box');
+    subView.$el.addClass('col-lg-3');
+    subView.$el.addClass('col-md-3');
+    subView.$el.addClass('col-sm-3');
+    subView.$el.addClass('col-centered');
+    
+    this.addSubview('.team-index', subView);
     return subView;
   },
 

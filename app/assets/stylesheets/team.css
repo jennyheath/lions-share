@@ -1,0 +1,27 @@
+.container.team {
+	background-color: #f2f2f2;
+	width: 100%;
+}
+
+.row-centered {
+	text-align: center;
+}
+
+.team-member-box {
+	padding: 1%;
+	margin: 1%;
+	background-color: #fff;
+	height: 55%;
+	float: none;
+	display:inline-block;
+	text-align: center;
+    margin-right:-4px;
+}
+
+.team-img {
+    border-radius: 50%;
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
