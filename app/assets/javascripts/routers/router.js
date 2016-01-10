@@ -10,7 +10,8 @@ LionsShare.Routers.Router = Backbone.Router.extend({
     'listings/:id': 'listingShow',
     'about_us': 'aboutUs',
     'listings/:id/emailConfirmation': 'listingShowWithConfirmation',
-    'about_us/emailConfirmation': 'aboutWithConfirmation'
+    'about_us/emailConfirmation': 'aboutWithConfirmation',
+    'team': 'teamView'
   },
 
   aboutUs: function () {
@@ -62,6 +63,15 @@ LionsShare.Routers.Router = Backbone.Router.extend({
     var sales = LionsShare.Collections.listings;
     var view = new LionsShare.Views.SalesIndexView({
       collection: sales
+    });
+
+    this._swapView(view);
+  },
+
+  teamView: function () {
+    var brokers = LionsShare.Collections.brokers;
+    var view = new LionsShare.Views.BrokersIndexView({
+      collection: brokers
     });
 
     this._swapView(view);
