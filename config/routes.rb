@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   resources :listings, defaults: { format: :json }
-  resources :brokers, only: [:index], defaults: { format: :json }
+  resources :brokers, only: [:index, :show], defaults: { format: :json }
 
   # Using this route for testing of filterrific gem -- I was manually typing it into the browser url
   # get '/listings' => 'listings#index'

@@ -1,7 +1,6 @@
-<div class="">
+<a href="#brokers/<%= broker.id%>/">
 	<img class="team-img" src=<%=broker.photo_url%>>
-	<div><%= broker.first_name %></div>
-	<div><%= broker.last_name %></div>
-	<div><%= broker.phone %></div>
-	<div><%= broker.email %></div>
-</div>
+	<div class="team-name"><%= broker.first_name %> <%= broker.last_name %></div>
+	<div class="team-phone"><%= broker.phone %></div>
+	<div class="team-email"><%= broker.email %></div>
+</a>

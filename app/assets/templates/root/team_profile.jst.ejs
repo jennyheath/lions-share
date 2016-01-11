@@ -1,0 +1,34 @@
+<div class="broker-profile-header">
+	<img class="team-member-img" src=<%=broker.photo_url%>>
+	<div class="team-member-name"><%= broker.first_name %> <%= broker.last_name %></div>
+	<div class="team-member-phone"><%= broker.phone %></div>
+	<div class="team-email"><%= broker.email %></div>
+</div>
+<div class="broker-listings-container">
+	<div class="broker-listings-title"><%= broker.first_name%>'s listings</div>
+	<div class="broker-listings"></div>
+</div>
+<div class="listing-footer">
+  <div class="footer-top">
+    <div class="footer-logo col-xs-10 col-sm-6 col-md-6 col-lg-6">
+      <img class="footer-logo-img" src="assets/logo_dark_background.png">
+    </div>
+    <div class="footer-address col-xs-10 col-sm-6 col-md-6 col-lg-6">
+      <div class="address-title">Location</div>
+      123 Main Street<br>
+      Brooklyn, New York 11216<br>
+      212.555.2522
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="footer-bottom">
+  <div class="footer-icons col-xs-10 col-sm-6 col-md-6 col-lg-6">
+    <a class="terms-link" href="#">Terms & Conditions and Privacy Policy</a>
+  </div>
+  <div class="footer-terms col-xs-10 col-sm-6 col-md-6 col-lg-6">
+    <p class="terms-copyright">&#169; The Lion's Share, Inc. All Rights Reserved. 2015</p>
+  </div>
+  <div class="clear"></div>
+  </div>
+  <div class="clear"></div>
+</div>

@@ -1,6 +1,11 @@
+html {
+	width: 100%;
+}
+
 .container.team {
 	background-color: #f2f2f2;
 	width: 100%;
+	padding-bottom: 2%;
 }
 
 .row-centered {
@@ -8,14 +13,18 @@
 }
 
 .team-member-box {
-	padding: 1%;
-	margin: 1%;
+    font-family: AtlasGrotesk-Regular;
+	padding: 2%;
+	padding-bottom: 0px;
+	margin: 2%;
+	margin-bottom: 0px;
 	background-color: #fff;
-	height: 55%;
+	height: 65%;
 	float: none;
-	display:inline-block;
+	display: inline-block;
 	text-align: center;
-    margin-right:-4px;
+    margin-right: -4px;
+    overflow: auto;
 }
 
 .team-img {
@@ -24,4 +33,66 @@
     margin-left: auto;
     margin-right: auto;
     display: block;
+}
+
+.team-name {
+	padding: 10%;
+	padding-top: 15%;
+	font-size: large;
+}
+
+.team-phone {
+	padding-bottom: 5%;
+    color: #626262;
+}
+
+.team-email {
+    color: #c1a02f;
+}
+
+.broker-listings {
+    overflow: auto;
+    padding: 2%;
+}
+
+.broker-listings-container {
+    background-color: #f2f2f2;
+    overflow: auto;
+    font-family: AtlasGrotesk-Regular;
+    text-align: center;
+}
+
+.broker-listings-title {
+	font-size: large;
+    padding: 3%;
+    padding-bottom: 0px;
+}
+
+.broker-profile-header {
+	text-align: center;
+    font-family: AtlasGrotesk-Regular;
+    margin-top: 70px;
+    padding: 5%;
+}
+
+.team-member-img {
+	border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.team-member-name {
+	font-family: Brawler-Regular;
+	font-size: xx-large;
+    padding: 3%;
+}
+
+.team-member-phone {
+	padding-bottom: 1%;
+    color: #626262;
+}
+
+.info-wrapper {
+	background-color: #fff;
 }
