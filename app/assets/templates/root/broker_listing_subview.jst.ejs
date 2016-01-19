@@ -1,0 +1,52 @@
+<div class="listing-subview col-xs-12 col-sm-4 col-md-4 col-lg-4">
+  <a href="#listings/<%= listing.id %>">
+    <div class="individual-listing-container" data-id="<%= listing.id %>">
+    <div class="listing-container-hover"></div>
+      <div class="photo-wrapper">
+        <% if (listing.exclusive == true && listing.no_fee == true) { %>
+          <div class="photo-tags">
+            <p class="exclusive-tag">Exclusive</p>
+            <p class="no-fee-tag">No Fee</p>
+          </div>
+        <% } %>
+        <% if (listing.exclusive == true && listing.no_fee !== true) { %>
+            <div class="exclusive-tag">Exclusive</div>
+        <% } %>
+        <% if (listing.no_fee == true && listing.exclusive !== true) { %>
+            <div class="no-fee-tag">No Fee</div>
+        <% } %>
+        <a href="#listings/<%= listing.id %>">
+        <img class="main-img" src="<%= listing.main_photo_url %>">
+        </a>
+      </div>
+      <div class="info-wrapper row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 price-wrapper">
+          <% var priceString = [] %>
+          <% var letters = listing.price.toString().split('') %>
+          <% while (letters.length > 3) { %>
+            <% priceString.push(letters.pop()) %>
+            <% priceString.push(letters.pop()) %>
+            <% priceString.push(letters.pop()) %>
+            <% priceString.push(',') %>
+          <% } %>
+          <% letters.reverse().forEach(function (letter) { %>
+            <% priceString.push(letter) %>
+          <%  }) %>
+          <h2>$<%=  priceString.reverse().join('') %></h2>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 bed-bath-wrapper">
+          <p class="info-details">
+            <% if (listing.bed_count > 0 && listing.bed_count < 4) { %>
+              <%= listing.bed_count %> Bed
+            <% } else if (listing.bed_count === 0) { %>
+              Studio
+            <% } else if (listing.bed_count === 4) { %>
+              4+ Bed
+            <% } %>
+            <%= listing.bath_count %> Bath </p>
+          <p class="info-details"><%= listing.neighborhood %></p>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
