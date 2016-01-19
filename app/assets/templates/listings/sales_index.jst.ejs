@@ -23,12 +23,28 @@
               <div class="stay-open toggle-dropdown">Beds <span class="stay-open caret"></span></div>
               <div class="stay-open dropdown-menu">
                 <ul class="stay-open filter-list beds-column">
+                  <li class="stay-open" id="0">
+                    <input class="stay-open bed-checkbox" type="checkbox">
+                    <div class="stay-open filter-category">
+                      Studio
+                    </div>
+                  </li>
                   <% listings.first().attributes.beds.forEach(function (bed_num) { %>
-                    <li class="stay-open">
-                      <input class="stay-open bed-checkbox" type="checkbox">
-                      <div class="stay-open filter-category"><%= bed_num %> Bedroom</div>
-                    </li>
+                    <% if (bed_num !== 0 && bed_num !== 4) { %>
+                      <li class="stay-open" id="<%= bed_num %>">
+                        <input class="stay-open bed-checkbox" type="checkbox">
+                        <div class="stay-open filter-category">
+                          <%= bed_num %> Bedroom
+                        </div>
+                      </li>
+                    <% } %>
                   <% }) %>
+                  <li class="stay-open" id="4">
+                    <input class="stay-open bed-checkbox" type="checkbox">
+                    <div class="stay-open filter-category">
+                      4+ Bedroom
+                    </div>
+                  </li>
                 </ul>
               </div>
             </div>

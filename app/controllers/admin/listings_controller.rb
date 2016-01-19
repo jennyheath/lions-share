@@ -24,6 +24,9 @@ class Admin::ListingsController < ApplicationController
     if params[:listing][:highceilings]
       @listing.amenities << Amenity.find_by_name('High Ceilings')
     end
+    if params[:listing][:parking]
+      @listing.amenities << Amenity.find_by_name('Parking')
+    end
     if params[:listing][:luxuries]
       @listing.amenities << Amenity.find_by_name('Luxuries')
     end
@@ -116,6 +119,9 @@ class Admin::ListingsController < ApplicationController
     @listing.amenities = []
     if params[:listing][:highceilings]
       @listing.amenities << Amenity.find_by_name('High Ceilings')
+    end
+    if params[:listing][:parking]
+      @listing.amenities << Amenity.find_by_name('Parking')
     end
     if params[:listing][:luxuries]
       @listing.amenities << Amenity.find_by_name('Luxuries')

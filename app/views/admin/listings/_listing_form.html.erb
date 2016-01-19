@@ -4,6 +4,65 @@
 
 <%= render 'shared/errors' %>
 
+<% neighborhoods_list =
+["Lower Manhattan",
+"TriBeCa",
+"Chinatown",
+"Lower East Side",
+"West Village",
+"Greenwich Village",
+"East Village",
+"Stuyvesant Town",
+"Murray Hill",
+"Flatiron District",
+"Alphabet City",
+"SoHo",
+"NoLiTa",
+"Chelsea",
+"Gramercy Park",
+"Koreatown",
+"Kips Bay",
+"Meatpacking",
+"Hell's Kitchen",
+"Midtown",
+"Upper West Side",
+"Upper East Side",
+"Roosevelt Island",
+"Harlem",
+"Morningside Heights",
+"Washington Heights",
+"Inwood",
+"Greenpoint",
+"Williamsburg",
+"Bushwick",
+"Bed-Stuy",
+"Clinton Hill",
+"Vinegar Hill",
+"Downtown Brooklyn",
+"Brooklyn Heights",
+"Cobble Hill",
+"Boerum Hill",
+"Carroll Gardens",
+"Gowanus",
+"Park Slope",
+"Red Hook",
+"Prospect Heights",
+"Lefferts Gardens",
+"Crown Heights",
+"Flatbush",
+"Ditmas Park",
+"Sunset Park",
+"Kensington",
+"Borough Park",
+"Hunters Point",
+"Astoria",
+"Sunnyside",
+"Maspeth",
+"Ridgewood",
+"Woodside",
+"Jackson Heights",
+"Elmhurst"] %>
+
 <form class="admin-form" action="<%= action %>" method="POST">
   <input type="hidden" name="_method" value="<%= method %>">
   <%= auth_token %>
@@ -40,6 +99,7 @@
     id="co-op"
     <%= listing.building_type == "Co-op" ? "checked" : "" %>>
   <label for="co-op">Co-op</label>
+  <br>
   <input
     type="radio"
     name="listing[building_type]"
@@ -104,6 +164,14 @@
     <input
       type="radio"
       name="listing[bed_count]"
+      value="0"
+      id="listing_beds"
+      <%= listing.bed_count == 0 ? "checked" : "" %>>
+    <label for="listing_beds">Studio</label>
+    <br>
+    <input
+      type="radio"
+      name="listing[bed_count]"
       value="1"
       id="listing_beds"
       <%= listing.bed_count == 1 ? "checked" : "" %>>
@@ -131,7 +199,7 @@
       value="4"
       id="listing_beds"
       <%= listing.bed_count == 4 ? "checked" : "" %>>
-    <label for="listing_beds">4</label>
+    <label for="listing_beds">4+</label>
     <br>
     <br>
   <p>Bathrooms:</p>
@@ -160,49 +228,18 @@
     <label for="listing_baths">3</label>
     <br>
     <br>
-
   <p>Neighborhood:</p>
+  <% neighborhoods_list.each do |neighborhood_name| %>
     <input
       type="radio"
       name="listing[neighborhood]"
-      value="Ridgewood"
+      value="<%= neighborhood_name %>"
       id="listing_neighborhood"
-      <%= listing.neighborhood == "Ridgewood" ? "checked" : "" %>>
-    <label for="listing_neighborhood">Ridgewood</label>
+      <%= listing.neighborhood == neighborhood_name ? "checked" : "" %>>
+    <label for="listing_neighborhood"><%= neighborhood_name %></label>
     <br>
-    <input
-      type="radio"
-      name="listing[neighborhood]"
-      value="Bed-Stuy"
-      id="listing_neighborhood"
-      <%= listing.neighborhood == "Bed-Stuy" ? "checked" : "" %>>
-    <label for="listing_neighborhood">Bed-Stuy</label>
-    <br>
-    <input
-      type="radio"
-      name="listing[neighborhood]"
-      value="Clinton Hill"
-      id="listing_neighborhood"
-      <%= listing.neighborhood == "Clinton Hill" ? "checked" : "" %>>
-    <label for="listing_neighborhood">Clinton Hill</label>
-    <br>
-    <input
-      type="radio"
-      name="listing[neighborhood]"
-      value="Williamsburg"
-      id="listing_neighborhood"
-      <%= listing.neighborhood == "Williamsburg" ? "checked" : "" %>>
-    <label for="listing_neighborhood">Williamsburg</label>
-    <br>
-    <input
-      type="radio"
-      name="listing[neighborhood]"
-      value="Greenpoint"
-      id="listing_neighborhood"
-      <%= listing.neighborhood == "Greenpoint" ? "checked" : "" %>>
-    <label for="listing_neighborhood">Greenpoint</label>
-    <br>
-    <br>
+  <% end %>
+  <br>
 
   <label>Featured?:
     <input type="checkbox" name="listing[featured]"
@@ -227,6 +264,10 @@
     <input type="checkbox" name="listing[highceilings]"
     <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'High Ceilings'").first) %>>
     <label>High Ceilings</label>
+    <br>
+    <input type="checkbox" name="listing[parking]"
+    <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'Parking'").first) %>>
+    <label>Parking</label>
     <br>
     <input type="checkbox" name="listing[luxuries]"
     <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'Luxuries'").first) %>>
@@ -257,7 +298,7 @@
     <label>Eat In Kitchen</label>
     <br>
     <input type="checkbox" name="listing[allpetsok]"
-    <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'All pets ok'").first) %>>
+    <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'Accepts pets'").first) %>>
     <label>All pets ok</label>
     <br>
     <input type="checkbox" name="listing[laundryinbuilding]"

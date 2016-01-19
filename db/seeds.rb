@@ -36,7 +36,7 @@ end
   Listing.create(
     type_of: ["Rental", "Sale"].sample,
     price: [1500,2000,2500,3000,3500].sample,
-    bed_count: [1,2,3].sample,
+    bed_count: [0,1,2,3,4].sample,
     bath_count: [1,1.5,2].sample,
     neighborhood: neighborhoods.sample,
     featured: [false, true].sample,
@@ -73,6 +73,7 @@ amenities = [
   "Dishwasher" ,
   "RoofDeck" ,
   "Luxuries" ,
+  "Parking",
   "Laundry In building" ,
   "Skyline view" ,
   "Roof access" ,

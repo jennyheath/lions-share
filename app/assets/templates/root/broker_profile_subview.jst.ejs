@@ -2,5 +2,7 @@
 	<img class="team-img" src=<%=broker.photo_url%>>
 	<div class="team-name"><%= broker.first_name %> <%= broker.last_name %></div>
 	<div class="team-phone"><%= broker.phone %></div>
-	<div class="team-email"><%= broker.email %></div>
+	<a href="mailto:<%= broker.email %>">
+		<div class="team-email"><%= broker.email %></div>
+	</a>
 </a>

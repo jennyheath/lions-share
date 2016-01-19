@@ -196,7 +196,8 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
       if ($(filter).hasClass("neighborhood-checkbox")) {
         neighborhoods.push($.trim($(filter).parent().text()));
       } else if ($(filter).hasClass("bed-checkbox")) {
-        beds.push(Number($.trim($(filter).parent().text())[0]));
+        // beds.push(Number($.trim($(filter).parent().text())[0]));
+        beds.push(Number(event.target.parentElement.id));
       } else if ($(filter).hasClass("amenity-checkbox")) {
         amenities.push($.trim($(filter).parent().text()));
       } else if ($(filter).hasClass("fee-box")) {
