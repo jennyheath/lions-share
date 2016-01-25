@@ -13,7 +13,7 @@ html {
 }
 
 .team-member-box {
-    font-family: AtlasGrotesk-Regular;
+  font-family: AtlasGrotesk-Regular;
 	padding: 2%;
 	padding-bottom: 0px;
 	margin: 2%;
@@ -23,27 +23,27 @@ html {
 	float: none;
 	display: inline-block;
 	text-align: center;
-    margin-right: -4px;
-    overflow: auto;
+  margin-right: -4px;
+  overflow: auto;
 }
 
 a {
-    text-decoration: none !important;
+  text-decoration: none !important;
 }
 
 .team-img {
-    border-radius: 50%;
-    width: 65%;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+  border-radius: 50%;
+  width: 65%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 .team-name {
 	padding: 10%;
 	padding-top: 15%;
 	font-size: large;
-    color: #000;
+  color: #000;
 }
 
 .team-phone {
@@ -52,48 +52,52 @@ a {
 }
 
 .team-email {
-    color: #c1a02f;
+  color: #c1a02f;
 }
 
 .broker-listings {
-    overflow: auto;
-    padding: 2%;
+  overflow: auto;
+  padding: 2%;
 }
 
 .broker-listings-container {
-    background-color: #f2f2f2;
-    overflow: auto;
-    font-family: AtlasGrotesk-Regular;
-    text-align: center;
+  background-color: #f2f2f2;
+  overflow: auto;
+  font-family: AtlasGrotesk-Regular;
+  text-align: center;
 }
 
 .broker-listings-title {
 	font-size: large;
-    padding: 3%;
-    padding-bottom: 0px;
+  padding: 3%;
+  padding-bottom: 0px;
 }
 
 .broker-profile-header {
 	text-align: center;
-    font-family: AtlasGrotesk-Regular;
-    margin-top: 70px;
-    padding: 5%;
+  font-family: AtlasGrotesk-Regular;
+  margin-top: 70px;
+  padding: 5%;
 }
 
 .team-member-img {
 	border-radius: 50%;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 .team-member-name {
 	font-family: Brawler-Regular;
 	font-size: xx-large;
-    padding: 3%;
+  padding: 3%;
 }
 
 .team-member-phone {
 	padding-bottom: 1%;
-    color: #626262;
+  color: #626262;
+}
+
+.broker-subview-info {
+	background-color: #fff;
 }

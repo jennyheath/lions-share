@@ -31,8 +31,11 @@ LionsShare.Views.BrokerProfileView = Backbone.CompositeView.extend({
 
     this.$el.html(content);
     this.attachSubviews();
-    $('.listing-subview').forEach(function (div) {
+    $('.listing-subview').each(function (i, div) {
       div.className = "listing-subview col-xs-12 col-sm-4 col-md-4 col-lg-4";
+    });
+    $('.info-wrapper').each(function (i, div) {
+      div.className = "info-wrapper row broker-subview-info";
     });
     return this;
   }

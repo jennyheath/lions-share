@@ -247,11 +247,24 @@
   font-family: "AtlasGrotesk-Regular", sans-serif;
 }
 
+.individual-listing-container > a {
+  display: inline-block;
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  bottom: 30px;
+  top: 0px;
+}
+
 .listing-container-hover {
-  height: 92%;
+  /*height: 92%;*/
   position: absolute;
   z-index: 1;
-  width: 92%;
+  width: 100%;
+  display: inline-block;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
 }
 
 .listing-container-hover:hover {
@@ -269,6 +282,7 @@
 .photo-tags {
   position: absolute;
   margin: 1%;
+  text-align: left;
 }
 
 /*need to fix padding when there are both tags*/
@@ -316,6 +330,7 @@ p.exclusive-tag, p.no-fee-tag {
   font-family: 'Brawler-Regular', serif;
   margin-top: 5px;
   margin-bottom: 20px;
+  text-align: left;
 }
 
 .bed-bath-wrapper {
