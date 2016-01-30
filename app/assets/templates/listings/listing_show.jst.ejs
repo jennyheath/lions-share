@@ -27,7 +27,9 @@
     </div>
     <p class="listing-description"><%= listing.escape('description') %></p>
     <div class="lot-info">Sq Ft: <%= commaSeparateNumber(listing.escape('square_footage')) %> sqft</div>
-    <div class="lot-info">Yearly Taxes: $<%= commaSeparateNumber(listing.escape('yearly_taxes')) %></div>
+    <% if (listing.escape('type_of') == "Sale") { %>
+      <div class="lot-info">Yearly Taxes: $<%= commaSeparateNumber(listing.escape('yearly_taxes')) %></div>
+    <% } %>
     <div class="lot-info">Lot Sq Ft: <%= commaSeparateNumber(listing.escape('square_footage')) %> sqft</div>
     <div class="lot-info floor-plan">Floorplan</div>
     <ul class="listing-amenities">

@@ -61,7 +61,18 @@
 "Ridgewood",
 "Woodside",
 "Jackson Heights",
-"Elmhurst"] %>
+"Elmhurst",
+"Fort Greene",
+"Brownsville",
+"East New York",
+"East Flatbush",
+"Forest Hills",
+"Key Gardens",
+"Jamaica",
+"Jamaica Estates",
+"Hollis",
+"Long Island City"
+] %>
 
 <form class="admin-form" action="<%= action %>" method="POST">
   <input type="hidden" name="_method" value="<%= method %>">
@@ -141,7 +152,7 @@
     <br>
   <% end %>
   <br>
-  <label>Yearly Taxes:
+  <label>Yearly Taxes (if creating a rental, enter a random value - it will not be displayed):
     <input class="text-input" type="text" value="<%= listing.yearly_taxes %>" name="listing[yearly_taxes]">
   </label>
   <br>
