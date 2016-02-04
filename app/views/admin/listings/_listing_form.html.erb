@@ -4,75 +4,82 @@
 
 <%= render 'shared/errors' %>
 
-<% neighborhoods_list =
-["Lower Manhattan",
-"TriBeCa",
-"Chinatown",
-"Lower East Side",
-"West Village",
-"Greenwich Village",
-"East Village",
-"Stuyvesant Town",
-"Murray Hill",
-"Flatiron District",
-"Alphabet City",
-"SoHo",
-"NoLiTa",
-"Chelsea",
-"Gramercy Park",
-"Koreatown",
-"Kips Bay",
-"Meatpacking",
-"Hell's Kitchen",
-"Midtown",
-"Upper West Side",
-"Upper East Side",
-"Roosevelt Island",
-"Harlem",
-"Morningside Heights",
-"Washington Heights",
-"Inwood",
-"Greenpoint",
-"Williamsburg",
-"Bushwick",
-"Bed-Stuy",
-"Clinton Hill",
-"Vinegar Hill",
-"Downtown Brooklyn",
-"Brooklyn Heights",
-"Cobble Hill",
-"Boerum Hill",
-"Carroll Gardens",
-"Gowanus",
-"Park Slope",
-"Red Hook",
-"Prospect Heights",
-"Lefferts Gardens",
-"Crown Heights",
-"Flatbush",
-"Ditmas Park",
-"Sunset Park",
-"Kensington",
-"Borough Park",
-"Hunters Point",
-"Astoria",
-"Sunnyside",
-"Maspeth",
-"Ridgewood",
-"Woodside",
-"Jackson Heights",
-"Elmhurst",
-"Fort Greene",
-"Brownsville",
-"East New York",
-"East Flatbush",
-"Forest Hills",
-"Key Gardens",
-"Jamaica",
-"Jamaica Estates",
-"Hollis",
-"Long Island City"
+<% manhattan_neighborhoods = [
+  "Lower Manhattan",
+  "TriBeCa",
+  "Chinatown",
+  "Lower East Side",
+  "West Village",
+  "Greenwich Village",
+  "East Village",
+  "Stuyvesant Town",
+  "Murray Hill",
+  "Flatiron District",
+  "Alphabet City",
+  "SoHo",
+  "NoLiTa",
+  "Chelsea",
+  "Gramercy Park",
+  "Koreatown",
+  "Kips Bay",
+  "Meatpacking",
+  "Hell's Kitchen",
+  "Midtown",
+  "Upper West Side",
+  "Upper East Side",
+  "Roosevelt Island",
+  "Harlem",
+  "Morningside Heights",
+  "Washington Heights",
+  "Inwood"
+]%>
+
+<% brooklyn_neighborhoods = [
+  "Fort Greene",
+  "Brownsville",
+  "East New York",
+  "East Flatbush",
+  "Greenpoint",
+  "Williamsburg",
+  "Bushwick",
+  "Bed-Stuy",
+  "Clinton Hill",
+  "Vinegar Hill",
+  "Downtown Brooklyn",
+  "Brooklyn Heights",
+  "Cobble Hill",
+  "Boerum Hill",
+  "Carroll Gardens",
+  "Gowanus",
+  "Park Slope",
+  "Red Hook",
+  "Prospect Heights",
+  "Lefferts Gardens",
+  "Crown Heights",
+  "Flatbush",
+  "Ditmas Park",
+  "Sunset Park",
+  "Kensington",
+  "Borough Park"
 ] %>
+
+<% queens_neighborhoods = [
+  "Hunters Point",
+  "Astoria",
+  "Sunnyside",
+  "Maspeth",
+  "Ridgewood",
+  "Woodside",
+  "Jackson Heights",
+  "Elmhurst",
+  "Forest Hills",
+  "Key Gardens",
+  "Jamaica",
+  "Jamaica Estates",
+  "Hollis",
+  "Long Island City"
+] %>
+
 
 <form class="admin-form" action="<%= action %>" method="POST">
   <input type="hidden" name="_method" value="<%= method %>">
@@ -240,16 +247,42 @@
     <br>
     <br>
   <p>Neighborhood:</p>
-  <% neighborhoods_list.each do |neighborhood_name| %>
-    <input
-      type="radio"
-      name="listing[neighborhood]"
-      value="<%= neighborhood_name %>"
-      id="listing_neighborhood"
-      <%= listing.neighborhood == neighborhood_name ? "checked" : "" %>>
-    <label for="listing_neighborhood"><%= neighborhood_name %></label>
-    <br>
-  <% end %>
+  <p>Manhattan:</p>
+    <% manhattan_neighborhoods.each do |neighborhood_name| %>
+      <input
+        type="radio"
+        name="listing[neighborhood]"
+        value="<%= neighborhood_name %>"
+        id="listing_neighborhood"
+        style="margin-left:15px;"
+        <%= listing.neighborhood == neighborhood_name ? "checked" : "" %>>
+      <label for="listing_neighborhood"><%= neighborhood_name %></label>
+      <br>
+    <% end %>
+  <p>Brooklyn:</p>
+    <% brooklyn_neighborhoods.each do |neighborhood_name| %>
+      <input
+        type="radio"
+        name="listing[neighborhood]"
+        value="<%= neighborhood_name %>"
+        id="listing_neighborhood"
+        style="margin-left:15px;"
+        <%= listing.neighborhood == neighborhood_name ? "checked" : "" %>>
+      <label for="listing_neighborhood"><%= neighborhood_name %></label>
+      <br>
+    <% end %>
+  <p>Queens:</p>
+    <% queens_neighborhoods.each do |neighborhood_name| %>
+      <input
+        type="radio"
+        name="listing[neighborhood]"
+        value="<%= neighborhood_name %>"
+        id="listing_neighborhood"
+        style="margin-left:15px;"
+        <%= listing.neighborhood == neighborhood_name ? "checked" : "" %>>
+      <label for="listing_neighborhood"><%= neighborhood_name %></label>
+      <br>
+    <% end %>
   <br>
 
   <label>Featured?:
