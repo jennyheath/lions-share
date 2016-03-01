@@ -33,9 +33,8 @@ module LionsShare
     config.active_record.raise_in_transactional_callbacks = true
     config.assets.paths << Rails.root.join('app/assets/fonts')
     config.serve_static_assets = true
+    config.action_dispatch.default_headers = {
+      'X-Frame-Options' => 'ALLOWALL'
+    }
   end
 end
-
-config.action_dispatch.default_headers = {
-  'X-Frame-Options' => 'ALLOWALL'
-}
