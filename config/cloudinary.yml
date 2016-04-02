@@ -1,19 +1,13 @@
 ---
 development:
-  cloud_name: dl1rhzsmu
-  api_key: '638362255665497'
-  api_secret: yDU49rKJeIwaCJRmbSIkPtWcdpw
-  enhance_image_tag: true
-  static_image_support: false
+  cloud_name: deeqeoofc
+  api_key: '558878175797216'
+  api_secret: 4C5_cQIF8DWLOpnfOPEwbVLsPRU
 production:
-  cloud_name: dl1rhzsmu
-  api_key: '638362255665497'
-  api_secret: yDU49rKJeIwaCJRmbSIkPtWcdpw
-  enhance_image_tag: true
-  static_image_support: true
+  cloud_name: deeqeoofc
+  api_key: '558878175797216'
+  api_secret: 4C5_cQIF8DWLOpnfOPEwbVLsPRU
 test:
-  cloud_name: dl1rhzsmu
-  api_key: '638362255665497'
-  api_secret: yDU49rKJeIwaCJRmbSIkPtWcdpw
-  enhance_image_tag: true
-  static_image_support: false
+  cloud_name: deeqeoofc
+  api_key: '558878175797216'
+  api_secret: 4C5_cQIF8DWLOpnfOPEwbVLsPRU

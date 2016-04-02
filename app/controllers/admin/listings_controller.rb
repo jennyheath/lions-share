@@ -51,6 +51,15 @@ class Admin::ListingsController < ApplicationController
     if params[:listing][:allpetsok]
       @listing.amenities << Amenity.find_by_name('All pets ok')
     end
+    if params[:listing][:catsonly]
+      @listing.amenities << Amenity.find_by_name('Cats only')
+    end
+    if params[:listing][:smalldogsallowed]
+      @listing.amenities << Amenity.find_by_name('Small dogs allowed')
+    end
+    if params[:listing][:doorman]
+      @listing.amenities << Amenity.find_by_name('Doorman')
+    end
     if params[:listing][:laundryinbuilding]
       @listing.amenities << Amenity.find_by_name('Laundry In building')
     end
@@ -147,6 +156,15 @@ class Admin::ListingsController < ApplicationController
     if params[:listing][:allpetsok]
       @listing.amenities << Amenity.find_by_name('All pets ok')
     end
+    if params[:listing][:catsonly]
+      @listing.amenities << Amenity.find_by_name('Cats only')
+    end
+    if params[:listing][:smalldogsallowed]
+      @listing.amenities << Amenity.find_by_name('Small dogs allowed')
+    end
+    if params[:listing][:doorman]
+      @listing.amenities << Amenity.find_by_name('Doorman')
+    end
     if params[:listing][:laundryinbuilding]
       @listing.amenities << Amenity.find_by_name('Laundry In building')
     end
@@ -166,7 +184,7 @@ class Admin::ListingsController < ApplicationController
       @listing.amenities << Amenity.find_by_name('Stainless Steel Appliances')
     end
     if params[:listing][:outdoorspace]
-      @listing.amenities << Amenity.find_by_name('Outdoor Space<')
+      @listing.amenities << Amenity.find_by_name('Outdoor Space')
     end
     if params[:listing][:videointercom]
       @listing.amenities << Amenity.find_by_name('Video Intercom')
