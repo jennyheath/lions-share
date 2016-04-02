@@ -10,7 +10,7 @@
 }
 
 .listing-show-info {
-  height: 100%;
+  overflow: auto;
   padding-left: 30px;
 }
 
@@ -155,7 +155,6 @@
   padding-left: 0px;
   bottom: 0px;
   overflow: auto;
-  position: absolute;
 }
 
 .broker-box-img {
