@@ -8,7 +8,13 @@
               <div class="stay-open toggle-dropdown">Select Neighborhoods <span class="stay-open caret"></span></div>
               <div class="stay-open dropdown-menu">
                 <ul class="stay-open filter-list neighborhoods-column">
-                  <% listings.first().attributes.neighborhoods.forEach(function (neighborhood) { %>
+                  <% var firstListing; %>
+                  <% if (listings.first()) { %>
+                    <% firstListing = listings.first(); %>
+                  <% } else { %>
+                    <% firstListing = { attributes: { neighborhoods: [], beds: 0, building_types: [], amenities: [] }}; %>
+                  <% } %>
+                  <% firstListing.attributes.neighborhoods.forEach(function (neighborhood) { %>
                     <li class="stay-open">
                       <input class="stay-open neighborhood-checkbox" type="checkbox">
                       <div class="stay-open filter-category"><%= neighborhood %></div>
@@ -29,7 +35,7 @@
                       Studio
                     </div>
                   </li>
-                  <% listings.first().attributes.beds.forEach(function (bed_num) { %>
+                  <% firstListing.attributes.beds.forEach(function (bed_num) { %>
                     <% if (bed_num !== 0 && bed_num !== 4) { %>
                       <li class="stay-open" id="<%= bed_num %>">
                         <input class="stay-open bed-checkbox" type="checkbox">
@@ -65,7 +71,7 @@
               <div class="stay-open toggle-dropdown">Building Type <span class="stay-open caret"></span></div>
               <div class="stay-open dropdown-menu">
                 <ul class="stay-open filter-list building-type-column">
-                  <% listings.first().attributes.building_types.forEach(function (building_type) { %>
+                  <% firstListing.attributes.building_types.forEach(function (building_type) { %>
                     <li class="stay-open">
                       <input class="stay-open building-checkbox" type="checkbox">
                       <div class="stay-open filter-category"><%= building_type %></div>
@@ -80,7 +86,7 @@
               <div class="stay-open toggle-dropdown">More <span class="stay-open caret"></span></div>
               <div class="stay-open dropdown-menu">
                 <ul class="stay-open filter-list amenities-column">
-                  <% listings.first().attributes.amenities.forEach(function (amenity) { %>
+                  <% firstListing.attributes.amenities.forEach(function (amenity) { %>
                     <li class="stay-open">
                       <input class="stay-open amenity-checkbox" type="checkbox">
                       <div class="stay-open filter-category"><%= amenity %></div>
