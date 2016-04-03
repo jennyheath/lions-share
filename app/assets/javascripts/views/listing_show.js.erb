@@ -47,7 +47,7 @@ LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
 
     var map = new google.maps.Map(document.getElementById("subway-map"), map_options);
     this.map = map;
-    var map_pin_img = "https://s3-us-west-1.amazonaws.com/lions-share-pictures/map-pin-unselected.svg";
+    var map_pin_img = "<%= asset_path('map-pin-unselected.svg') %>";;
     var pinIcon = new google.maps.MarkerImage(
       map_pin_img,
       null,
