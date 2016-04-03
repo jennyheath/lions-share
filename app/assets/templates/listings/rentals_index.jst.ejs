@@ -8,7 +8,13 @@
               <div class="stay-open toggle-dropdown">Select Neighborhoods <span class="stay-open caret"></span></div>
               <div class="stay-open dropdown-menu">
                 <ul class="stay-open filter-list neighborhoods-column">
-                  <% listings.first().attributes.neighborhoods.forEach(function (neighborhood) { %>
+                  <% var firstListing; %>
+                  <% if (listings.first()) { %>
+                    <% firstListing = listings.first(); %>
+                  <% } else { %>
+                    <% firstListing = { attributes: { neighborhoods: [], beds: 0 }}; %>
+                  <% } %>
+                  <% firstListing.attributes.neighborhoods.forEach(function (neighborhood) { %>
                     <li class="stay-open" id="<%= neighborhood %>">
                       <input class="stay-open neighborhood-checkbox" type="checkbox">
                       <div class="stay-open filter-category">
@@ -31,7 +37,7 @@
                       Studio
                     </div>
                   </li>
-                  <% listings.first().attributes.beds.forEach(function (bed_num) { %>
+                  <% firstListing.attributes.beds.forEach(function (bed_num) { %>
                     <% if (bed_num !== 0 && bed_num !== 4) { %>
                       <li class="stay-open" id="<%= bed_num %>">
                         <input class="stay-open bed-checkbox" type="checkbox">
