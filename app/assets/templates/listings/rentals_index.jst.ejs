@@ -12,7 +12,7 @@
                   <% if (listings.first()) { %>
                     <% firstListing = listings.first(); %>
                   <% } else { %>
-                    <% firstListing = { attributes: { neighborhoods: [], beds: [] }}; %>
+                    <% firstListing = { attributes: { neighborhoods: [], beds: [], amenities: [] }}; %>
                   <% } %>
                   <% firstListing.attributes.neighborhoods.forEach(function (neighborhood) { %>
                     <li class="stay-open" id="<%= neighborhood %>">
@@ -73,7 +73,7 @@
               <div class="stay-open toggle-dropdown">More <span class="stay-open caret"></span></div>
               <div class="stay-open dropdown-menu">
                 <ul class="stay-open filter-list amenities-column">
-                  <% listings.first().attributes.amenities.forEach(function (amenity) { %>
+                  <% firstListing.attributes.amenities.forEach(function (amenity) { %>
                     <li class="stay-open" id="<%= amenity %>">
                       <input class="stay-open amenity-checkbox" type="checkbox">
                       <div class="stay-open filter-category">
