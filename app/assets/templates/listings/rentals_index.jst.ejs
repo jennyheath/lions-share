@@ -12,7 +12,7 @@
                   <% if (listings.first()) { %>
                     <% firstListing = listings.first(); %>
                   <% } else { %>
-                    <% firstListing = { attributes: { neighborhoods: [], beds: 0 }}; %>
+                    <% firstListing = { attributes: { neighborhoods: [], beds: [] }}; %>
                   <% } %>
                   <% firstListing.attributes.neighborhoods.forEach(function (neighborhood) { %>
                     <li class="stay-open" id="<%= neighborhood %>">
