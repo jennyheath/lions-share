@@ -1,3 +1,16 @@
+.navbar {
+  display: none;
+}
+.under-construction {
+  width: 800px;
+  font-size: 16px;
+  padding: 7%;
+}
+
+.under-construction > img {
+  width: 100%;
+}
+
 .navbar-header {
   width: 35%;
 }
