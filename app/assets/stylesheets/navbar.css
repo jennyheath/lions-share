@@ -54,7 +54,7 @@
 
 .footer-img
 
-.navbar-nav > li > a {
+.navbar-nav > .nav-link-border > .nav-link {
   padding-top: 25px;
 }
 
