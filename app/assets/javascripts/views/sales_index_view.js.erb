@@ -350,8 +350,11 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
   },
 
   sortByPrice: function (event, options) {
-    var $target = event ? $(event.target) : $('.newest-sort');
+    var $target = event ? $(event.target) : $('.price-sort');
     var view = this;
+
+    $('.newest-sort').removeClass('select-sort');
+    $target.addClass('select-sort');
 
     view.sales.comparator = "price";
     view.sales.sort();
