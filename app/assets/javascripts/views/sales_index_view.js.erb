@@ -30,7 +30,7 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
           }
         });
         // $('.num-results').text(num_results);
-        _.defer(view.sortByPrice);
+        _.defer(view.sortByNewest);
         _.once(view.render);
       }
     });
@@ -334,39 +334,39 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
   },
 
   sortByNewest: function (event) {
-    $(event.target).addClass('select-sort');
-    $('.price-sort').removeClass('select-sort');
+    var $target = event ? $(event.target) : $('.newest-sort');
     var view = this;
-    view.sales.comparator = "updated_at";
-    view.sales.sort();
+
+    $target.addClass('select-sort');
+    $('.price-sort').removeClass('select-sort');
+    view.rentals.comparator = "updated_at";
+    view.rentals.sort();
     var subviews = view.subviews('.matches-wrapper');
     subviews.each(function (subview) {
       subview.remove();
     });
-    view.sales.models.forEach(function (sale) {
-      var subview = view.addListingSubview(sale.attributes);
+    view.rentals.models.forEach(function (rental) {
+      var subview = view.addListingSubview(rental.attributes);
       view.attachSubview('.matches-wrapper', subview);
     });
   },
 
   sortByPrice: function (event, options) {
-    var $target = event ? $(event.target) : $('.price-sort');
-    var view = this;
-
+    $(event.target).addClass('select-sort');
     $('.newest-sort').removeClass('select-sort');
-    $target.addClass('select-sort');
-
-    view.sales.comparator = "price";
-    view.sales.sort();
+    var view = this;
+    view.rentals.comparator = "price";
+    view.rentals.sort();
     var subviews = view.subviews('.matches-wrapper');
     subviews.each(function (subview) {
       subview.remove();
     });
-    view.sales.models.forEach(function (sale) {
-      var subview = view.addListingSubview(sale.attributes);
+    view.rentals.models.forEach(function (rental) {
+      var subview = view.addListingSubview(rental.attributes);
       view.attachSubview('.matches-wrapper', subview);
     });
   },
+
 
   render: function () {
     var content = this.template({
