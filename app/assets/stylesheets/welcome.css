@@ -30,6 +30,12 @@
 
 }
 
+.container-fluid .jumbotron {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
 @media screen and (max-width: 1024px) { /* Specific to this particular image */
   .home-wrapper img {
     left: 50%;
@@ -47,11 +53,6 @@
   top:0;
   z-index: 1;
   height: 100vh;
-}
-
-.container-fluid .jumbotron {
-  margin-top: 15%;
-  margin-left: 22%;
 }
 
 .jumbotron {
