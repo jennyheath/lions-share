@@ -30,7 +30,8 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
           }
         });
         // $('.num-results').text(num_results);
-        view.render();
+        _.defer(view.sortByPrice);
+        _.once(view.render);
       }
     });
 
@@ -349,9 +350,9 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
   },
 
   sortByPrice: function (event, options) {
-    $(event.target).addClass('select-sort');
-    $('.newest-sort').removeClass('select-sort');
+    var $target = event ? $(event.target) : $('.newest-sort');
     var view = this;
+
     view.sales.comparator = "price";
     view.sales.sort();
     var subviews = view.subviews('.matches-wrapper');

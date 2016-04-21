@@ -15,12 +15,13 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
   },
 
   initialize: function (options) {
+    this.firstRender = false;
     var view = this;
     view.listings = new LionsShare.Collections.Listings();
     view.listings.fetch({
       success: function () {
         // var num_results = 0;
-        view.rentals = new LionsShare.Collections.Listings();
+        view.rentals = LionsShare.Collections.listings;
         var list = view.listings.first().attributes.listings;
         list.forEach(function (listing) {
           if (listing.type_of == "Rental") {
@@ -30,7 +31,8 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
           }
         });
         // $('.num-results').text(num_results);
-        view.render();
+        _.defer(view.sortByNewest);
+        _.once(view.render);
       }
     });
 
@@ -354,9 +356,11 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
   },
 
   sortByNewest: function (event) {
-    $(event.target).addClass('select-sort');
-    $('.price-sort').removeClass('select-sort');
+    var $target = event ? $(event.target) : $('.newest-sort');
     var view = this;
+
+    $target.addClass('select-sort');
+    $('.price-sort').removeClass('select-sort');
     view.rentals.comparator = "updated_at";
     view.rentals.sort();
     var subviews = view.subviews('.matches-wrapper');
@@ -386,14 +390,27 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
   },
 
   render: function () {
+    var _this = this;
     var content = this.template({
       listings: this.listings
     });
-    this.$el.html(content);
+
+    // // On first render default to newest
+    // if (!this.firstRender) {
+    //    this.firstRender = true;
+    //   _.debounce(function() {
+    //     _this.sortByNewest();
+    //     debugger;
+    //     _this.$el.html(content);
+    //   }, )
+    // }
+      this.$el.html(content);
+
     this.addMapPins(this.rentals);
     this.attachSubviews();
     var num_results = $('.individual-listing-container').length;
     $('.num-results').text(num_results);
+
     return this;
   }
 });
