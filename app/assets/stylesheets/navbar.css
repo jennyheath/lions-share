@@ -37,6 +37,7 @@
 }
 
 /*need to do a media query to keep this in the navbar at smaller screen sizes*/
+.footer-logo-img,
 .navbar-brand img {
   height: auto;
   max-width: 400px;
@@ -46,6 +47,12 @@
   position: absolute;
   top: 50%;
 }
+
+.footer-logo-img {
+  transform: translate(0,0);
+}
+
+.footer-img
 
 .navbar-nav > li > a {
   padding-top: 25px;
