@@ -164,6 +164,7 @@
 .content-wrapper {
   position: relative;
   top: 70px;
+  overflow-x: hidden;
 }
 
 #map-canvas {
