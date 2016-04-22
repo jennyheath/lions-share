@@ -365,10 +365,9 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
     $('.price-sort').removeClass('select-sort');
     view.rentals.comparator = "updated_at";
     view.rentals.sort();
-    var subviews = view.subviews('.matches-wrapper');
-    subviews.each(function (subview) {
-      subview.remove();
-    });
+
+    this.$('.matches-wrapper').empty();
+
     view.rentals.models.forEach(function (rental) {
       var subview = view.addListingSubview(rental.attributes);
       view.attachSubview('.matches-wrapper', subview);
@@ -381,10 +380,7 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
     var view = this;
     view.rentals.comparator = "price";
     view.rentals.sort();
-    var subviews = view.subviews('.matches-wrapper');
-    subviews.each(function (subview) {
-      subview.remove();
-    });
+    this.$('.matches-wrapper').empty();
     view.rentals.models.forEach(function (rental) {
       var subview = view.addListingSubview(rental.attributes);
       view.attachSubview('.matches-wrapper', subview);

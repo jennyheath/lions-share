@@ -20,7 +20,7 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
     view.listings.fetch({
       success: function () {
         // var num_results = 0;
-        view.sales = new LionsShare.Collections.Listings();
+        view.sales = LionsShare.Collections.listings;
         var list = view.listings.first().attributes.listings;
         list.forEach(function (listing) {
           if (listing.type_of == "Sale") {
@@ -33,7 +33,7 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
         // $('.num-results').text(num_results);
         _.defer(view.sortByNewest);
         _.defer(view.addMapPins.bind(view));
-        _.once(view.render);
+        view.render();
       }
     });
 
@@ -344,10 +344,7 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
     $('.price-sort').removeClass('select-sort');
     view.sales.comparator = "updated_at";
     view.sales.sort();
-    var subviews = view.subviews('.matches-wrapper');
-    subviews.each(function (subview) {
-      subview.remove();
-    });
+    this.$('.matches-wrapper').empty();
     view.sales.models.forEach(function (rental) {
       var subview = view.addListingSubview(rental.attributes);
       view.attachSubview('.matches-wrapper', subview);
@@ -360,10 +357,7 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
     var view = this;
     view.sales.comparator = "price";
     view.sales.sort();
-    var subviews = view.subviews('.matches-wrapper');
-    subviews.each(function (subview) {
-      subview.remove();
-    });
+    this.$('.matches-wrapper').empty();
     view.sales.models.forEach(function (rental) {
       var subview = view.addListingSubview(rental.attributes);
       view.attachSubview('.matches-wrapper', subview);
@@ -375,6 +369,7 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
     var content = this.template({
       listings: this.listings
     });
+
     this.$el.html(content);
     this.addMapPins(this.sales);
     this.attachSubviews();
