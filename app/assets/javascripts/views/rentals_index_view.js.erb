@@ -32,6 +32,7 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
         });
         // $('.num-results').text(num_results);
         _.defer(view.sortByNewest);
+        _.defer(view.addMapPins.bind(view));
         _.once(view.render);
       }
     });
@@ -52,6 +53,9 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
   },
 
   addMapPins: function (rentals) {
+    var rentals = this.rentals.models;
+
+    this.markers = [];
     var map_options = {
       // Initial LatLng set for Brooklyn
       center: new google.maps.LatLng(40.63, -73.949997), //40.650002
@@ -69,12 +73,10 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
       null,
       new google.maps.Size(30, 40)
     );
-    this.markers = [];
 
-    rentals.each(function (listing) {
+    _.forEach(rentals, function (listing) {
       var LatLng = {lat: listing.attributes.latitude,
                     lng: listing.attributes.longitude};
-
       var marker = new google.maps.Marker({
         position: LatLng,
         map: map,

@@ -32,6 +32,7 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
 
         // $('.num-results').text(num_results);
         _.defer(view.sortByNewest);
+        _.defer(view.addMapPins.bind(view));
         _.once(view.render);
       }
     });
@@ -52,6 +53,7 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
   },
 
   addMapPins: function (sales) {
+    var sales = this.sales.models;
     var map_options = {
       // Initial LatLng set for Brooklyn
       center: new google.maps.LatLng(40.63, -73.949997), //40.650002
@@ -71,7 +73,7 @@ LionsShare.Views.SalesIndexView = Backbone.CompositeView.extend({
     );
     this.markers = [];
 
-    sales.each(function (listing) {
+    _.forEach(sales, function (listing) {
       var LatLng = {lat: listing.attributes.latitude,
                     lng: listing.attributes.longitude};
 
