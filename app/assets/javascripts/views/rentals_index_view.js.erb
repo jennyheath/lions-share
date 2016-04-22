@@ -390,24 +390,11 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    var _this = this;
     var content = this.template({
       listings: this.listings
     });
-
-    // // On first render default to newest
-    // if (!this.firstRender) {
-    //    this.firstRender = true;
-    //   _.debounce(function() {
-    //     _this.sortByNewest();
-    //     debugger;
-    //     _this.$el.html(content);
-    //   }, )
-    // }
-      this.$el.html(content);
-
+    this.$el.html(content);
     this.addMapPins(this.rentals);
-    this.attachSubviews();
     var num_results = $('.individual-listing-container').length;
     $('.num-results').text(num_results);
 
