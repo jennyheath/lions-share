@@ -123,6 +123,7 @@
     <div class="row matches-wrapper">
       <% firstListing.attributes.listings.forEach(function (listing) { %>
        <% if (listing.type_of === 'Sale') { %>
+          <div>
           <div class="listing-subview col-xs-12 col-sm-6 col-md-6 col-lg-6">
             <a href="#listings/<%= listing.id %>">
               <div class="individual-listing-container" data-id="<%= listing.id %>">
@@ -174,6 +175,7 @@
                 </div>
               </div>
             </a>
+          </div>
           </div>
         <% } %>
       <% }) %>
