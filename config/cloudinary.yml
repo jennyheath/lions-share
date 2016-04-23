@@ -1,13 +1,13 @@
 ---
 development:
-  cloud_name: deeqeoofc
-  api_key: '558878175797216'
-  api_secret: 4C5_cQIF8DWLOpnfOPEwbVLsPRU
+  cloud_name: lionshare
+  api_key: '655886391515878'
+  api_secret: nr-TxXQDsnBRl93PJrURe7EHbnc
 production:
-  cloud_name: deeqeoofc
-  api_key: '558878175797216'
-  api_secret: 4C5_cQIF8DWLOpnfOPEwbVLsPRU
+  cloud_name: lionshare
+  api_key: '655886391515878'
+  api_secret: nr-TxXQDsnBRl93PJrURe7EHbnc
 test:
-  cloud_name: deeqeoofc
-  api_key: '558878175797216'
-  api_secret: 4C5_cQIF8DWLOpnfOPEwbVLsPRU
+  cloud_name: lionshare
+  api_key: '655886391515878'
+  api_secret: nr-TxXQDsnBRl93PJrURe7EHbnc

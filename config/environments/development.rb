@@ -41,4 +41,5 @@ Rails.application.configure do
 
   config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
   config.assets.precompile += %w(.svg .otf)
+
 end

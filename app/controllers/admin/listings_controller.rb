@@ -14,8 +14,10 @@ class Admin::ListingsController < ApplicationController
     @listing.exclusive = false if !params[:listing][:exclusive]
     @listing.no_fee = false if !params[:listing][:no_fee]
 
-    @listing.main_photo_url = "http://res.cloudinary.com/" +
+    if params[:image]
+      @listing.main_photo_url = "http://res.cloudinary.com/" +
                               ENV['cloud_name'] + "/" + params[:image]
+    end
 
     @broker = Broker.find(params[:listing][:broker])
     @listing.brokers << @broker
