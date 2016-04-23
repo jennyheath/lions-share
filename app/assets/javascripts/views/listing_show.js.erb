@@ -14,7 +14,8 @@ LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
     this.confirmation = options.modal;
     this.listing.fetch({
       success: function () {
-        view.getSubways();
+        _.defer(view.addMap.bind(view));
+        // view.getSubways();
       }
     });
     this.listenTo(this.listing, 'sync', this.render);
@@ -38,7 +39,6 @@ LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
     this.lat = this.listing.get('latitude');
     this.lng = this.listing.get('longitude');
     var LatLng = {lat: this.lat, lng: this.lng};
-
     var map_options = {
       center: new google.maps.LatLng(this.lat, this.lng),
       zoom: 15,
@@ -132,7 +132,6 @@ LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
   render: function () {
     var content = this.template({
       listing: this.listing,
-      broker: this.listing.get('brokers')[0]
     });
 
     this.$el.html(content);
