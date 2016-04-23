@@ -37,7 +37,8 @@
 }
 
 .map-wrapper {
-  padding-right: 0px;
   position: fixed;
+  top: 5em;
   right: 0px;
+  padding-right: 0px;
 }

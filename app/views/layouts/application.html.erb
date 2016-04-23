@@ -11,11 +11,12 @@
   <script src="jquery.timeago.js" type="text/javascript"></script>
 </head>
 <body>
-  <header class="app-header">
-    <%= render partial: 'layouts/navbar' %>
-  </header>
+  <div class="main-container">
+    <header class="app-header">
+      <%= render partial: 'layouts/navbar' %>
+    </header>
 
-<%= yield %>
-
+    <%= yield %>
+  </div>
 </body>
 </html>
