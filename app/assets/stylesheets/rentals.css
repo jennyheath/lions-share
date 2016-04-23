@@ -1,4 +1,10 @@
 
+.all-filters-container {
+  position: absolute;
+  top: 50%;
+  transform: translate(0,-50%);
+}
+
 .all-filters {
   width: 80vw;
 }
@@ -159,6 +165,10 @@
   float: right;
   height: 61px;
   z-index: 100;
+}
+
+.clear-all-container > span:hover {
+  cursor: pointer;
 }
 
 .content-wrapper {
