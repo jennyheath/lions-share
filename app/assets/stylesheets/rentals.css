@@ -513,3 +513,18 @@ p.exclusive-tag, p.no-fee-tag {
     padding-left: 0;
   }
 }
+
+@media (max-width: 7670px) {
+  .sort-by-border {
+    width: 50%;
+  }
+
+  .individual-listing-container {
+    padding-right: 15px;
+  }
+  .navbar-header,
+  .nav-container {
+    margin: 0 !important;
+    width: 100%;
+  }
+}

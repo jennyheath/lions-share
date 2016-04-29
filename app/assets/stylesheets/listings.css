@@ -21,7 +21,7 @@
 .listing-main-img {
   height: 100%;
   /*height: auto;*/
-  /*width: 100%;*/
+  width: 100%;
 }
 
 .listing-amenities {
@@ -404,7 +404,7 @@
   margin-top: 12%;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 767px) {
   .listing-show-container {
     margin: 0px;
   }
@@ -412,6 +412,8 @@
   .listing-img-container {
     padding: 0px;
     margin: 0px;
+    width: 100%;
+    max-height: 50vh;
   }
 
   .broker-box {
