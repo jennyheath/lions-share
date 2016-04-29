@@ -6,19 +6,7 @@
   <div class="broker-modal-email"><%= broker.email %></div>
   <div class="message-box">
     <p>Message</p>
-    <form action="//formspree.io/<%= broker.email %>" method="POST">
-      <input class="return-email"
-             type="email"
-             name="_replyto"
-             placeholder="Your email address">
-      <input type="hidden" name="_cc" value="lionshareinc@gmail.com" />
-      <textarea class="email-message"
-                name="message"
-                placeholder="Hello, I would like to schedule a time to view this apartment. Thanks."
-                rows="6"></textarea>
-      <input type="hidden" name="_next" value="//lionshareinc.herokuapp.com/#listings/<%= listing.id %>/emailConfirmation" />
-      <input class="submit-email" type="submit" value="Send">
-    </form>
+      <a href="mailto:<%= broker.email %>?subject=<%= encodeURI(listing.attributes.address) %>&body=Hello, I am interested in this listing." class="send-email" target="_blank">Email</a>
   </div>
   <div class="see-broker-list">Contact a different agent</div>
   <div class="clear"></div>
