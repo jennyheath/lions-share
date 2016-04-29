@@ -60,7 +60,8 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
       // Initial LatLng set for Brooklyn
       center: new google.maps.LatLng(40.63, -73.949997), //40.650002
       zoom: 12,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      scrollwheel: false
     };
 
     var map = new google.maps.Map(document.getElementById("map-canvas"), map_options);
