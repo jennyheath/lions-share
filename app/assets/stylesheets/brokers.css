@@ -21,6 +21,10 @@ button.close {
   padding: 3%;
 }
 
+.modal-open .modal {
+  overflow: hidden !Important;
+}
+
 .broker-contact-info {
   font-family: "AtlasGrotesk-Regular", Helvetica, sans-serif;
   color: #7b7b7b;
