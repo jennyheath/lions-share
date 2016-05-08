@@ -277,7 +277,7 @@ input.stay-open {
 .individual-listing-container > a {
   display: inline-block;
   position: absolute;
-  left: 15px;
+  left: 0;
   right: 15px;
   bottom: 30px;
   top: 0px;
@@ -346,6 +346,10 @@ p.exclusive-tag, p.no-fee-tag {
   width: 100%;
   height: 70px;
   margin-bottom: 30px;
+}
+
+.info-wrapper *:first-child {
+  padding: 0;
 }
 
 .info-details {
