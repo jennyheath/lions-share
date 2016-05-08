@@ -1,9 +1,7 @@
 $main-side-padding: 30px;
 
 .all-filters-container {
-  position: absolute;
   top: 50%;
-  transform: translate(0,-50%);
 }
 
 .all-filters {
