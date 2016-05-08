@@ -36,13 +36,6 @@
   transform: translate(-50%,-50%);
 }
 
-@media screen and (max-width: 1024px) { /* Specific to this particular image */
-  .home-wrapper img {
-    left: 50%;
-    margin-left: -512px;   /* 50% */
-  }
-}
-
 .overlay {
   background-color: rgba(0, 0, 0, 0.85);
   bottom: 0;
@@ -98,4 +91,16 @@ a.btn-home {
 
 a.btn-home:hover {
   color: white;
+}
+
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+  .home-wrapper img {
+    left: 50%;
+    margin-left: -512px;   /* 50% */
+  }
+}
+@media screen and (max-width: 767px) { /* Specific to this particular image */
+  .jumbotron h1 {
+    font-size: 33px;
+  }
 }
