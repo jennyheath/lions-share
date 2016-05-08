@@ -11,7 +11,8 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
     'click .clear-all-container': 'clearFilters',
     'click': 'closeDropdowns',
     'click .price-sort': 'sortByPrice',
-    'click .newest-sort': 'sortByNewest'
+    'click .newest-sort': 'sortByNewest',
+    'click .show-other-filters': 'toggleFilters',
   },
 
   initialize: function (options) {
@@ -39,6 +40,10 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
 
     // this.listenTo(this.listings, "sync", this.render);
     // this.listenTo(this.listings, "add", this.addListingSubview);
+  },
+
+  toggleFilters: function() {
+    $('.filter-wrapper').toggleClass('active');
   },
 
   addListingSubview: function (listing) {
