@@ -403,7 +403,7 @@
   margin-top: 12%;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1024px) {
   .listing-show-container {
     margin: 0px;
   }

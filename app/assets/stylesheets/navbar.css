@@ -99,13 +99,26 @@
   background-color: #121546 !important;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1024px) {
   .navbar-header {
     width: 39%;
+  }
+  .navbar-right {
+    margin: 0;
+  }
+  .navbar-brand {
+    padding-left: 0;
   }
 }
 
 @media screen and (max-width: 767px) {
+
+  .navbar-header,
+  .nav-container {
+    margin: 0 !important;
+    width: 100%;
+  }
+
   .navbar-header {
     width: 100%;
   }
