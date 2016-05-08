@@ -112,7 +112,7 @@
 
   .navbar-brand {
     padding: 4%;
-    padding-left: 2%;
+    padding-left: 15px;
     width: 71%;
   }
 
@@ -123,6 +123,7 @@
   .navbar-toggle {
     margin: 0;
     right: 15px;
+    padding: 0;
   }
 
   ul.navbar-nav {
