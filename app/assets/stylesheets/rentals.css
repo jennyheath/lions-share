@@ -104,6 +104,7 @@ input.stay-open {
 
 .price-dropdown {
   padding-left: 15px;
+  width: 260% !important;
 }
 .price-dropdown .stay-open {
   position: relative;
@@ -432,6 +433,10 @@ p.exclusive-tag, p.no-fee-tag {
 }
 
 @media (max-width: 1024px) {
+
+  .price-dropdown {
+    width: 105% !important;
+  }
 
   .filter-wrapper .filter-dropdown:not(:first-child) {
     display: none;
