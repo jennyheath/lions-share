@@ -63,8 +63,12 @@ button.close {
 }
 
 .message-box {
-  margin-top: 6%;
+  margin-top: 15%;
   margin-left: 5%;
+}
+
+.message-box a {
+  text-align: center;
 }
 
 .email-message{
@@ -90,13 +94,16 @@ button.close {
   display: block;
 }
 
-.send-email, .closeConfirmation {
+.message-box .send-email {
   width: 95%;
   padding: 3%;
-  border: 3px solid #e0cf97;
-  background-color: transparent;
-  color: #c1a02f;
+  background-color: #c1a02f;
+  color: white;
   font-size: 91%;
+}
+
+.message-box .send-email:hover {
+  color: #0d1033;
 }
 
 .see-broker-list {

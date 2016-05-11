@@ -5,7 +5,6 @@
   <div class="broker-modal-phone"><%= broker.phone %></div>
   <div class="broker-modal-email"><%= broker.email %></div>
   <div class="message-box">
-    <p>Message</p>
       <a href="mailto:<%= broker.email %>?subject=<%= encodeURI(listing.attributes.address) %>&body=Hello, I am interested in this listing." class="send-email" target="_blank">Email</a>
   </div>
   <div class="see-broker-list">Contact a different agent</div>
