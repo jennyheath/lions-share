@@ -112,6 +112,7 @@ button.close {
   margin: 4%;
   font-family: "AtlasGrotesk-Medium", Helvetica, sans-serif;
   font-size: 91%;
+  cursor: pointer;
 }
 
 .broker-modal-list {

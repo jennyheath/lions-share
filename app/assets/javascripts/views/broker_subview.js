@@ -3,8 +3,7 @@ LionsShare.Views.BrokerSubview = Backbone.View.extend({
 
   events: {
     'click .see-broker-list': 'showBrokers',
-    'click .select-agent': 'showIndividualBroker',
-    'click .choose-broker': 'highlightBroker'
+    'click .choose-broker': 'showIndividualBroker'
   },
 
   initialize: function (options) {
