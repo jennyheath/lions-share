@@ -233,6 +233,7 @@ input.stay-open {
 .sort-by {
   width: 75%;
   margin-bottom: 18px;
+  padding-left: 0;
 }
 
 .sort-by-buttons {
@@ -257,6 +258,7 @@ input.stay-open {
 
 .sort-label {
   padding-right: 25px !important;
+  padding-left: 0 !important;
 }
 
 .results-found {
@@ -282,6 +284,7 @@ input.stay-open {
   right: 15px;
   bottom: 30px;
   top: 0px;
+  padding-left: 0;
 }
 
 .listing-container-hover {
@@ -415,6 +418,7 @@ p.exclusive-tag, p.no-fee-tag {
 
 .listing-subview {
   width: 100%;
+  padding-left: 0;
 }
 
 
@@ -525,8 +529,7 @@ p.exclusive-tag, p.no-fee-tag {
   }
 
   .sort-by {
-    padding: 0px;
-    padding-left: 7%;
+    padding-left: 0 !important;
   }
 
   .sort-by-buttons {
