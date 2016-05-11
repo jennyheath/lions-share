@@ -1,9 +1,5 @@
 $main-side-padding: 30px;
 
-.all-filters-container {
-  top: 50%;
-}
-
 .all-filters {
   width: 80vw;
 }
@@ -576,7 +572,7 @@ p.exclusive-tag, p.no-fee-tag {
   }
 
   .all-filters-container {
-    width: auto;
+    width: 80%;
   }
 }
 
