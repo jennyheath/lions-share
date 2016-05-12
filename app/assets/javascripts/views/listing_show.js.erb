@@ -75,7 +75,6 @@ LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
     // clear modals on exit click too
     $('body').on('click.exitModal', function(e) {
       if ($(e.target).is('#brokerModal')) {
-        debugger;
         _this.clearModal();
 
         $('body').off('click.exitModal');
