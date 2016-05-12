@@ -66,10 +66,21 @@ LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
   },
 
   brokerModal: function (event) {
+    var _this = this;
     jQuery.noConflict();
     $('#brokerModal').modal('show');
     this.addBrokerSubview(this.listing.get('brokers')[0]);
     this.attachSubviews();
+
+    // clear modals on exit click too
+    $('body').on('click.exitModal', function(e) {
+      if ($(e.target).is('#brokerModal')) {
+        debugger;
+        _this.clearModal();
+
+        $('body').off('click.exitModal');
+      }
+    });
   },
 
   floorplanModal: function (event) {

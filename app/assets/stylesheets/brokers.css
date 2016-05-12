@@ -2,8 +2,14 @@
   display: none;
 }
 
+button:focus {
+  outline-style: none;
+  box-shadow: none;
+  border-color: transparent;
+}
+
 .modal-dialog.broker-modal-dialog {
-  margin-top: 25%;
+  margin-top: 10%;
   width: 30%;
   height: 80%;
   overflow: hidden;
@@ -118,7 +124,6 @@ button.close {
 .broker-modal-list {
   overflow: scroll;
   height: 89%;
-  padding-bottom: 23%;
 }
 
 .broker-list-img {
