@@ -411,27 +411,27 @@
   <% end %>
   <br><br>
   <p>Floorplan:</p>
-    <%= cl_image_upload_tag(:image) %>
+    <%= cl_image_tag(:image) %>
   <br><br>
   <p>Main Photo:</p>
-    <%= cl_image_upload_tag(:image, :html => {:multiple => true}) %>
+    <%= cl_image_tag(:image, :html => {:multiple => true}) %>
     <span class="preview"></span>
     <div class="image_public_id"></div>
   <br><br>
 
   <% if (action_type == :new) %>
     <p>Additional Photos:</p>
-    <%= cl_image_upload_tag(:image_1) %>
-    <%= cl_image_upload_tag(:image_2) %>
-    <%= cl_image_upload_tag(:image_3) %>
-    <%= cl_image_upload_tag(:image_4) %>
-    <%= cl_image_upload_tag(:image_5) %>
-    <%= cl_image_upload_tag(:image_5) %>
-    <%= cl_image_upload_tag(:image_6) %>
-    <%= cl_image_upload_tag(:image_7) %>
-    <%= cl_image_upload_tag(:image_8) %>
-    <%= cl_image_upload_tag(:image_9) %>
-    <%= cl_image_upload_tag(:image_10) %>
+    <%= cl_image_tag(:image_1) %>
+    <%= cl_image_tag(:image_2) %>
+    <%= cl_image_tag(:image_3) %>
+    <%= cl_image_tag(:image_4) %>
+    <%= cl_image_tag(:image_5) %>
+    <%= cl_image_tag(:image_5) %>
+    <%= cl_image_tag(:image_6) %>
+    <%= cl_image_tag(:image_7) %>
+    <%= cl_image_tag(:image_8) %>
+    <%= cl_image_tag(:image_9) %>
+    <%= cl_image_tag(:image_10) %>
   <% end %>
   <br><br>
 
