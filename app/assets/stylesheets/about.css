@@ -16,7 +16,7 @@
 }
 
 .about-title {
-  font-size: 300%;
+  font-size: 44px;
   margin-bottom: 8%;
   line-height: 1.3;
 }
@@ -52,7 +52,7 @@
 .about-contact-info {
   font-family: "AtlasGrotesk-Regular", sans-serif;
   color: #626262;
-  margin-top: 3%;
+  margin-top: 0.5em;
 }
 
 .about-email {
@@ -111,4 +111,37 @@
 
 .subject-item:hover {
   background-color: #f2f2f2;
+}
+
+.about-footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+
+@media (max-width: 767px) {
+  .about-container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0 !important;
+  }
+
+  .about-container > * {
+    display: block;
+    width: 100% !important;
+    float: none !important;
+  }
+
+  .about-container > *:last-child .lion-icon {
+    max-width: 5em;
+  }
+
+  .about-title {
+    font-size: 33px;
+  }
+
+  .about-footer {
+    position: static;
+  }
 }
