@@ -412,6 +412,9 @@
   <br><br>
   <p>Floorplan:</p>
     <%= cl_image_upload_tag(:image) %>
+    <% if @listing.floor_plan_url %>
+      <%= cl_image_tag(@listing.floor_plan_url) %>
+    <% end %>
   <br><br>
   <p>Main Photo:</p>
     <%= cl_image_upload_tag(:image, :html => {:multiple => true}) %>

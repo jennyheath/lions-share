@@ -421,17 +421,9 @@
 
   <% if (action_type == :new) %>
     <p>Additional Photos:</p>
-    <%= cl_image_upload_tag(:image_1) %>
-    <%= cl_image_upload_tag(:image_2) %>
-    <%= cl_image_upload_tag(:image_3) %>
-    <%= cl_image_upload_tag(:image_4) %>
-    <%= cl_image_upload_tag(:image_5) %>
-    <%= cl_image_upload_tag(:image_5) %>
-    <%= cl_image_upload_tag(:image_6) %>
-    <%= cl_image_upload_tag(:image_7) %>
-    <%= cl_image_upload_tag(:image_8) %>
-    <%= cl_image_upload_tag(:image_9) %>
-    <%= cl_image_upload_tag(:image_10) %>
+    <% 10.times do |index| %>
+      <%= cl_image_upload_tag("image_#{index+1}".to_sym) %>
+    <% end %>
   <% end %>
   <br><br>
 
