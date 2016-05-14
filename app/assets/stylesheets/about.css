@@ -27,6 +27,10 @@
   margin-bottom: 8%;
 }
 
+.email-us {
+  color: #C29F44;
+}
+
 .email-dropdown {
   padding: 2%;
   width: 40%;
@@ -36,12 +40,13 @@
 
 .lion-icon {
   width: 50%;
+  max-width: 10em;
 }
 
 .about-subheader {
   font-family: "AtlasGrotesk-Medium", sans-serif;
   color: #626262;
-  margin-top: 25%;
+  margin-top: 3em;
 }
 
 .about-contact-info {
