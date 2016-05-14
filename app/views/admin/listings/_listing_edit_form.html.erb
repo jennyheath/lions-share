@@ -415,23 +415,19 @@
   <br><br>
   <p>Main Photo:</p>
     <%= cl_image_upload_tag(:image, :html => {:multiple => true}) %>
+    <% if @listing.main_photo_url %>
+      <%= cl_image_tag(@listing.main_photo_url) %>
+    <% end %>
     <span class="preview"></span>
     <div class="image_public_id"></div>
   <br><br>
 
-  <% if (action_type == :new) %>
-    <p>Additional Photos:</p>
-    <%= cl_image_upload_tag(:image_1) %>
-    <%= cl_image_upload_tag(:image_2) %>
-    <%= cl_image_upload_tag(:image_3) %>
-    <%= cl_image_upload_tag(:image_4) %>
-    <%= cl_image_upload_tag(:image_5) %>
-    <%= cl_image_upload_tag(:image_5) %>
-    <%= cl_image_upload_tag(:image_6) %>
-    <%= cl_image_upload_tag(:image_7) %>
-    <%= cl_image_upload_tag(:image_8) %>
-    <%= cl_image_upload_tag(:image_9) %>
-    <%= cl_image_upload_tag(:image_10) %>
+  <p>Additional Photos:</p>
+  <% 10.times do |index| %>
+    <%= cl_image_upload_tag("image_#{index+1}".to_sym) %>
+    <% if @listing.photos[index] %>
+    <%= cl_image_tag(@listing.photos[index].url) %>
+    <% end %>
   <% end %>
   <br><br>
 
