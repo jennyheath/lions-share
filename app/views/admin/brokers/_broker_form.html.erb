@@ -38,7 +38,7 @@
 
   <p>Photo:</p>
   <%= cl_image_upload_tag(:image) %>
-  <% if action_type == edit && @broker.photo_url%>
+  <% if action_type == :edit && @broker.photo_url%>
     <%= cl_image_tag(@broker.photo_url) %>
   <% end %>
   <span class="preview"></span>

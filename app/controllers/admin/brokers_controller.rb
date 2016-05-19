@@ -10,8 +10,11 @@ class Admin::BrokersController < ApplicationController
   def create
     @broker = Broker.new(broker_params)
 
-    @broker.photo_url = "http://res.cloudinary.com/" +
+    if params[:image]
+      @broker.photo_url = "http://res.cloudinary.com/" +
                               ENV['cloud_name'] + "/" + params[:image]
+    end
+
     if @broker.save
       render :saved
     else
