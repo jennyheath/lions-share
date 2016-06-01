@@ -43,7 +43,9 @@ LionsShare.Views.ListingShow = Backbone.CompositeView.extend({
       center: new google.maps.LatLng(this.lat, this.lng),
       zoom: 15,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
-      scrollwheel: false
+      scrollwheel: false,
+      draggable: false,
+      disableDefaultUI: true
     };
 
     var map = new google.maps.Map(document.getElementById("subway-map"), map_options);
