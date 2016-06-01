@@ -1,3 +1,5 @@
+require 'pry'
+
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -11,7 +13,11 @@ class ApplicationController < ActionController::Base
   end
 
   def require_no_user!
-    redirect_to root_url unless current_user.nil?
+    if current_user.nil?
+      redirect_to root_url
+    elsif request.path === '/admin'
+      redirect_to admin_listings_url
+    end
   end
 
   def require_signed_in!
