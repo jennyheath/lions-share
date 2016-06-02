@@ -11,12 +11,8 @@ class ApplicationController < ActionController::Base
   end
 
   def require_no_user!
-    if request.path === '/admin' && current_user.nil?
-      redirect_to :controller => 'sessions', :action => 'new'
-    elsif request.path === '/admin'
+    if request.path === '/admin' && !current_user.nil?
       redirect_to admin_listings_url
-    else
-      redirect_to root_url
     end
   end
 
