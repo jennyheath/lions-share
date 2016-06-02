@@ -27,6 +27,15 @@ html {
   overflow: auto;
 }
 
+.team-member-bio {
+  font-family: 'Brawler-Regular', serif;
+  max-width: 30em;
+  margin: 0 auto;
+  color: #626262;
+  font-size: medium;
+  margin-top: 1.5em;
+}
+
 a {
   text-decoration: none !important;
 }
@@ -92,7 +101,8 @@ a {
 .team-member-name {
 	font-family: Brawler-Regular;
 	font-size: xx-large;
-  padding: 3%;
+  padding: 0.7em;
+  padding-top: 1em;
 }
 
 .team-member-phone {
