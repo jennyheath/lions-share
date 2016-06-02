@@ -3,6 +3,9 @@
 	<div class="team-member-name"><%= broker.first_name %> <%= broker.last_name %></div>
 	<div class="team-member-phone"><%= broker.phone %></div>
 	<div class="team-email"><%= broker.email %></div>
+  <% if (broker.bio) %>
+  <p class="team-member-bio"><%= broker.email %></p>
+  <% end %>
 </div>
 <div class="broker-listings-container">
 	<div class="broker-listings-title"><%= broker.first_name%>'s listings</div>

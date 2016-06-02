@@ -1,5 +1,4 @@
 require 'cloudinary'
-require 'pry'
 
 class Admin::BrokersController < ApplicationController
   before_action :require_signed_in!
