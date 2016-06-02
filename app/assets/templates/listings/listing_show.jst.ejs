@@ -24,7 +24,7 @@
         <% if (listing.escape('type_of') == "Sale") { %>
           <div class="listing-buildingtype"><%= listing.escape('building_type') %></div>
         <% } %>
-        <h2 class="listing-neighborhood"><%= listing.escape('neighborhood') %></h2>
+        <h2 class="listing-neighborhood"><%= listing.escape('address') %></h2>
       </div>
       <p class="listing-description"><%= listing.escape('description') %></p>
       <div class="lot-info">Sq Ft: <%= commaSeparateNumber(listing.escape('square_footage')) %> sqft</div>
