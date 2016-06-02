@@ -1,4 +1,5 @@
 require 'cloudinary'
+require 'pry'
 
 class Admin::BrokersController < ApplicationController
   before_action :require_signed_in!
@@ -58,6 +59,6 @@ class Admin::BrokersController < ApplicationController
   private
 
   def broker_params
-    params.require(:broker).permit(:first_name, :last_name, :title, :email, :phone)
+    params.require(:broker).permit(:first_name, :last_name, :title, :bio, :email, :phone)
   end
 end

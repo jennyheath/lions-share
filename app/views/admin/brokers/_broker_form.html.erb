@@ -25,6 +25,12 @@
   </label>
   <br>
   <br>
+  <label>Bio:
+    <% bio = !broker.bio ? "" : broker.bio %>
+    <textarea  cols="30" rows="10" class="text-input" type="text" name="broker[bio]"><%= bio %></textarea>
+  </label>
+  <br>
+  <br>
   <label>Email:
     <input class="text-input" type="text" value="<%= broker.email %>" name="broker[email]">
   </label>
