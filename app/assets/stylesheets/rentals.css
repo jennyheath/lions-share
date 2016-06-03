@@ -313,12 +313,18 @@ input.stay-open {
 }
 
 /*need to fix padding when there are both tags*/
-p.exclusive-tag, p.no-fee-tag {
+p.exclusive-tag,
+p.no-fee-tag,
+p.just-sold-tag,
+p.in-contract-tag {
   position: relative;
   padding: 2% 4% 1% 4%;
 }
 
-.exclusive-tag, .no-fee-tag {
+.exclusive-tag,
+.no-fee-tag,
+.just-sold-tag,
+.in-contract-tag {
   position: absolute;
   padding: 1% 2%;
   margin: 2%;
@@ -332,6 +338,15 @@ p.exclusive-tag, p.no-fee-tag {
 
 .no-fee-tag {
   background-color: #121546;
+}
+
+.in-contract-tag {
+  background: #FFFFFF;
+  color: #c1a02f;
+}
+
+.just-sold-tag {
+  background: #C1402F;
 }
 
 .main-img {
