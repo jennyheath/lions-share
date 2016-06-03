@@ -13,6 +13,8 @@ json.floor_plan_url @listing.floor_plan_url
 json.building_type @listing.building_type
 json.exclusive @listing.exclusive
 json.no_fee @listing.no_fee
+json.just_sold @listing.just_sold
+json.in_contract @listing.in_contract
 json.main_photo_url @listing.main_photo_url
 json.created_at @listing.created_at
 json.updated_at @listing.updated_at

@@ -11,6 +11,8 @@ json.listings do
                            :featured,
                            :exclusive,
                            :no_fee,
+                           :just_sold,
+                           :in_contract,
                            :main_photo_url,
                            :created_at,
                            :updated_at,
