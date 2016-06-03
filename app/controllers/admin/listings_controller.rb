@@ -13,6 +13,8 @@ class Admin::ListingsController < ApplicationController
     @listing.featured = false if !params[:listing][:featured]
     @listing.exclusive = false if !params[:listing][:exclusive]
     @listing.no_fee = false if !params[:listing][:no_fee]
+    @listing.just_sold = false if !params[:listing][:just_sold]
+    @listing.in_contract = false if !params[:listing][:in_contract]
 
     if params[:image]
       @listing.main_photo_url = "http://res.cloudinary.com/" +
@@ -117,6 +119,11 @@ class Admin::ListingsController < ApplicationController
   def update
     @listing = Listing.find(params[:id])
     @listing.address = params[:street_address]
+    @listing.featured = false if !params[:listing][:featured]
+    @listing.exclusive = false if !params[:listing][:exclusive]
+    @listing.no_fee = false if !params[:listing][:no_fee]
+    @listing.just_sold = false if !params[:listing][:just_sold]
+    @listing.in_contract = false if !params[:listing][:in_contract]
 
     if params[:image]
       @listing.main_photo_url = "http://res.cloudinary.com/" +
@@ -222,6 +229,6 @@ class Admin::ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:type_of, :price, :bed_count, :bath_count, :neighborhood, :featured, :address, :description, :exclusive, :no_fee)
+    params.require(:listing).permit(:type_of, :price, :bed_count, :bath_count, :neighborhood, :featured, :address, :description, :exclusive, :no_fee, :just_sold, :in_contract)
   end
 end

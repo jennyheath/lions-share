@@ -295,19 +295,31 @@
 
   <label>Featured?:
     <input type="checkbox" name="listing[featured]"
-    <%= 'checked="true"' if listing.featured %>>
+    <%= 'checked="true"' if listing.featured %>
   </label>
   <br>
 
   <label>No fee?:
     <input type="checkbox" name="listing[no_fee]"
-    <%= 'checked="true"' if listing.no_fee %>>
+    <%= 'checked="true"' if listing.no_fee %>
   </label>
   <br>
 
   <label>Exclusive?:
     <input type="checkbox" name="listing[exclusive]"
-    <%= 'checked="true"' if listing.exclusive %>>
+    <%= 'checked="true"' if listing.exclusive %>
+  </label>
+  <br>
+
+  <label>Just Sold?:
+    <input type="checkbox" name="listing[just_sold]"
+    <%= 'checked="true"' if listing.just_sold %>
+  </label>
+  <br>
+
+  <label>In Contract?:
+    <input type="checkbox" name="listing[in_contract]"
+    <%= 'checked="true"' if listing.in_contract %>
   </label>
   <br>
   <br>
