@@ -310,6 +310,7 @@ input.stay-open {
   position: absolute;
   margin: 1%;
   text-align: left;
+  max-width: 10em;
 }
 
 /*need to fix padding when there are both tags*/
