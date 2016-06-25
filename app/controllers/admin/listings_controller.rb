@@ -26,67 +26,67 @@ class Admin::ListingsController < ApplicationController
 
     @listing.amenities = []
     if params[:listing][:highceilings]
-      @listing.amenities << Amenity.find_by_name('High Ceilings')
+      @listing.amenities << Amenity.find_or_create_by(name: 'High Ceilings')
     end
     if params[:listing][:parking]
-      @listing.amenities << Amenity.find_by_name('Parking')
+      @listing.amenities << Amenity.find_or_create_by(name: 'Parking')
     end
     if params[:listing][:luxuries]
-      @listing.amenities << Amenity.find_by_name('Luxuries')
+      @listing.amenities << Amenity.find_or_create_by(name: 'Luxuries')
     end
     if params[:listing][:skylineview]
-      @listing.amenities << Amenity.find_by_name('Skyline view')
+      @listing.amenities << Amenity.find_or_create_by(name: 'Skyline view')
     end
     if params[:listing][:elevator]
-      @listing.amenities << Amenity.find_by_name('Elevator')
+      @listing.amenities << Amenity.find_or_create_by(name: 'Elevator')
     end
     if params[:listing][:granitecountertops]
-      @listing.amenities << Amenity.find_by_name('Granite countertops')
+      @listing.amenities << Amenity.find_or_create_by(name: 'Granite countertops')
     end
     if params[:listing][:sharedbackyard]
-      @listing.amenities << Amenity.find_by_name('Shared backyard')
+      @listing.amenities << Amenity.find_or_create_by(name: 'Shared backyard')
     end
     if params[:listing][:dishwasher]
-      @listing.amenities << Amenity.find_by_name('Dishwasher')
+      @listing.amenities << Amenity.find_or_create_by(name: 'Dishwasher')
     end
     if params[:listing][:eatinkitchen]
-      @listing.amenities << Amenity.find_by_name('Eat In Kitchen')
+      @listing.amenities << Amenity.find_or_create_by(name: 'Eat In Kitchen')
     end
     if params[:listing][:allpetsok]
-      @listing.amenities << Amenity.find_by_name('All pets ok')
+      @listing.amenities << Amenity.find_or_create_by(name: 'All pets ok')
     end
     if params[:listing][:catsonly]
-      @listing.amenities << Amenity.find_by_name('Cats only')
+      @listing.amenities << Amenity.find_or_create_by(name: 'Cats only')
     end
     if params[:listing][:smalldogsallowed]
-      @listing.amenities << Amenity.find_by_name('Small dogs allowed')
+      @listing.amenities << Amenity.find_or_create_by(name: 'Small dogs allowed')
     end
     if params[:listing][:doorman]
-      @listing.amenities << Amenity.find_by_name('Doorman')
+      @listing.amenities << Amenity.find_or_create_by(name: 'Doorman')
     end
     if params[:listing][:laundryinbuilding]
-      @listing.amenities << Amenity.find_by_name('Laundry In building')
+      @listing.amenities << Amenity.find_or_create_by(name: 'Laundry In building')
     end
     if params[:listing][:zipcar]
-      @listing.amenities << Amenity.find_by_name('Zipcar')
+      @listing.amenities << Amenity.find_or_create_by(name: 'Zipcar')
     end
     if params[:listing][:hardwoodfloors]
-      @listing.amenities << Amenity.find_by_name('Hardwood floors')
+      @listing.amenities << Amenity.find_or_create_by(name: 'Hardwood floors')
     end
     if params[:listing][:roofdeck]
-      @listing.amenities << Amenity.find_by_name('RoofDeck')
+      @listing.amenities << Amenity.find_or_create_by(name: 'RoofDeck')
     end
     if params[:listing][:roofaccess]
-      @listing.amenities << Amenity.find_by_name('Roof access')
+      @listing.amenities << Amenity.find_or_create_by(name: 'Roof access')
     end
     if params[:listing][:stainlessteelappliances]
-      @listing.amenities << Amenity.find_by_name('Stainless Steel Appliances')
+      @listing.amenities << Amenity.find_or_create_by(name: 'Stainless Steel Appliances')
     end
     if params[:listing][:outdoorspace]
-      @listing.amenities << Amenity.find_by_name('Outdoor Space')
+      @listing.amenities << Amenity.find_or_create_by(name: 'Outdoor Space')
     end
     if params[:listing][:videointercom]
-      @listing.amenities << Amenity.find_by_name('Video Intercom')
+      @listing.amenities << Amenity.find_or_create_by(name: 'Video Intercom')
     end
 
     @listing.photos << Photo.create!(url: "http://res.cloudinary.com/" + ENV['cloud_name'] + "/" + params[:image_1]) if params[:image_1]
