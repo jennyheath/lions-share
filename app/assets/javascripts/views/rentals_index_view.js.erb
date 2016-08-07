@@ -73,7 +73,7 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
 
     var map = new google.maps.Map(document.getElementById("map-canvas"), map_options);
     this.map = map;
-    var map_pin_img = "<%= asset_path('map-pin-unselected.svg') %>";
+    var map_pin_img = "<%= asset_path('map-pin-unselected-v2.svg') %>";
     var pinIcon = new google.maps.MarkerImage(
       map_pin_img,
       null,
@@ -173,7 +173,7 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
         if (view.halfOpacity === true) {
           var map_pin_img = "<%= asset_path('map-pin-half.png') %>";
         } else {
-          var map_pin_img = "<%= asset_path('map-pin-selected.svg') %>";
+          var map_pin_img = "<%= asset_path('map-pin-selected-v2.svg') %>";
         }
         view.halfOpacity = false;
         var pinIcon = new google.maps.MarkerImage(

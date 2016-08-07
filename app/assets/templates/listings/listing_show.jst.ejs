@@ -13,12 +13,10 @@
       <h1 class="listing-price">$<%= commaSeparateNumber(listing.escape('price')) %></h1>
       <div class="bed-bath-neighborhood">
         <h2 class="listing-beds">
-          <% if (listing.escape('bed_count') > 0 && listing.escape('bed_count') < 4) { %>
+          <% if (listing.escape('bed_count') > 0 && listing.escape('bed_count') < 10) { %>
             <%= listing.escape('bed_count') %> Bed</h2>
           <% } else if (listing.escape('bed_count') == 0) { %>
             Studio
-          <% } else if (listing.escape('bed_count') == 4) { %>
-            4+ Bed
           <% } %>
         <h2 class="listing-baths"><%= listing.escape('bath_count') %> Bath</h2>
         <% if (listing.escape('type_of') == "Sale") { %>

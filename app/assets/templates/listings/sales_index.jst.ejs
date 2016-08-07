@@ -142,7 +142,7 @@
                     <% if (listing.no_fee) { %>
                       <p class="no-fee-tag">No Fee</p>
                     <% } %>
-                  </div> 
+                  </div>
                   <a href="#listings/<%= listing.id %>">
                   <img class="main-img" src="<%= listing.main_photo_url %>">
                   </a>
@@ -164,12 +164,10 @@
                   </div>
                   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 bed-bath-wrapper">
                     <p class="info-details">
-                      <% if (listing.bed_count > 0 && listing.bed_count < 4) { %>
+                      <% if (listing.bed_count > 0 && listing.bed_count < 10) { %>
                         <%= listing.bed_count %> Bed
                       <% } else if (listing.bed_count === 0) { %>
                         Studio
-                      <% } else if (listing.bed_count === 4) { %>
-                        4+ Bed
                       <% } %>
                       <%= listing.bath_count %> Bath </p>
                     <p class="info-details"><%= listing.neighborhood %></p>
