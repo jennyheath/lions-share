@@ -43,7 +43,12 @@
             <% } else if (listing.bed_count === 4) { %>
               4+ Bed
             <% } %>
-            <%= listing.bath_count %> Bath </p>
+
+            <% if (listing.bath_count >= 0 && listing.bath_count < 4) { %>
+              <%= listing.bath_count %> Bath </p>
+            <% } else if (listing.bath_count === 4) { %>
+              4+ Bed
+            <% } %>
           <p class="info-details"><%= listing.neighborhood %></p>
         </div>
       </div>
