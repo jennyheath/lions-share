@@ -42,3 +42,8 @@
   right: 0px;
   padding-right: 0px;
 }
+
+.max-width-listing {
+  max-width: 1200px:
+  margin: 0 auto;
+}

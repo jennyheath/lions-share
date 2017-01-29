@@ -264,6 +264,8 @@ input.stay-open {
 }
 
 .matches-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
   padding-left: 15px;
 }
 
