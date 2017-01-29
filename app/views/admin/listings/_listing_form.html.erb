@@ -383,9 +383,9 @@
     <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'Parking'").first) %>>
     <label>Parking</label>
     <br>
-    <input type="checkbox" name="listing[luxuries]"
-    <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'Luxuries'").first) %>>
-    <label>Luxuries</label>
+    <input type="checkbox" name="listing[duplex]"
+    <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'Duplex'").first) %>>
+    <label>Duplex</label>
     <br>
     <input type="checkbox" name="listing[skylineview]"
     <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'Skyline view'").first) %>>
@@ -427,9 +427,9 @@
     <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'Laundry In building'").first) %>>
     <label>Laundry In building</label>
     <br>
-    <input type="checkbox" name="listing[zipcar]"
-    <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'Zipcar'").first) %>>
-    <label>Zipcar</label>
+    <input type="checkbox" name="listing[in_unit_laundry]"
+    <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'In-Unit Laundry'").first) %>>
+    <label>In-Unit Laundry</label>
     <br>
     <input type="checkbox" name="listing[hardwoodfloors]"
     <%= 'checked="true"' if listing.amenities.include?(Amenity.where("name = 'Hardwood floors'").first) %>>

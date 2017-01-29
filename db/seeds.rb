@@ -72,12 +72,12 @@ amenities = [
   "Outdoor Space",
   "Dishwasher" ,
   "RoofDeck" ,
-  "Luxuries" ,
+  "Duplex" ,
   "Parking",
   "Laundry In building" ,
   "Skyline view" ,
   "Roof access" ,
-  "Zipcar" ,
+  "In-Unit Laundry" ,
   "Elevator"
 ]
 

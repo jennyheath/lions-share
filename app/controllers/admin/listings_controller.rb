@@ -31,8 +31,8 @@ class Admin::ListingsController < ApplicationController
     if params[:listing][:parking]
       @listing.amenities << Amenity.find_or_create_by(name: 'Parking')
     end
-    if params[:listing][:luxuries]
-      @listing.amenities << Amenity.find_or_create_by(name: 'Luxuries')
+    if params[:listing][:duplex]
+      @listing.amenities << Amenity.find_or_create_by(name: 'Duplex')
     end
     if params[:listing][:skylineview]
       @listing.amenities << Amenity.find_or_create_by(name: 'Skyline view')
@@ -67,8 +67,8 @@ class Admin::ListingsController < ApplicationController
     if params[:listing][:laundryinbuilding]
       @listing.amenities << Amenity.find_or_create_by(name: 'Laundry In building')
     end
-    if params[:listing][:zipcar]
-      @listing.amenities << Amenity.find_or_create_by(name: 'Zipcar')
+    if params[:listing][:in_unit_laundry]
+      @listing.amenities << Amenity.find_or_create_by(name: 'In-Unit Laundry')
     end
     if params[:listing][:hardwoodfloors]
       @listing.amenities << Amenity.find_or_create_by(name: 'Hardwood floors')
@@ -141,8 +141,8 @@ class Admin::ListingsController < ApplicationController
     if params[:listing][:parking]
       @listing.amenities << Amenity.find_by_name('Parking')
     end
-    if params[:listing][:luxuries]
-      @listing.amenities << Amenity.find_by_name('Luxuries')
+    if params[:listing][:duplex]
+      @listing.amenities << Amenity.find_by_name('Duplex')
     end
     if params[:listing][:skylineview]
       @listing.amenities << Amenity.find_by_name('Skyline view')
@@ -177,8 +177,8 @@ class Admin::ListingsController < ApplicationController
     if params[:listing][:laundryinbuilding]
       @listing.amenities << Amenity.find_by_name('Laundry In building')
     end
-    if params[:listing][:zipcar]
-      @listing.amenities << Amenity.find_by_name('Zipcar')
+    if params[:listing][:in_unit_laundry]
+      @listing.amenities << Amenity.find_by_name('In-Unit Laundry')
     end
     if params[:listing][:hardwoodfloors]
       @listing.amenities << Amenity.find_by_name('Hardwood floors')
