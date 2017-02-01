@@ -73,7 +73,7 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
 
     var map = new google.maps.Map(document.getElementById("map-canvas"), map_options);
     this.map = map;
-    var map_pin_img = "<%= asset_path('map-pin-unselected-v3.png') %>";
+    var map_pin_img = "<%= asset_path('map-pin-unselected-v2.png') %>";
     var pinIcon = new google.maps.MarkerImage(
       map_pin_img,
       null,
@@ -173,7 +173,7 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
         if (view.halfOpacity === true) {
           var map_pin_img = "<%= asset_path('map-pin-half-v2.png') %>";
         } else {
-          var map_pin_img = "<%= asset_path('map-pin-selected-v3.png') %>";
+          var map_pin_img = "<%= asset_path('map-pin-selected-v2.png') %>";
         }
         view.halfOpacity = false;
         var pinIcon = new google.maps.MarkerImage(
@@ -371,15 +371,18 @@ LionsShare.Views.RentalsIndexView = Backbone.CompositeView.extend({
 
     $target.addClass('select-sort');
     $('.price-sort').removeClass('select-sort');
-    view.rentals.comparator = "updated_at";
-    view.rentals.sort();
+    if (view.rentals) {
+      view.rentals.comparator = "updated_at";
+      view.rentals.sort();
 
-    this.$('.matches-wrapper').empty();
+      this.$('.matches-wrapper').empty();
 
-    view.rentals.models.forEach(function (rental) {
-      var subview = view.addListingSubview(rental.attributes);
-      view.attachSubview('.matches-wrapper', subview);
-    });
+      view.rentals.models.forEach(function (rental) {
+        var subview = view.addListingSubview(rental.attributes);
+        view.attachSubview('.matches-wrapper', subview);
+      });
+    }
+
   },
 
   sortByPrice: function (event, options) {
