@@ -13,7 +13,7 @@ addresses = [
   '131 Cumberland Walk Brooklyn, NY 11205'
 ]
 
-neighborhoods = ['Bushwick', 'Williamsburg', 'Crown Heights', 'Bed-Stuy', 'East Flatbush', 'Greenpoint', 'Park Slope', 'Ridgewood', 'Clinton Hill']
+neighborhoods = ['Bushwick', 'Williamsburg', 'Crown Heights', ' Bedford-Stuyvesant', 'East Flatbush', 'Greenpoint', 'Park Slope', 'Ridgewood', 'Clinton Hill']
 
 photos = [
   'https://s3-us-west-1.amazonaws.com/thelionsshare/158094711.jpg',
