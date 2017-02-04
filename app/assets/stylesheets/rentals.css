@@ -341,6 +341,7 @@ p.in-contract-tag {
 
 .no-fee-tag {
   background-color: #121546;
+  min-width: 3.7em;
 }
 
 .in-contract-tag {
